@@ -203,8 +203,7 @@
                     <div
                         class="group relative rounded-[24px] overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] bg-white/10 backdrop-blur-md">
 
-                        <img src="{{ asset('assets/images/Gedung_Rektorat_Universitas_Darma_Persada (1).jpg') }}"
-                            alt="Fakultas Ekonomi"
+                        <img src="{{ asset('storage/' . $landing->hero_image) }}" alt="Fakultas Ekonomi"
                             class="w-full h-[520px] object-cover scale-100 group-hover:scale-105 transition-transform duration-[4000ms]">
 
                         <!-- Overlay -->

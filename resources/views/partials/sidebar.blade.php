@@ -1,101 +1,135 @@
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <aside
-    class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 transform transition-transform duration-300 ease-in-out md:translate-x-0"
+    class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 text-white
+           transform transition-transform duration-300 ease-in-out
+           md:translate-x-0 shadow-2xl"
     :class="{ 'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen }">
-    <div class="flex items-center justify-between h-16 px-4 bg-gray-900">
 
-        <!-- Logo & App Name -->
+    <!-- HEADER -->
+    <div class="flex items-center justify-between h-16 px-4 border-b border-gray-800 bg-gray-950">
+
         <div class="flex items-center gap-3">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-10 h-10 object-contain">
+
+            <img src="{{ asset('assets/images/logo.png') }}" class="w-9 h-9 object-contain rounded-sm bg-white p-1">
 
             <div>
-                <h1 class="text-white font-bold text-base leading-none">
+                <h1 class="text-sm font-bold leading-tight">
                     Fakultas Ekonomi
                 </h1>
-                <p class="text-gray-400 text-xs">
+                <p class="text-[11px] text-gray-400">
                     Admin Panel
                 </p>
             </div>
+
         </div>
 
-        <!-- Mobile Close -->
-        <button @click="sidebarOpen = false" class="text-white md:hidden" aria-label="Close sidebar">
+        <button @click="sidebarOpen = false" class="md:hidden text-gray-300 hover:text-white">
             <i class="fas fa-times"></i>
         </button>
 
     </div>
-    <nav class="mt-5 overflow-y-auto h-[calc(100vh-4rem)]">
-        <a href="#" @click.prevent="activePage = 'dashboard'; sidebarOpen = false"
-            class="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
-            :class="{ 'bg-gray-700': activePage === 'dashboard' }">
-            <i class="fas fa-tachometer-alt mr-3"></i>Dashboard
+
+    <!-- NAV -->
+    <nav class="mt-4 px-2 space-y-1 overflow-y-auto h-[calc(100vh-4rem)]">
+
+        <!-- DASHBOARD -->
+        <a href="{{ route('dashboard') }}" @click.prevent="activePage = 'dashboard'; sidebarOpen = false"
+            class="flex items-center gap-3 px-3 py-2 rounded-md text-sm
+                   hover:bg-gray-800 transition"
+            :class="{ 'bg-gray-800': activePage === 'dashboard' }">
+
+            <i class="fas fa-tachometer-alt text-gray-300"></i>
+            Dashboard
+
         </a>
 
-        <div x-data="{ open: false }">
-            <button @click="open = !open"
-                class="w-full flex items-center justify-between px-4 py-2 text-gray-100 hover:bg-gray-700"
-                :aria-expanded="open" aria-controls="users-menu">
-                <div class="flex items-center">
-                    <i class="fas fa-users mr-3"></i>Users
+        <!-- LANDING PAGE -->
+        <a href="{{ route('admin.landingpage.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-md text-sm transition
+                   hover:bg-gray-800
+                   {{ request()->routeIs('admin.landingpage.*') ? 'bg-gray-800 border-l-4 border-blue-500' : 'text-gray-200' }}">
+
+            <i class="fas fa-home text-gray-300"></i>
+            Halaman Beranda
+
+        </a>
+
+        <!-- FACILITY -->
+        <div x-data="{ openFacility: {{ request()->is('admin/fasilitas*') ? 'true' : 'false' }} }" class="space-y-1">
+
+            <button @click="openFacility = !openFacility"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
+                       hover:bg-gray-800 transition">
+
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-building text-gray-300"></i>
+                    Fasilitas
                 </div>
-                <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
+                <i class="fas text-xs" :class="openFacility ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
             </button>
-            <div x-show="open" id="users-menu" x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 transform scale-95"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-95" class="bg-gray-700">
-                <a href="#" @click.prevent="activePage = 'all-users'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'all-users' }">All Users</a>
-                <a href="#" @click.prevent="activePage = 'add-user'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'add-user' }">Add User</a>
-                <a href="#" @click.prevent="activePage = 'user-roles'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'user-roles' }">User Roles</a>
+
+            <div x-show="openFacility" x-transition class="pl-6 space-y-1">
+
+                @foreach ($facilityCategories as $category)
+                    <a href="{{ route('admin.facilities.category', $category->slug) }}"
+                        class="block px-3 py-2 rounded-md text-xs text-gray-300
+                               hover:bg-gray-800 hover:text-white transition">
+
+                        {{ $category->name }}
+
+                    </a>
+                @endforeach
+
             </div>
         </div>
 
-        <div x-data="{ open: false }">
-            <button @click="open = !open"
-                class="w-full flex items-center justify-between px-4 py-2 text-gray-100 hover:bg-gray-700"
-                :aria-expanded="open" aria-controls="settings-menu">
-                <div class="flex items-center">
-                    <i class="fas fa-cog mr-3"></i>Settings
+        <!-- CONTENT -->
+        <div x-data="{ openContent: {{ request()->is('admin/content*') ? 'true' : 'false' }} }" class="space-y-1">
+
+            <button @click="openContent = !openContent"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
+                       hover:bg-gray-800 transition">
+
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-folder-open text-gray-300"></i>
+                    Konten Ilmiah
                 </div>
-                <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
+                <i class="fas text-xs" :class="openContent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
             </button>
-            <div x-show="open" id="settings-menu" x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 transform scale-95"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-150"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-95" class="bg-gray-700">
-                <a href="#" @click.prevent="activePage = 'general'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'general' }">General</a>
-                <a href="#" @click.prevent="activePage = 'security'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'security' }">Security</a>
-                <a href="#" @click.prevent="activePage = 'notifications'; sidebarOpen = false"
-                    class="block px-8 py-2 text-gray-200 hover:bg-gray-600"
-                    :class="{ 'bg-gray-600': activePage === 'notifications' }">Notifications</a>
+
+            <div x-show="openContent" x-transition class="pl-6 space-y-1">
+
+                @foreach ($contentCategories as $category)
+                    <a href="{{ route('admin.content.category', $category->slug) }}"
+                        class="block px-3 py-2 rounded-md text-xs text-gray-300
+                               hover:bg-gray-800 hover:text-white transition">
+
+                        {{ $category->name }}
+
+                    </a>
+                @endforeach
+
             </div>
         </div>
 
-        <a href="#" @click.prevent="activePage = 'analytics'; sidebarOpen = false"
-            class="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
-            :class="{ 'bg-gray-700': activePage === 'analytics' }">
-            <i class="fas fa-chart-bar mr-3"></i>Analytics
-        </a>
-        <form action="{{ route('logout') }}" method="POST">
+        <!-- LOGOUT -->
+        <form action="{{ route('logout') }}" method="POST" class="pt-4">
             @csrf
-            <button type="submit" class="flex items-center px-4 py-2 w-full text-gray-100 hover:bg-gray-700"
-                :class="{ 'bg-gray-700': activePage === 'logout' }">
-                <i class="fas fa-sign-out-alt mr-3"></i>Logout
+
+            <button type="submit"
+                class="flex items-center gap-3 w-full px-3 py-2 rounded-md text-sm
+                       text-red-400 hover:bg-red-500/10 transition">
+
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+
             </button>
+
         </form>
+
     </nav>
 </aside>

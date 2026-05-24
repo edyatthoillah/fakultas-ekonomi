@@ -33,81 +33,68 @@
                         Beranda
                     </a>
 
-                    <a href="{{ route('facility') }}"
-                        class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
-                        Fasilitas
-                    </a>
-
                     <div class="relative group">
 
+                        <!-- BUTTON -->
                         <button
                             class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
 
-                            Dosen
+                            Fasilitas
 
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
-                            </iconify-icon>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
                         </button>
 
-                        <!-- Dropdown Menu -->
+                        <!-- DROPDOWN -->
                         <div
-                            class="absolute left-0 top-full mt-2 w-[220px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+               opacity-0 invisible translate-y-1
+               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+               transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
-                            <a href="{{ route('tutor') }}"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
+                            @foreach ($facilityCategories as $category)
+                                <a href="{{ route('facility.category', $category->slug) }}"
+                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                       hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
-                                Tenaga Pendidik
-                            </a>
+                                    {{ $category->name }}
 
-                            <a href="#kegiatan-dosen"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Kegiatan Dosen
-                            </a>
+                                </a>
+                            @endforeach
 
                         </div>
+
                     </div>
 
                     <div class="relative group">
 
+                        <!-- BUTTON -->
                         <button
                             class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
 
-                            Penelitian
+                            Konten Ilmiah
 
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
-                            </iconify-icon>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
                         </button>
 
-                        <!-- Dropdown Menu -->
+                        <!-- DROPDOWN -->
                         <div
-                            class="absolute left-0 top-full mt-2 w-[250px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                            class="absolute left-0 top-full mt-2 w-[240px] bg-white border border-gray-200 shadow-lg
+               opacity-0 invisible translate-y-1
+               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+               transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
-                            <a href="#penelitian"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
+                            @foreach ($contentCategories as $category)
+                                <a href="{{ route('content.category', $category->slug) }}"
+                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                       hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
-                                Penelitian
-                            </a>
+                                    {{ $category->name }}
 
-                            <a href="#pengabdian"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Pengabdian Kepada Masyarakat
-                            </a>
-
-                            <a href="#publikasi"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Publikasi Ilmiah
-                            </a>
-
-                            <a href="#penghargaan"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Penghargaan
-                            </a>
+                                </a>
+                            @endforeach
 
                         </div>
+
                     </div>
 
                     <div class="relative group">
@@ -279,12 +266,6 @@
                 <a href="{{ route('landingpage') }}"
                     class="block py-3 text-[12px] font-semibold tracking-wide text-white border-b border-white/10">
                     Beranda
-                </a>
-
-                <!-- Fasilitas -->
-                <a href="{{ route('facility') }}"
-                    class="block py-3 text-[12px] font-semibold tracking-wide text-white border-b border-white/10">
-                    Fasilitas
                 </a>
 
                 <!-- Dosen -->

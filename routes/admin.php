@@ -6,8 +6,17 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InformationController;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    // =====================
+    // INFORMATION (Penelitian, Publikasi, dll)
+    // =====================
+    Route::get('/information/{category:slug}', [InformationController::class, 'category'])
+        ->name('information.category');
+
+    Route::resource('information', InformationController::class);
+
     Route::get('/landingpage', [LandingPageController::class, 'adminindex'])->name('landingpage.index');
     Route::post('/landingpage/update-vision-mission', [LandingPageController::class, 'updatevisionmission'])->name('landingpage.updatevisionmission');
     Route::post('/landingpage/update', [LandingPageController::class, 'update'])->name('landingpage.update');

@@ -148,6 +148,37 @@
 
         </div>
 
+        <!-- CONTENT -->
+        <div x-data="{ openContent: {{ request()->is('admin/information*') ? 'true' : 'false' }} }" class="space-y-1">
+
+            <button @click="openContent = !openContent"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
+                       hover:bg-gray-800 transition">
+
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-folder-open text-gray-300"></i>
+                    Pusat Informasi
+                </div>
+
+                <i class="fas text-xs" :class="openContent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
+            </button>
+
+            <div x-show="openContent" x-transition class="pl-6 space-y-1">
+
+                @foreach ($informationCategories as $category)
+                    <a href="{{ route('admin.information.category', $category->slug) }}"
+                        class="block px-3 py-2 rounded-md text-xs text-gray-300
+                               hover:bg-gray-800 hover:text-white transition">
+
+                        {{ $category->name }}
+
+                    </a>
+                @endforeach
+
+            </div>
+        </div>
+
         <!-- DASHBOARD -->
         <a href="{{ route('admin.partner.index') }}"
             class="flex items-center gap-3 px-3 py-2 rounded-md text-sm

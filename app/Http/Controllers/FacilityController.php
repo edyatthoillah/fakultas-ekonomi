@@ -32,21 +32,36 @@ class FacilityController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreFacilityRequest $request)
     {
-        $data = $request->validated();
+        try {
 
-        // upload image
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('facilities', 'public');
+            $data = $request->validated();
+
+            // Upload gambar
+            if ($request->hasFile('image')) {
+                $data['image'] = $request->file('image')
+                    ->store('facilities', 'public');
+            }
+
+            Facility::create($data);
+
+            return redirect()
+                ->back()
+                ->with('success', 'Fasilitas berhasil ditambahkan.');
+        } catch (\Exception $e) {
+
+            Log::error('Gagal menambahkan fasilitas', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile(),
+            ]);
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Terjadi kesalahan saat menyimpan data fasilitas.');
         }
-
-        Facility::create($data);
-
-        return redirect()->back()->with('success', 'Facility berhasil ditambahkan.');
     }
 
     /**
@@ -56,20 +71,23 @@ class FacilityController extends Controller
     {
         $data = $request->validated();
 
-        // update image jika ada file baru
         if ($request->hasFile('image')) {
 
-            // hapus image lama
-            if ($facility->image && Storage::disk('public')->exists($facility->image)) {
+            if (
+                $facility->image &&
+                Storage::disk('public')->exists($facility->image)
+            ) {
                 Storage::disk('public')->delete($facility->image);
             }
 
-            $data['image'] = $request->file('image')->store('facilities', 'public');
+            $data['image'] = $request->file('image')
+                ->store('facilities', 'public');
         }
 
         $facility->update($data);
 
-        return redirect()->back()->with('success', 'Facility berhasil diupdate.');
+        return redirect()->back()
+            ->with('successedit', 'Fasilitas berhasil diperbarui.');
     }
 
     /**

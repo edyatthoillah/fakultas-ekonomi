@@ -131,57 +131,36 @@
 
                     <div class="relative group">
 
+                        <!-- BUTTON -->
                         <button
                             class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
 
                             Pusat Informasi
 
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
-                            </iconify-icon>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
                         </button>
 
-                        <!-- Dropdown Menu -->
+                        <!-- DROPDOWN -->
                         <div
-                            class="absolute left-0 top-full mt-2 w-[270px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+        opacity-0 invisible translate-y-1
+        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+        transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
-                            <a href="#kolaborasi-kerjasama"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
+                            @foreach ($informationCategories as $category)
+                                <a href="{{ route('information.category', $category->slug) }}"
+                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
-                                Kolaborasi dan Kerja Sama
-                            </a>
+                                    {{ $category->name }}
 
-                            <a href="#seminar"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Seminar
-                            </a>
-
-                            <a href="#beasiswa"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Beasiswa
-                            </a>
-
-                            <a href="#peluang-kerja"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Peluang Kerja
-                            </a>
-
-                            <a href="#sosial-media"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Sosial Media
-                            </a>
-
-                            <a href="#profil-lulusan"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Profil Lulusan
-                            </a>
+                                </a>
+                            @endforeach
 
                         </div>
+
                     </div>
+
 
                     <div class="relative group">
 

@@ -7,6 +7,7 @@ use App\Models\FacilityCategory;
 use App\Models\ContentCategory;
 use App\Models\LandingPage;
 use App\Models\StudentCategory;
+use App\Models\InformationCategory;
 use Illuminate\Support\Facades\View;
 
 
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
                 'facilityCategories' => FacilityCategory::orderBy('name')->get(),
                 'contentCategories'  => ContentCategory::orderBy('name')->get(),
                 'studentCategories'  => StudentCategory::orderBy('name')->get(),
+                'informationCategories'  => InformationCategory::orderBy('name')->get(),
                 'landing' => LandingPage::first()
             ]);
         });

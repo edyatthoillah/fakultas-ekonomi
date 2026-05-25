@@ -10,9 +10,9 @@ class UpdateFacilityRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+   public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,20 @@ class UpdateFacilityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'description' => ['required', 'string'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus jpg, jpeg, png, atau webp.',
+            'image.max' => 'Ukuran gambar maksimal 2MB.',
+
+            'description.required' => 'Deskripsi wajib diisi.',
+            'description.string' => 'Deskripsi tidak valid.',
         ];
     }
 }

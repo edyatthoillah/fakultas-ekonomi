@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\FacilityCategory;
 use App\Models\ContentCategory;
 use App\Models\StudentCategory;
+use App\Models\InformationCategory;
 
 class LandingPageController extends Controller
 {
+
     public function studentCategory($slug)
     {
         $category = StudentCategory::where('slug', $slug)
@@ -60,6 +62,18 @@ class LandingPageController extends Controller
             ->get();
 
         return view('content', compact('category', 'contents'));
+    }
+
+    public function informationCategory($slug)
+    {
+        $category = InformationCategory::where('slug', $slug)
+            ->firstOrFail();
+
+        $contents = $category->informations()
+            ->latest()
+            ->get();
+
+        return view('information', compact('category', 'contents'));
     }
 
     public function index()

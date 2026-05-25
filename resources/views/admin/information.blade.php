@@ -64,7 +64,7 @@
 
                         <li>
                             <span class="mx-1">/</span>
-                            <span>Fasilitas</span>
+                            <span>Kontent Ilmiah</span>
                         </li>
 
                         <li>
@@ -82,8 +82,6 @@
                     <div class="bg-white border border-gray-300 w-full h-full shadow-sm p-4">
                         <div x-data="previewModalAdd()" @keydown.escape.window="show = false">
                             <div class="mb-4">
-
-
                                 <!-- Header & Add Button -->
                                 <div class="flex justify-between items-center mb-3">
                                     <h2 class="font-semibold text-gray-700 text-md">Fasilitas</h2>
@@ -105,7 +103,7 @@
                                     </div>
                                 </div>
 
-                                <div x-show="show" x-transition x-init="if ({{ $errors->any() || session('error') ? 'true' : 'false' }}) show = true"
+                                <div x-show="show" x-transition x-init="if ({{ $errors->store->any() || session('error') ? 'true' : 'false' }}) show = true"
                                     class="fixed inset-0 bg-black/40 z-50 flex items-start justify-center p-4 overflow-y-auto">
 
                                     <div
@@ -116,10 +114,10 @@
 
                                             <div>
                                                 <h2 class="text-base font-semibold text-white">
-                                                    Tambah Fasilitas
+                                                    Tambah {{ $category->name }}
                                                 </h2>
                                                 <p class="text-blue-100 text-xs">
-                                                    Tambahkan data fasilitas baru
+                                                    Tambahkan data informasi baru
                                                 </p>
                                             </div>
 
@@ -132,31 +130,55 @@
                                         <!-- Content -->
                                         <div class="p-5">
 
-                                            <form action="{{ route('admin.facilities.store') }}" method="POST"
+                                            @if (session('error'))
+                                                <div class="mb-4 p-3 rounded-md border border-red-200 bg-red-50">
+                                                    <p class="text-sm text-red-600">
+                                                        {{ session('error') }}
+                                                    </p>
+                                                </div>
+                                            @endif
+
+                                            <form action="{{ route('admin.information.store') }}" method="POST"
                                                 enctype="multipart/form-data" class="space-y-4">
 
                                                 @csrf
 
-                                                <input type="hidden" name="facility_category_id"
+                                                <input type="hidden" name="information_category_id"
                                                     value="{{ $category->id }}">
+
+                                                <!-- Judul -->
+                                                <div>
+                                                    <x-input-label value="Judul"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <input type="text" name="title" value="{{ old('title') }}"
+                                                        placeholder="Masukkan judul informasi"
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                    @if ($errors->store->has('title'))
+                                                        <p class="text-red-500 text-xs mt-1">
+                                                            {{ $errors->store->first('title') }}
+                                                        </p>
+                                                    @endif
+                                                </div>
 
                                                 <!-- Upload Gambar -->
                                                 <div>
-                                                    <x-input-label value="Gambar Fasilitas"
+                                                    <x-input-label value="Gambar Informasi"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <div class="mt-2 border border-dashed border-gray-300 rounded-md p-3">
 
                                                         <input type="file" name="image"
                                                             class="block w-full text-sm text-gray-600
-                                                                file:mr-3
-                                                                file:px-3
-                                                                file:py-1.5
-                                                                file:rounded
-                                                                file:border-0
-                                                                file:bg-blue-50
-                                                                file:text-blue-700
-                                                                file:text-sm">
+                            file:mr-3
+                            file:px-3
+                            file:py-1.5
+                            file:rounded
+                            file:border-0
+                            file:bg-blue-50
+                            file:text-blue-700
+                            file:text-sm">
 
                                                     </div>
 
@@ -172,7 +194,7 @@
                                                     <x-input-label value="Deskripsi"
                                                         class="text-sm font-medium text-gray-700" />
 
-                                                    <textarea name="description" rows="4" placeholder="Masukkan deskripsi fasilitas..."
+                                                    <textarea name="description" rows="4" placeholder="Masukkan deskripsi informasi..."
                                                         class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ old('description') }}</textarea>
 
                                                     @if ($errors->store->has('description'))
@@ -204,7 +226,6 @@
                                 </div>
 
                             </div>
-
                         </div>
 
                         <div x-data="modalEditInformation()" class="overflow-x-auto bg-white shadow-sm rounded">
@@ -214,13 +235,14 @@
                                     <tr>
                                         <th class="px-3 py-2 border">No</th>
                                         <th class="px-3 py-2 border">Gambar</th>
+                                        <th class="px-3 py-2 border">Judul</th>
                                         <th class="px-3 py-2 border">Deskripsi</th>
                                         <th class="px-3 py-2 border">Aksi</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @forelse ($facilities as $data)
+                                    @forelse ($informations as $data)
                                         <tr class="hover:bg-gray-50">
 
                                             <td class="text-center px-3 py-2 border">
@@ -228,43 +250,49 @@
                                             </td>
 
                                             <td class="px-3 py-2 border">
-                                                <img src="{{ asset('storage/' . $data->image) }}"
-                                                    class="h-20 w-20 object-cover rounded-md">
+                                                @if ($data->image)
+                                                    <img src="{{ asset('storage/' . $data->image) }}"
+                                                        class="h-20 w-20 object-cover rounded">
+                                                @endif
                                             </td>
 
                                             <td class="px-3 py-2 border">
-                                                {!! Str::limit(strip_tags($data->description), 150) !!}
+                                                {{ $data->title }}
+                                            </td>
+
+                                            <td class="px-3 py-2 border">
+                                                {{ Str::limit(strip_tags($data->description), 120) }}
                                             </td>
 
                                             <td class="px-3 py-2 border">
                                                 <div class="inline-flex">
 
                                                     <!-- EDIT -->
-                                                    <button type="button"
+                                                    <button
                                                         @click="openModal({
-                                                            id: {{ $data->id }},
-                                                            description: @js($data->description),
-                                                            image: @js(asset('storage/' . $data->image))
-                                                        })"
-                                                        class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
+                                    id: @js($data->id),
+                                    title: @js($data->title),
+                                    description: @js($data->description),
+                                    image: @js($data->image ? asset('storage/' . $data->image) : '')
+                                })"
+                                                        class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white rounded-l">
 
                                                         Edit
                                                     </button>
 
                                                     <!-- DELETE -->
-                                                    <form action="{{ route('admin.facilities.destroy', $data->id) }}"
+                                                    <form action="{{ route('admin.information.destroy', $data->id) }}"
                                                         method="POST"
-                                                        onsubmit="return confirm('Yakin ingin menghapus fasilitas ini?')">
+                                                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
 
                                                         @csrf
                                                         @method('DELETE')
 
                                                         <button type="submit"
-                                                            class="px-3 py-1 text-xs bg-red-600 hover:bg-red-700 text-white border border-red-800 rounded-r -ml-px transition">
+                                                            class="px-3 py-1 text-xs bg-red-600 hover:bg-red-700 text-white rounded-r">
 
                                                             Delete
                                                         </button>
-
                                                     </form>
 
                                                 </div>
@@ -273,15 +301,14 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="4" class="text-center py-5 text-gray-500">
-                                                Belum ada data fasilitas.
+                                            <td colspan="5" class="text-center py-5 text-gray-500">
+                                                Belum ada data informasi.
                                             </td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                             </table>
                             <!-- Modal Edit -->
-                            <!-- Modal Edit Fasilitas -->
                             <div x-show="show" x-cloak x-transition
                                 class="fixed inset-0 bg-black/40 z-50 flex items-start justify-center p-4 overflow-y-auto">
 
@@ -293,16 +320,17 @@
 
                                         <div>
                                             <h2 class="text-base font-semibold text-white">
-                                                Edit Fasilitas
+                                                Edit Informasi
                                             </h2>
 
                                             <p class="text-blue-100 text-xs">
-                                                Perbarui data fasilitas
+                                                Perbarui data informasi
                                             </p>
                                         </div>
 
                                         <button @click="show = false"
                                             class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+
                                             &times;
                                         </button>
 
@@ -321,7 +349,7 @@
                                             </div>
                                         @endif
 
-                                        <form id="editFacilityForm" method="POST" enctype="multipart/form-data"
+                                        <form id="editInformationForm" method="POST" enctype="multipart/form-data"
                                             class="space-y-4">
 
                                             @csrf
@@ -335,8 +363,24 @@
 
                                                 <div class="mt-2">
                                                     <img :src="form.image"
-                                                        class="h-40 w-full object-cover rounded-md border">
+                                                        class="h-32 w-full object-cover rounded-md border">
                                                 </div>
+
+                                            </div>
+
+                                            <!-- Judul -->
+                                            <div>
+
+                                                <x-input-label value="Judul" class="text-sm font-medium text-gray-700" />
+
+                                                <input id="edit_title" type="text" name="title"
+                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                @error('title', 'update')
+                                                    <p class="text-red-500 text-xs mt-1">
+                                                        {{ $message }}
+                                                    </p>
+                                                @enderror
 
                                             </div>
 
@@ -391,11 +435,13 @@
 
                                                 <button type="button" @click="show=false"
                                                     class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
+
                                                     Batal
                                                 </button>
 
                                                 <button type="submit"
                                                     class="px-4 py-2 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded-md">
+
                                                     Update
                                                 </button>
 
@@ -414,7 +460,6 @@
             </section>
         </div>
     </div>
-
     <script>
         function previewModalAdd() {
             return {
@@ -458,12 +503,14 @@
 
                     this.$nextTick(() => {
 
-                        document.getElementById('editFacilityForm').action =
-                            '/admin/facilities/' + data.id;
+                        document.getElementById('editInformationForm').action =
+                            '/admin/information/' + data.id;
+
+                        document.getElementById('edit_title').value =
+                            data.title ?? '';
 
                         document.getElementById('edit_description').value =
                             data.description ?? '';
-
                     });
                 }
             }
@@ -471,6 +518,8 @@
     </script>
 
 
+
+    <script src="{{ asset('assets/js/main.min.js?v=1772427751095') }}"></script>
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 @endsection

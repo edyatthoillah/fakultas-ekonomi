@@ -2,28 +2,42 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStudentRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Authorization
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // WAJIB true biar bisa dipakai
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * Validation rules
      */
     public function rules(): array
     {
         return [
-            //
+            'student_category_id' => ['required', 'exists:student_categories,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'institution' => ['nullable', 'string', 'max:255'],
+            'date' => ['nullable', 'date'],
+        ];
+    }
+
+    /**
+     * Custom messages (optional)
+     */
+    public function messages(): array
+    {
+        return [
+            'student_category_id.required' => 'Kategori wajib dipilih.',
+            'name.required' => 'Nama wajib diisi.',
+            'image.image' => 'File harus berupa gambar.',
         ];
     }
 }

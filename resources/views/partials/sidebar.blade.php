@@ -33,7 +33,7 @@
     <nav class="mt-4 px-2 space-y-1 overflow-y-auto h-[calc(100vh-4rem)]">
 
         <!-- DASHBOARD -->
-        <a href="{{ route('dashboard') }}" @click.prevent="activePage = 'dashboard'; sidebarOpen = false"
+        {{-- <a href="{{ route('dashboard') }}" @click.prevent="activePage = 'dashboard'; sidebarOpen = false"
             class="flex items-center gap-3 px-3 py-2 rounded-md text-sm
                    hover:bg-gray-800 transition"
             :class="{ 'bg-gray-800': activePage === 'dashboard' }">
@@ -41,7 +41,7 @@
             <i class="fas fa-tachometer-alt text-gray-300"></i>
             Dashboard
 
-        </a>
+        </a> --}}
 
         <!-- LANDING PAGE -->
         <a href="{{ route('admin.landingpage.index') }}"
@@ -114,6 +114,38 @@
                 @endforeach
 
             </div>
+        </div>
+
+        <!-- STUDENT -->
+        <div x-data="{ openStudent: {{ request()->is('admin/students*') ? 'true' : 'false' }} }" class="space-y-1">
+
+            <button @click="openStudent = !openStudent"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
+               hover:bg-gray-800 transition">
+
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-user-graduate text-gray-300"></i>
+                    Mahasiswa
+                </div>
+
+                <i class="fas text-xs" :class="openStudent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
+            </button>
+
+            <div x-show="openStudent" x-transition class="pl-6 space-y-1">
+
+                @foreach ($studentCategories as $category)
+                    <a href="{{ route('admin.students.category', $category->slug) }}"
+                        class="block px-3 py-2 rounded-md text-xs text-gray-300
+                       hover:bg-gray-800 hover:text-white transition">
+
+                        {{ $category->name }}
+
+                    </a>
+                @endforeach
+
+            </div>
+
         </div>
 
         <!-- LOGOUT -->

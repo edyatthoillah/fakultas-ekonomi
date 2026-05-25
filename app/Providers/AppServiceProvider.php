@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\FacilityCategory;
 use App\Models\ContentCategory;
+use App\Models\StudentCategory;
 use Illuminate\Support\Facades\View;
 
 
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'facilityCategories' => FacilityCategory::orderBy('name')->get(),
                 'contentCategories'  => ContentCategory::orderBy('name')->get(),
+                'studentCategories'  => StudentCategory::orderBy('name')->get(),
             ]);
         });
     }

@@ -9,7 +9,7 @@
 
                     <!-- Logo -->
                     <div class="bg-white/10 border border-white/10 rounded-md p-1.5 backdrop-blur-sm">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="h-8 w-auto object-contain">
+                        <img src="{{ asset('storage/' . $landing->logo) }}" class="h-8 w-auto object-contain">
                     </div>
 
                     <!-- Text -->
@@ -20,7 +20,7 @@
                         </h1>
 
                         <p class="text-[9px] tracking-[0.18em] text-blue-100 mt-0.5 font-medium">
-                            Fakultas Ekonomi
+                            {{ $landing->app_name }}
                         </p>
                     </div>
                 </a>
@@ -99,44 +99,34 @@
 
                     <div class="relative group">
 
+                        <!-- BUTTON -->
                         <button
                             class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
 
                             Mahasiswa
 
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
-                            </iconify-icon>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
                         </button>
 
-                        <!-- Dropdown Menu -->
+                        <!-- DROPDOWN -->
                         <div
-                            class="absolute left-0 top-full mt-2 w-[260px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+        opacity-0 invisible translate-y-1
+        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+        transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
-                            <a href="#himpunan-mahasiswa"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
+                            @foreach ($studentCategories as $category)
+                                <a href="{{ route('students.category', $category->slug) }}"
+                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
-                                Himpunan Mahasiswa
-                            </a>
+                                    {{ $category->name }}
 
-                            <a href="#mahasiswa-berprestasi"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Mahasiswa Berprestasi
-                            </a>
-
-                            <a href="#kegiatan-mahasiswa"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Kegiatan Mahasiswa
-                            </a>
-
-                            <a href="#praktek-kerja-magang"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Praktek Kerja Magang
-                            </a>
+                                </a>
+                            @endforeach
 
                         </div>
+
                     </div>
 
                     <div class="relative group">
@@ -227,7 +217,7 @@
                         class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
                         Berita
                     </a>
-                    <a href="#berita"
+                    <a href="{{ $landing->leaflet_link }}"
                         class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
                         Brosur
                     </a>

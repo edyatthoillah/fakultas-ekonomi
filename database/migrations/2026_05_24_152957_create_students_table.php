@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('student_category_id')
+                ->constrained('student_categories')
+                ->cascadeOnDelete();
+
+            $table->string('name'); // nama mahasiswa / judul kegiatan
+            $table->text('description')->nullable();
+
+            $table->string('image')->nullable();
+            $table->string('institution')->nullable(); // misal kampus/lomba/perusahaan
+            $table->date('date')->nullable();
+
             $table->timestamps();
         });
     }

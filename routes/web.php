@@ -11,6 +11,9 @@ Route::get('/fasilitas/{slug}',[LandingPageController::class, 'facilityCategory'
 Route::get('/content/{slug}',[LandingPageController::class, 'contentCategory']
     )->name('content.category');
 
+Route::get('/students/{slug}', [LandingPageController::class, 'studentCategory'])
+    ->name('students.category');
+
 Route::get('/tenaga-pengajar', function () {
     return view('tutor');
 })->name('tutor');

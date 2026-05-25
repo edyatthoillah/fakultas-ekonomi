@@ -200,11 +200,15 @@
                         </div>
 
                         <div class="p-4 space-y-3">
-
+                            <label class="block text-xs font-medium text-gray-700 mb-1">
+                                Deskripsi Footer
+                            </label>
                             <textarea name="footer_description" rows="3" class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2">
                     {{ $landing->footer_description ?? '' }}
                 </textarea>
-
+                            <label class="block text-xs font-medium text-gray-700 mb-1">
+                                Alamat
+                            </label>
                             <textarea name="address" rows="3" class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2">
                     {{ $landing->address ?? '' }}
                 </textarea>

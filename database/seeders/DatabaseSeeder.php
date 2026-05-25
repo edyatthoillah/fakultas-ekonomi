@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LandingPageSeeder::class,
             FacilityCategorySeeder::class,
-            ContentCategorySeeder::class
+            ContentCategorySeeder::class,
+            StudentCategorySeeder::class
         ]);
     }
 }

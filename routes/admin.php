@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,13 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         ->name('content.category');
 
     Route::resource('content', ContentController::class);
+
+    // =====================
+    // STUDENT (HIMA, Prestasi, Kegiatan, PKL)
+    // =====================
+    Route::get('/students/{category:slug}', [StudentController::class, 'category'])
+        ->name('students.category');
+
+    Route::resource('students', StudentController::class);
 });
 

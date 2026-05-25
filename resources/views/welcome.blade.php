@@ -43,7 +43,7 @@
                     <!-- Heading -->
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-white mb-6">
 
-                        Fakultas Ekonomi <br>
+                        {{ $landing->app_name }} <br>
 
                         <span class="bg-gradient-to-r from-blue-100 to-cyan-200 bg-clip-text text-transparent">
                             Universitas Darma Persada
@@ -53,16 +53,14 @@
                     <!-- Description -->
                     <p class="text-[15px] leading-8 text-blue-100/90 max-w-xl mb-10 font-medium">
 
-                        Mewujudkan pendidikan ekonomi yang unggul, profesional,
-                        dan adaptif terhadap perkembangan teknologi serta dunia industri
-                        modern untuk menghasilkan lulusan berkualitas dan berdaya saing global.
+                        {{ $landing->hero_title }}
                     </p>
 
                     <!-- Button -->
                     <div class="flex flex-col sm:flex-row gap-4">
 
                         <!-- Primary -->
-                        <a href="#pendaftaran"
+                        <a href="{{ url('https://pmb.unsada.ac.id/') }}"
                             class="group relative overflow-hidden inline-flex items-center justify-center h-12 px-8 rounded-md bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-300 text-[#29357A] text-[12px] font-black tracking-[0.15em] shadow-[0_12px_35px_rgba(255,215,0,0.38)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
 
                             <!-- Glow -->
@@ -85,7 +83,7 @@
                         </a>
 
                         <!-- Secondary -->
-                        <a href="#profil"
+                        <a href="#profil-fakultas"
                             class="group relative overflow-hidden inline-flex items-center justify-center h-12 px-8 rounded-md bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-300 border border-yellow-200/40 text-[#29357A] text-[12px] font-black tracking-[0.15em] shadow-[0_12px_35px_rgba(255,215,0,0.30)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
 
                             <!-- Glow -->
@@ -294,9 +292,7 @@
 
                     <!-- Description -->
                     <p class="mt-6 text-[15px] leading-8 text-gray-600 max-w-xl">
-                        Fakultas Ekonomi Universitas Darma Persada hadir sebagai institusi pendidikan
-                        yang berkomitmen mencetak lulusan unggul, profesional, dan siap bersaing
-                        di dunia industri modern melalui pembelajaran inovatif dan kolaboratif.
+                        {{ $landing->about_us }}
                     </p>
 
                     <!-- Highlight -->

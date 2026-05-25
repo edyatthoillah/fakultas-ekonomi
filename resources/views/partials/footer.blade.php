@@ -31,8 +31,7 @@
 
                     <!-- Description -->
                     <p class="mt-5 text-[14px] leading-7 text-white/75">
-                        Fakultas yang berfokus pada pendidikan ekonomi modern,
-                        profesional, dan adaptif terhadap perkembangan industri.
+                        {{ $landing->footer_description }}
                     </p>
                 </div>
 
@@ -86,7 +85,7 @@
                             </iconify-icon>
 
                             <span>
-                                Jakarta Timur, Indonesia
+                                {{ $landing->address }}
                             </span>
                         </li>
 
@@ -96,7 +95,7 @@
                             </iconify-icon>
 
                             <span>
-                                (021) 8649051
+                                {{ $landing->whatsapp }}
                             </span>
                         </li>
 
@@ -106,7 +105,7 @@
                             </iconify-icon>
 
                             <span>
-                                ekonomi@unsada.ac.id
+                                {{ $landing->email }}
                             </span>
                         </li>
                     </ul>
@@ -122,21 +121,21 @@
                     <div class="flex gap-3">
 
                         <!-- Instagram -->
-                        <a href="#"
+                        <a href="{{ $landing->instagram }}" target="_blank"
                             class="w-10 h-10 rounded-md bg-white/10 hover:bg-white/20 transition flex items-center justify-center">
 
                             <i class="fa-brands fa-instagram text-white text-lg"></i>
                         </a>
 
                         <!-- YouTube -->
-                        <a href="#"
+                        <a href="{{ url('https://youtu.be/9pN21ckF8rI?si=Vu3ut12peNPpql6x') }}" target="_blank"
                             class="w-10 h-10 rounded-md bg-white/10 hover:bg-white/20 transition flex items-center justify-center">
 
                             <i class="fa-brands fa-youtube text-white text-lg"></i>
                         </a>
 
                         <!-- Facebook -->
-                        <a href="#"
+                        <a href="#" target="_blank"
                             class="w-10 h-10 rounded-md bg-white/10 hover:bg-white/20 transition flex items-center justify-center">
 
                             <i class="fa-brands fa-facebook-f text-white text-lg"></i>
@@ -151,7 +150,7 @@
                 class="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
 
                 <p class="text-sm text-white/60 text-center md:text-left">
-                    © 2026 Fakultas Ekonomi Universitas Darma Persada.
+                    © 2026 {{ $landing->app_name }} Universitas Darma Persada.
                 </p>
 
                 <div class="flex gap-5 text-sm text-white/60">

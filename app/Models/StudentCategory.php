@@ -7,6 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\StudentCategoryFactory> */
     use HasFactory;
+
+    /**
+     * Mass assignment
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
+
+    /**
+     * Relasi: 1 kategori punya banyak students
+     */
+    public function students()
+    {
+        return $this->hasMany(Student::class, 'student_category_id');
+    }
 }

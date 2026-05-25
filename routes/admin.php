@@ -3,6 +3,7 @@
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,10 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         ->name('students.category');
 
     Route::resource('students', StudentController::class);
+
+    // =====================
+    // STUDENT (HIMA, Prestasi, Kegiatan, PKL)
+    // =====================
+    Route::resource('partner', PartnerController::class);
 });
 

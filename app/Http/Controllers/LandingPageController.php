@@ -65,8 +65,9 @@ class LandingPageController extends Controller
     public function index()
     {
         $landing = LandingPage::first();
+        $partners = Partner::all();
 
-        return view('welcome', compact('landing'));
+        return view('welcome', compact(['landing', 'partners']));
     }
 
     public function adminindex()

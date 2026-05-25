@@ -3,64 +3,97 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
-use App\Http\Requests\StorePartnerRequest;
-use App\Http\Requests\UpdatePartnerRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
+
 
 class PartnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        // dd('anjazz');
+        $partners = Partner::latest()->get();
+
+        return view('admin.partner', compact('partners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'logo' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+            ]);
+
+            $logoPath = null;
+
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('partners', 'public');
+            }
+
+            Partner::create([
+                'name' => $request->name,
+                'logo' => $logoPath,
+            ]);
+
+            return back()->with('success', 'Mitra berhasil ditambahkan');
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menambahkan mitra');
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePartnerRequest $request)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $partner = Partner::findOrFail($id);
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
+            ]);
+
+            $logoPath = $partner->logo;
+
+            if ($request->hasFile('logo')) {
+                // hapus logo lama
+                if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
+                    Storage::disk('public')->delete($partner->logo);
+                }
+
+                $logoPath = $request->file('logo')->store('partners', 'public');
+            }
+
+            $partner->update([
+                'name' => $request->name,
+                'logo' => $logoPath,
+            ]);
+
+            return back()->with('success', 'Mitra berhasil diupdate');
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->errors())->withInput();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal update mitra');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Partner $partner)
+    public function destroy($id)
     {
-        //
-    }
+        try {
+            $partner = Partner::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Partner $partner)
-    {
-        //
-    }
+            // hapus file logo
+            if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
+                Storage::disk('public')->delete($partner->logo);
+            }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePartnerRequest $request, Partner $partner)
-    {
-        //
-    }
+            $partner->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Partner $partner)
-    {
-        //
+            return back()->with('success', 'Mitra berhasil dihapus');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal menghapus mitra');
+        }
     }
 }

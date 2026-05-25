@@ -13,7 +13,7 @@
                     <div class="flex items-center gap-4">
 
                         <!-- Logo -->
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo Fakultas"
+                        <img src="{{ asset('storage/' . $landing->logo) }}" alt="Logo Fakultas"
                             class="w-14 h-14 object-contain">
 
                         <!-- Text -->

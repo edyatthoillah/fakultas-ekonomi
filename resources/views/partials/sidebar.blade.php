@@ -148,6 +148,15 @@
 
         </div>
 
+        <!-- DASHBOARD -->
+        <a href="{{ route('admin.partner.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-md text-sm
+                   hover:bg-gray-800 transition">
+
+            <i class="fas fa-tachometer-alt text-gray-300"></i>
+            Mitra
+        </a>
+
         <!-- LOGOUT -->
         <form action="{{ route('logout') }}" method="POST" class="pt-4">
             @csrf

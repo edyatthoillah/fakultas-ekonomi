@@ -608,70 +608,12 @@
                 <!-- Track -->
                 <div class="marquee-track">
 
-                    <!-- ================= SET 1 ================= -->
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank Mandiri</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank BRI</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank BNI</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Telkom Indonesia</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Pertamina</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Indosat</h3>
-                    </div>
-
-                    <!-- ================= DUPLICATE ================= -->
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank Mandiri</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank BRI</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Bank BNI</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Telkom Indonesia</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Pertamina</h3>
-                    </div>
-
-                    <div class="partner-card">
-                        <img src="{{ asset('assets/images/logo.png') }}" class="partner-logo">
-                        <h3 class="partner-title">Indosat</h3>
-                    </div>
-
+                    @foreach ($partners as $item)
+                        <div class="partner-card">
+                            <img src="{{ asset('storage/' . $item->logo) }}" class="partner-logo">
+                            <h3 class="partner-title">{{ $item->name }}</h3>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -689,7 +631,7 @@
             align-items: center;
             gap: 20px;
             width: max-content;
-            animation: marqueeLoop 28s linear infinite;
+            animation: marqueeLoop 18s linear infinite;
         }
 
         @keyframes marqueeLoop {

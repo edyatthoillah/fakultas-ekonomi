@@ -20,6 +20,65 @@ use App\Models\InformationCategory;
 class LandingPageController extends Controller
 {
 
+    /**
+     * 📄 LIST BERITA (LANDING PAGE)
+     */
+    public function newsIndex()
+    {
+        $news = News::with(['category', 'tags'])
+            ->where('status', 'published')
+            ->latest()
+            ->paginate(10);
+
+        return view('landingpage.news.index', compact('news'));
+    }
+
+    /**
+     * 📖 DETAIL BERITA (SHOW)
+     */
+    public function newsShow($slug)
+    {
+        $news = News::with(['category', 'tags', 'images', 'user'])
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        // 🔥 tambah views otomatis
+        $news->increment('views');
+
+        // 📌 related news (opsional tapi bagus)
+        $relatedNews = News::with('category')
+            ->where('status', 'published')
+            ->where('category_id', $news->category_id)
+            ->where('id', '!=', $news->id)
+            ->latest()
+            ->limit(5)
+            ->get();
+
+        return view('landingpage.news.show', compact('news', 'relatedNews'));
+    }
+
+    public function about()
+    {
+        $landing = LandingPage::first();
+
+        return view('about.faculty', compact('landing'));
+    }
+
+    public function visionMission()
+    {
+        $landing = LandingPage::first();
+
+        return view('about.vision-mission', compact('landing'));
+    }
+
+    public function strukturOrganisasi()
+    {
+        $landing = LandingPage::first();
+
+        return view('about.organization-structure', compact('landing'));
+    }
+
     public function studentCategory($slug)
     {
         $category = StudentCategory::where('slug', $slug)
@@ -81,7 +140,14 @@ class LandingPageController extends Controller
         $landing = LandingPage::first();
         $partners = Partner::all();
 
-        return view('welcome', compact(['landing', 'partners']));
+        // 🔥 tambah berita terbaru
+        $news = News::with(['category'])
+            ->where('status', 'published')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        return view('welcome', compact('landing', 'partners', 'news'));
     }
 
     public function adminindex()

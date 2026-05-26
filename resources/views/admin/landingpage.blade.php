@@ -438,10 +438,17 @@
         visionQuill.root.innerHTML = `{!! $landing->vision ?? '' !!}`;
         missionQuill.root.innerHTML = `{!! $landing->mission ?? '' !!}`;
 
-        // sebelum submit form
-        document.querySelector('form').addEventListener('submit', function() {
-            document.querySelector('#vision').value = visionQuill.root.innerHTML;
-            document.querySelector('#mission').value = missionQuill.root.innerHTML;
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const form = document.getElementById('form-visi');
+
+            form.addEventListener('submit', function() {
+
+                document.getElementById('vision').value = visionQuill.root.innerHTML;
+                document.getElementById('mission').value = missionQuill.root.innerHTML;
+
+            });
+
         });
     </script>
 

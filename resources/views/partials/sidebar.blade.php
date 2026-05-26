@@ -188,6 +188,15 @@
             Mitra
         </a>
 
+        <!-- NEWS / BERITA -->
+        <a href="{{ route('admin.news.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-md text-sm
+           hover:bg-gray-800 transition">
+
+            <i class="fas fa-newspaper text-gray-300"></i>
+            Berita
+        </a>
+
         <!-- LOGOUT -->
         <form action="{{ route('logout') }}" method="POST" class="pt-4">
             @csrf

@@ -1,5 +1,5 @@
     <!-- WhatsApp Help Button -->
-    <a href="https://wa.me/}?text=Saya%20ingin%20mendapatkan%20informasi%20tentang%20Fakultas%20Ekonomi%20Universitas%20Darma%20Persada"
+    <a href="https://wa.me/{{ $landing->whatsapp }}?text=Saya%20ingin%20mendapatkan%20informasi%20tentang%20Fakultas%20Ekonomi%20Universitas%20Darma%20Persada"
         target="_blank" class="fixed bottom-2 right-2 z-50">
 
         <div

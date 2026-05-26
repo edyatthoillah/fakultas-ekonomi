@@ -6,9 +6,12 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+
 use App\Http\Controllers\InformationController;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('news', NewsController::class);
     // =====================
     // INFORMATION (Penelitian, Publikasi, dll)
     // =====================

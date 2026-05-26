@@ -222,7 +222,7 @@
                             <div>
 
                                 <h4 class="text-[13px] font-black tracking-wide text-[#29357A]">
-                                    FAKULTAS TERAKREDITASI
+                                    Dr. Sukardi., S.E., M.M Dekan FE Unsada
                                 </h4>
 
                                 <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">
@@ -696,77 +696,85 @@
                 </a>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- News Item 1 -->
-                <article
-                    class="bg-white dark:bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-border-light dark:border-gray-700 flex flex-col">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
-                            alt="Rapat Koordinasi"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <span class="text-xs font-semibold text-text-sec mb-2 flex items-center gap-1">
-                            <iconify-icon icon="solar:calendar-linear"></iconify-icon> 24 Oktober 2023
-                        </span>
-                        <h3 class="text-lg font-bold text-[#29357A] dark:text-blue-400 mb-3 line-clamp-2">
-                            Sosialisasi
-                            Implementasi Tanda Tangan Elektronik Bagi ASN</h3>
-                        <p class="text-text-sec text-sm line-clamp-3 mb-4 flex-1">Dinas Kominfo menggelar
-                            sosialisasi pemanfaatan sertifikat elektronik untuk percepatan administrasi
-                            pemerintahan.</p>
-                        <a href="#"
-                            class="inline-flex items-center text-[#29357A] dark:text-blue-400 text-sm font-semibold hover:underline">
-                            Baca Selengkapnya <iconify-icon icon="solar:arrow-right-linear" class="ml-1"></iconify-icon>
-                        </a>
-                    </div>
-                </article>
+            <style>
+                /* Hide scrollbar (cross-browser) */
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
 
-                <!-- News Item 2 -->
-                <article
-                    class="bg-white dark:bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-border-light dark:border-gray-700 flex flex-col">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-                            alt="Pelatihan Digital"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <span class="text-xs font-semibold text-text-sec mb-2 flex items-center gap-1">
-                            <iconify-icon icon="solar:calendar-linear"></iconify-icon> 20 Oktober 2023
-                        </span>
-                        <h3 class="text-lg font-bold text-[#29357A] dark:text-blue-400 mb-3 line-clamp-2">Pelatihan
-                            Literasi Digital Untuk UMKM Banggai Kepulauan</h3>
-                        <p class="text-text-sec text-sm line-clamp-3 mb-4 flex-1">Mendorong pertumbuhan ekonomi
-                            lokal melalui pemanfaatan platform digital dan media sosial.</p>
-                        <a href="#"
-                            class="inline-flex items-center text-[#29357A] dark:text-blue-400 text-sm font-semibold hover:underline">
-                            Baca Selengkapnya <iconify-icon icon="solar:arrow-right-linear" class="ml-1"></iconify-icon>
-                        </a>
-                    </div>
-                </article>
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    /* IE & Edge */
+                    scrollbar-width: none;
+                    /* Firefox */
+                }
+            </style>
 
-                <!-- News Item 3 -->
-                <article
-                    class="bg-white dark:bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-border-light dark:border-gray-700 flex flex-col">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg"
-                            alt="Infrastruktur"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <span class="text-xs font-semibold text-text-sec mb-2 flex items-center gap-1">
-                            <iconify-icon icon="solar:calendar-linear"></iconify-icon> 15 Oktober 2023
-                        </span>
-                        <h3 class="text-lg font-bold text-[#29357A] dark:text-blue-400 mb-3 line-clamp-2">Perluasan
-                            Jaringan Internet ke Wilayah 3T</h3>
-                        <p class="text-text-sec text-sm line-clamp-3 mb-4 flex-1">Komitmen pemerintah daerah dalam
-                            memeratakan akses internet hingga ke pelosok desa.</p>
-                        <a href="#"
-                            class="inline-flex items-center text-[#29357A] dark:text-blue-400 text-sm font-semibold hover:underline">
-                            Baca Selengkapnya <iconify-icon icon="solar:arrow-right-linear" class="ml-1"></iconify-icon>
-                        </a>
-                    </div>
-                </article>
+            <div class="w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+
+                <div class="flex gap-6 w-max snap-x snap-mandatory px-2">
+
+                    @foreach ($news as $item)
+                        <article
+                            class="max-w-[300px] md:max-w-[350px] snap-start bg-white dark:bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-border-light dark:border-gray-700 flex flex-col">
+
+                            <!-- IMAGE / SLIDER -->
+                            <div class="h-48 overflow-hidden">
+
+                                @if ($item->images->count() > 1)
+                                    <div class="swiper newsSwiper-{{ $item->id }} h-48">
+                                        <div class="swiper-wrapper">
+
+                                            @if ($item->thumbnail)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset('storage/' . $item->thumbnail) }}"
+                                                        class="w-full h-48 object-cover">
+                                                </div>
+                                            @endif
+
+                                            @foreach ($item->images as $img)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset('storage/' . $img->image_path) }}"
+                                                        class="w-full h-48 object-cover">
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                @else
+                                    <img src="{{ asset('storage/' . $item->thumbnail) }}"
+                                        class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
+                                @endif
+
+                            </div>
+
+                            <!-- CONTENT -->
+                            <div class="p-6 flex-1 flex flex-col">
+
+                                <span class="text-xs font-semibold text-text-sec mb-2 flex items-center gap-1">
+                                    📅 {{ $item->created_at->format('d M Y') }}
+                                </span>
+
+                                <h3 class="text-lg font-bold text-[#29357A] dark:text-blue-400 mb-3 line-clamp-2">
+                                    {{ $item->title }}
+                                </h3>
+
+                                <p class="text-text-sec text-sm line-clamp-3 mb-4 flex-1">
+                                    {{ Str::limit(strip_tags($item->content), 100) }}
+                                </p>
+
+                                <a href="{{ route('news.frontend.show', $item->slug) }}"
+                                    class="inline-flex items-center text-[#29357A] dark:text-blue-400 text-sm font-semibold hover:underline">
+                                    Baca Selengkapnya →
+                                </a>
+
+                            </div>
+
+                        </article>
+                    @endforeach
+
+                </div>
+
             </div>
         </div>
     </section>
@@ -946,4 +954,24 @@
 
         </div>
     </section>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            @foreach ($news as $item)
+                @if ($item->images->count() > 1 || $item->thumbnail)
+
+                    new Swiper(".newsSwiper-{{ $item->id }}", {
+                        loop: true,
+                        autoplay: {
+                            delay: 3000,
+                        },
+                    });
+                @endif
+            @endforeach
+
+        });
+    </script>
 @endsection

@@ -5,6 +5,21 @@ use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 require __DIR__.'/admin.php';
 
+Route::get('/berita', [LandingPageController::class, 'newsIndex'])
+    ->name('news.frontend.index');
+
+Route::get('/berita/{slug}', [LandingPageController::class, 'newsShow'])
+    ->name('news.frontend.show');
+
+Route::get('/tentang/fakultas-ekonomi', [LandingPageController::class, 'about'])
+    ->name('about.fakultas-ekonomi');
+
+Route::get('/tentang/visi-misi', [LandingPageController::class, 'visionMission'])
+    ->name('about.visi-misi');
+
+Route::get('/tentang/struktur-organisasi', [LandingPageController::class, 'strukturOrganisasi'])
+    ->name('about.struktur-organisasi');
+
 Route::get('/fasilitas/{slug}',[LandingPageController::class, 'facilityCategory']
     )->name('facility.category');
 

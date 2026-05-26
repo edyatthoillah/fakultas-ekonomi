@@ -28,10 +28,59 @@
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center gap-6">
 
-                    <a href="{{ route('landingpage') }}"
+                    {{-- <a href="{{ route('landingpage') }}"
                         class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
                         Beranda
-                    </a>
+                    </a> --}}
+
+                    <div class="relative group">
+
+                        <!-- BUTTON -->
+                        <button
+                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
+
+                            Tentang Kami
+
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
+                        </button>
+
+                        <!-- DROPDOWN -->
+                        <div
+                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+                            opacity-0 invisible translate-y-1
+                            group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                            transition-all duration-200 z-50 rounded-xs overflow-hidden">
+
+                            <!-- Fakultas Ekonomi -->
+                            <a href="{{ route('about.fakultas-ekonomi') }}"
+                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Fakultas Ekonomi
+
+                            </a>
+
+                            <!-- Visi Misi -->
+                            <a href="{{ route('about.visi-misi') }}"
+                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Visi Misi
+
+                            </a>
+
+                            <!-- Struktur Organisasi -->
+                            <a href="{{ route('about.struktur-organisasi') }}"
+                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+    hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Struktur Organisasi
+
+                            </a>
+
+                        </div>
+
+                    </div>
 
                     <div class="relative group">
 
@@ -46,17 +95,17 @@
 
                         <!-- DROPDOWN -->
                         <div
-                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+                            class="absolute left-0 top-full mt-2 w-[240px] bg-white border border-gray-200 shadow-lg
                opacity-0 invisible translate-y-1
                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
-                            @foreach ($facilityCategories as $category)
-                                <a href="{{ route('facility.category', $category->slug) }}"
+                            @foreach ($facilityCategories as $facility)
+                                <a href="{{ route('facility.category', $facility->slug) }}"
                                     class="block px-4 py-2 text-[11px] font-semibold text-gray-700
                        hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
-                                    {{ $category->name }}
+                                    {{ $facility->name }}
 
                                 </a>
                             @endforeach
@@ -192,7 +241,7 @@
                         </div>
                     </div>
 
-                    <a href="#berita"
+                    <a href="{{ route('news.frontend.index') }}"
                         class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
                         Berita
                     </a>

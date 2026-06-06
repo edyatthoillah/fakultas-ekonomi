@@ -4,106 +4,135 @@
 
 @section('content')
     <!-- Fasilitas Section -->
-    <section id="fasilitas" class="py-20 bg-bg-light dark:bg-[#181818]">
+    <section id="fasilitas" class="py-20 bg-white">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Heading -->
-            <div class="text-center max-w-3xl mx-auto">
+            <div class="text-center max-w-3xl mt-4 mx-auto">
 
                 <span
-                    class="inline-flex items-center px-4 py-2 rounded-full bg-[#29357A]/10 text-[#29357A] dark:text-blue-300 text-[11px] font-bold tracking-[0.18em] uppercase">
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
 
-                    {{ $category->name }}
+                    {{ strtoupper($category->name) }}
                 </span>
 
-                <h2 class="mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#29357A] dark:text-white">
-
+                <h2 class="mt-6 text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-[15px] leading-8 text-gray-600 dark:text-gray-300">
-                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah, penghargaan, serta akreditasi yang
-                    mencerminkan capaian dan kontribusi akademik institusi.
+                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah,
+                    penghargaan, serta akreditasi yang mencerminkan capaian dan kontribusi
+                    akademik institusi.
                 </p>
+
             </div>
 
-            <!-- Cards -->
-            <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- WRAPPER ALPINE -->
+            <div x-data="{ open: false, item: {} }">
 
-                <!-- Card -->
-                <!-- 1 -->
+                <!-- CARDS -->
+                <div class="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6">
 
-                @foreach ($students as $item)
-                    <div
-                        class="group bg-white dark:bg-[#202020] rounded-xs overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                    @foreach ($students as $item)
+                        <div
+                            class="group bg-white border border-[#29357A]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
 
-                        <!-- IMAGE -->
-                        <div class="overflow-hidden">
-                            <img src="{{ asset('storage/' . $item->image) }}"
-                                class="w-full object-cover group-hover:scale-105 transition duration-500">
-                        </div>
+                            <!-- IMAGE -->
+                            <div class="overflow-hidden aspect-[4/3]">
+                                <img src="{{ asset('storage/' . $item->image) }}"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                    alt="{{ $item->name }}">
+                            </div>
 
-                        <!-- CONTENT -->
-                        <div class="p-4">
+                            <!-- CONTENT -->
+                            <div class="p-5">
 
-                            <!-- TITLE -->
-                            <h3 class="text-sm font-bold text-[#29357A] dark:text-white mb-1 line-clamp-1">
-                                {{ $item->name }}
-                            </h3>
+                                <h3 class="text-base font-bold text-[#29357A] mb-2 line-clamp-1">
+                                    {{ $item->name }}
+                                </h3>
 
-                            <div x-data="{ open: false }">
-
-                                <!-- DESCRIPTION SHORT -->
-                                <p class="text-xs text-gray-500 dark:text-gray-300 leading-relaxed">
-                                    {{ Str::limit($item->description, 200) }}
+                                <p class="text-sm text-gray-600 leading-6">
+                                    {{ Str::limit(trim(strip_tags(html_entity_decode($item->description))), 160) }}
                                 </p>
 
                                 <!-- BUTTON -->
-                                <button @click="open = true" class="mt-1 text-[11px] text-blue-600 hover:underline">
-                                    Lihat selengkapnya
-                                </button>
+                                <div class="mt-4">
+                                    <button
+                                        @click="
+                                            open = true;
+                                            item = {
+                                                name: @js($item->name),
+                                                institution: @js($item->institution),
+                                                image: @js(asset('storage/' . $item->image)),
+                                                description: @js(trim(strip_tags(html_entity_decode($item->description))))
+                                            }
+                                        "
+                                        class="inline-flex items-center gap-1 text-sm font-semibold text-[#29357A] hover:text-[#1f2c66] transition group/button">
 
-                                <!-- MODAL / POPUP -->
-                                <div x-show="open" x-transition
-                                    class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                                        <span>Lihat selengkapnya</span>
 
-                                    <div
-                                        class="bg-white dark:bg-[#202020] w-[90%] md:w-[600px] p-5 rounded-xs shadow-lg relative">
+                                        <svg class="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1"
+                                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
 
-                                        <!-- CLOSE -->
-                                        <button @click="open = false"
-                                            class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-sm">
-                                            ✕
-                                        </button>
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
 
-                                        <!-- TITLE -->
-                                        <h3 class="text-sm font-bold text-[#29357A] mb-3">
-                                            {{ $item->name }}
-                                        </h3>
+                                        </svg>
 
-                                        <!-- FULL DESCRIPTION -->
-                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                                            {{ $item->description }}
-                                        </p>
-
-                                        <!-- OPTIONAL INFO -->
-                                        @if ($item->institution)
-                                            <p class="text-xs mt-3 text-gray-500">
-                                                {{ $item->institution }}
-                                            </p>
-                                        @endif
-
-                                    </div>
-
+                                    </button>
                                 </div>
 
                             </div>
 
                         </div>
+                    @endforeach
+
+                </div>
+
+                <!-- MODAL (GLOBAL - FIXED) -->
+                <div x-show="open" x-cloak x-transition.opacity
+                    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4"
+                    @keydown.escape.window="open = false">
+
+                    <div @click.away="open = false" x-transition.scale.duration.200ms
+                        class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+
+                        <!-- IMAGE -->
+                        <div class="relative flex-shrink-0">
+
+                            <img :src="item.image" alt="image" class="w-full h-52 object-cover">
+
+                            <!-- CLOSE -->
+                            <button @click="open = false"
+                                class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-gray-700 transition shadow">
+                                ✕
+                            </button>
+
+                        </div>
+
+                        <!-- TITLE SECTION (NO OVERLAP) -->
+                        <div class="px-6 pt-5 pb-3 border-b border-gray-100">
+
+                            <h3 class="text-lg font-bold text-[#29357A] leading-snug" x-text="item.name">
+                            </h3>
+
+                            <p class="text-sm text-gray-500 mt-1" x-show="item.institution" x-text="item.institution">
+                            </p>
+
+                        </div>
+
+                        <!-- CONTENT -->
+                        <div class="p-6 overflow-y-auto">
+
+                            <p class="text-sm leading-7 text-gray-600" x-text="item.description">
+                            </p>
+
+                        </div>
 
                     </div>
-                @endforeach
+
+                </div>
             </div>
         </div>
     </section>

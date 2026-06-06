@@ -19,9 +19,13 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             LandingPageSeeder::class,
+            CategorySeeder::class,
             FacilityCategorySeeder::class,
             ContentCategorySeeder::class,
-            StudentCategorySeeder::class
+            StudentCategorySeeder::class,
+            InformationCategorySeeder::class,
+            StudyProgramSeeder::class,
+            TagSeeder::class
         ]);
     }
 }

@@ -54,6 +54,38 @@
 
         </a>
 
+        <!-- PROGRAM STUDI -->
+        <div x-data="{ openStudyProgram: {{ request()->is('admin/study-programs*') ? 'true' : 'false' }} }" class="space-y-1">
+
+            <button @click="openStudyProgram = !openStudyProgram"
+                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
+               hover:bg-gray-800 transition">
+
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-graduation-cap text-gray-300"></i>
+                    Program Studi
+                </div>
+
+                <i class="fas text-xs" :class="openStudyProgram ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+
+            </button>
+
+            <div x-show="openStudyProgram" x-transition class="pl-6 space-y-1">
+
+                @foreach ($studyPrograms as $studyProgram)
+                    <a href="{{ route('admin.study-programs.edit', $studyProgram) }}"
+                        class="block px-3 py-2 rounded-md text-xs text-gray-300
+                       hover:bg-gray-800 hover:text-white transition">
+
+                        {{ $studyProgram->name }}
+
+                    </a>
+                @endforeach
+
+            </div>
+
+        </div>
+
         <!-- FACILITY -->
         <div x-data="{ openFacility: {{ request()->is('admin/fasilitas*') ? 'true' : 'false' }} }" class="space-y-1">
 
@@ -178,6 +210,15 @@
 
             </div>
         </div>
+
+        <!-- TENAGA PENGAJAR -->
+        <a href="{{ route('admin.lecturers.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-md text-sm
+           hover:bg-gray-800 transition">
+
+            <i class="fas fa-chalkboard-teacher text-gray-300"></i>
+            Tenaga Pengajar
+        </a>
 
         <!-- DASHBOARD -->
         <a href="{{ route('admin.partner.index') }}"

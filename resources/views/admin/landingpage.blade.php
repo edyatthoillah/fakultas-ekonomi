@@ -116,12 +116,7 @@
 
                         <div class="p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
 
-                            @foreach ([
-            'logo' => 'Logo',
-            'hero_image' => 'Hero',
-            'about_us_image' => 'Tentang Kami',
-            'organization_structure' => 'Struktur',
-        ] as $field => $label)
+                            @foreach (['logo' => 'Logo', 'hero_image' => 'Hero', 'about_us_image' => 'Tentang Kami', 'organization_structure' => 'Struktur'] as $field => $label)
                                 <div class="bg-gray-50 border border-gray-200 rounded-xs p-3">
 
                                     <label class="block text-xs font-medium text-gray-700 mb-2">
@@ -181,10 +176,20 @@
 
                         <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-3">
 
-                            @foreach (['instagram', 'email', 'whatsapp'] as $field)
-                                <input type="text" name="{{ $field }}" value="{{ $landing->$field ?? '' }}"
-                                    placeholder="{{ ucfirst($field) }}"
-                                    class="text-sm rounded-xs border border-gray-300 px-3 py-2">
+                            @foreach ([
+            'instagram' => 'Instagram',
+            'email' => 'Email',
+            'whatsapp' => 'WhatsApp',
+        ] as $field => $label)
+                                <div class="flex flex-col gap-1">
+                                    <label for="{{ $field }}" class="text-sm font-medium text-gray-700">
+                                        {{ $label }}
+                                    </label>
+
+                                    <input type="text" id="{{ $field }}" name="{{ $field }}"
+                                        value="{{ $landing->$field ?? '' }}" placeholder="Masukkan {{ $label }}"
+                                        class="text-sm rounded-xs border border-gray-300 px-3 py-2">
+                                </div>
                             @endforeach
 
                         </div>
@@ -205,13 +210,13 @@
                             </label>
                             <textarea name="footer_description" rows="3" class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2">
                     {{ $landing->footer_description ?? '' }}
-                </textarea>
+                    </textarea>
                             <label class="block text-xs font-medium text-gray-700 mb-1">
                                 Alamat
                             </label>
                             <textarea name="address" rows="3" class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2">
-                    {{ $landing->address ?? '' }}
-                </textarea>
+                        {{ $landing->address ?? '' }}
+                    </textarea>
 
                         </div>
                     </div>

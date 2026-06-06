@@ -135,10 +135,10 @@
                         </a>
 
                         <!-- Facebook -->
-                        <a href="#" target="_blank"
+                        <a href="mailto:{{ $landing->email }}" target="_blank"
                             class="w-10 h-10 rounded-md bg-white/10 hover:bg-white/20 transition flex items-center justify-center">
 
-                            <i class="fa-brands fa-facebook-f text-white text-lg"></i>
+                            <i class="fa-solid fa-envelope text-white text-lg"></i>
                         </a>
 
                     </div>

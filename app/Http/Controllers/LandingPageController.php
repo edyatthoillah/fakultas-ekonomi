@@ -16,9 +16,34 @@ use App\Models\FacilityCategory;
 use App\Models\ContentCategory;
 use App\Models\StudentCategory;
 use App\Models\InformationCategory;
+use App\Models\Lecturer;
+use App\Models\StudyProgram;
 
 class LandingPageController extends Controller
 {
+
+    public function studyProgramShow($slug)
+    {
+        $studyProgram = StudyProgram::where('slug', $slug)->firstOrFail();
+
+        return view('study-programs', compact('studyProgram'));
+    }
+
+    public function show(Lecturer $lecturer)
+    {
+        return view('landingpage.lecturer.lecturer-detail', compact('lecturer'));
+    }
+
+    public function lecturerIndex()
+    {
+        $lecturersByProgram = Lecturer::where('is_active', true)
+            ->orderBy('study_program')
+            ->orderBy('order')
+            ->get()
+            ->groupBy('study_program');
+
+        return view('landingpage.lecturer.index', compact('lecturersByProgram'));
+    }
 
     /**
      * 📄 LIST BERITA (LANDING PAGE)

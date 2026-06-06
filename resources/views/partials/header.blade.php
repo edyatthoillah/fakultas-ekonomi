@@ -2,24 +2,24 @@
     <nav class="fixed top-0 w-full z-50 bg-[#29357A] border-b border-white/10 shadow-lg">
 
         <div class="max-w-7xl mx-auto px-4 lg:px-6">
-            <div class="flex justify-between items-center h-[64px]">
+            <div class="flex justify-between items-center h-[74px]">
 
                 <!-- Logo -->
-                <a href="" class="flex items-center gap-3">
+                <a href="{{ route('landingpage') }}" class="flex items-center gap-3">
 
                     <!-- Logo -->
                     <div class="bg-white/10 border border-white/10 rounded-md p-1.5 backdrop-blur-sm">
-                        <img src="{{ asset('storage/' . $landing->logo) }}" class="h-8 w-auto object-contain">
+                        <img src="{{ asset('storage/' . $landing->logo) }}" class="h-10 w-auto object-contain">
                     </div>
 
                     <!-- Text -->
                     <div class="hidden sm:block leading-tight">
 
-                        <h1 class="text-[22px] font-black tracking-tight text-white leading-none">
+                        <h1 class="text-[28px] font-black tracking-tight text-white leading-none">
                             UNSADA
                         </h1>
 
-                        <p class="text-[9px] tracking-[0.18em] text-blue-100 mt-0.5 font-medium">
+                        <p class="text-[11px] tracking-[0.18em] text-blue-100 mt-0.5 font-medium">
                             {{ $landing->app_name }}
                         </p>
                     </div>
@@ -37,7 +37,7 @@
 
                         <!-- BUTTON -->
                         <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
 
                             Tentang Kami
 
@@ -53,7 +53,7 @@
 
                             <!-- Fakultas Ekonomi -->
                             <a href="{{ route('about.fakultas-ekonomi') }}"
-                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
                                 hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                 Fakultas Ekonomi
@@ -62,7 +62,7 @@
 
                             <!-- Visi Misi -->
                             <a href="{{ route('about.visi-misi') }}"
-                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
                                 hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                 Visi Misi
@@ -71,12 +71,55 @@
 
                             <!-- Struktur Organisasi -->
                             <a href="{{ route('about.struktur-organisasi') }}"
-                                class="block px-4 py-2 text-[11px] font-semibold text-gray-700
-    hover:bg-gray-100 hover:text-[#1d2d74] transition">
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                    hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                 Struktur Organisasi
 
                             </a>
+                            <a href="{{ route('lecturers.index') }}"
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                    hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Tenaga Pengajar
+
+                            </a>
+
+                            <a href="{{ url('https://jurnalfe.unsada.ac.id/index.php/jmafe') }}"
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                    hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Jurnal Fakultas Ekonomi
+
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="relative group">
+
+                        <button
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
+
+                            Program Studi
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
+                            </iconify-icon>
+
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="absolute left-0 top-full mt-2 w-[200px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+
+                            @foreach ($studyPrograms as $studyProgram)
+                                <a href="{{ route('study-programs.show', $studyProgram->slug) }}"
+                                    class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                    hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                    {{ $studyProgram->name }}
+
+                                </a>
+                            @endforeach
 
                         </div>
 
@@ -86,7 +129,39 @@
 
                         <!-- BUTTON -->
                         <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
+
+                            Mahasiswa & Alumni
+
+                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
+                        </button>
+
+                        <!-- DROPDOWN -->
+                        <div
+                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
+                            opacity-0 invisible translate-y-1
+                            group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                            transition-all duration-200 z-50 rounded-xs overflow-hidden">
+
+                            @foreach ($studentCategories as $category)
+                                <a href="{{ route('students.category', $category->slug) }}"
+                                    class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                         hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                    {{ $category->name }}
+
+                                </a>
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                    <div class="relative group">
+
+                        <!-- BUTTON -->
+                        <button
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
 
                             Fasilitas
 
@@ -96,13 +171,13 @@
                         <!-- DROPDOWN -->
                         <div
                             class="absolute left-0 top-full mt-2 w-[240px] bg-white border border-gray-200 shadow-lg
-               opacity-0 invisible translate-y-1
-               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-               transition-all duration-200 z-50 rounded-xs overflow-hidden">
+                        opacity-0 invisible translate-y-1
+                        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                        transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
                             @foreach ($facilityCategories as $facility)
                                 <a href="{{ route('facility.category', $facility->slug) }}"
-                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                    class="block px-4 py-2 text-[13px] font-semibold text-gray-700
                        hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                     {{ $facility->name }}
@@ -118,7 +193,7 @@
 
                         <!-- BUTTON -->
                         <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
 
                             Konten Ilmiah
 
@@ -128,13 +203,13 @@
                         <!-- DROPDOWN -->
                         <div
                             class="absolute left-0 top-full mt-2 w-[240px] bg-white border border-gray-200 shadow-lg
-               opacity-0 invisible translate-y-1
-               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-               transition-all duration-200 z-50 rounded-xs overflow-hidden">
+                        opacity-0 invisible translate-y-1
+                        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                        transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
                             @foreach ($contentCategories as $category)
                                 <a href="{{ route('content.category', $category->slug) }}"
-                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
+                                    class="block px-4 py-2 text-[13px] font-semibold text-gray-700
                        hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                     {{ $category->name }}
@@ -146,43 +221,13 @@
 
                     </div>
 
-                    <div class="relative group">
 
-                        <!-- BUTTON -->
-                        <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
-
-                            Mahasiswa
-
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13"></iconify-icon>
-                        </button>
-
-                        <!-- DROPDOWN -->
-                        <div
-                            class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
-        opacity-0 invisible translate-y-1
-        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-        transition-all duration-200 z-50 rounded-xs overflow-hidden">
-
-                            @foreach ($studentCategories as $category)
-                                <a href="{{ route('students.category', $category->slug) }}"
-                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
-                hover:bg-gray-100 hover:text-[#1d2d74] transition">
-
-                                    {{ $category->name }}
-
-                                </a>
-                            @endforeach
-
-                        </div>
-
-                    </div>
 
                     <div class="relative group">
 
                         <!-- BUTTON -->
                         <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
+                            class="flex items-center gap-1 text-[14px] tracking-wide text-white hover:text-yellow-300 transition">
 
                             Pusat Informasi
 
@@ -192,63 +237,31 @@
                         <!-- DROPDOWN -->
                         <div
                             class="absolute left-0 top-full mt-2 w-[220px] bg-white border border-gray-200 shadow-lg
-        opacity-0 invisible translate-y-1
-        group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-        transition-all duration-200 z-50 rounded-xs overflow-hidden">
+                            opacity-0 invisible translate-y-1
+                            group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                            transition-all duration-200 z-50 rounded-xs overflow-hidden">
 
                             @foreach ($informationCategories as $category)
                                 <a href="{{ route('information.category', $category->slug) }}"
-                                    class="block px-4 py-2 text-[11px] font-semibold text-gray-700
-                hover:bg-gray-100 hover:text-[#1d2d74] transition">
+                                    class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                     hover:bg-gray-100 hover:text-[#1d2d74] transition">
 
                                     {{ $category->name }}
 
                                 </a>
                             @endforeach
+                            <a href="{{ url('https://karirlink.id/') }}"
+                                class="block px-4 py-2 text-[13px] font-semibold text-gray-700
+                                     hover:bg-gray-100 hover:text-[#1d2d74] transition">
+
+                                Pusat Karir
+
+                            </a>
 
                         </div>
 
                     </div>
 
-
-                    <div class="relative group">
-
-                        <button
-                            class="flex items-center gap-1 text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
-
-                            Jurusan
-
-                            <iconify-icon icon="solar:alt-arrow-down-linear" width="13">
-                            </iconify-icon>
-                        </button>
-
-                        <!-- Dropdown Menu -->
-                        <div
-                            class="absolute left-0 top-full mt-2 w-[200px] bg-[#f5f5f5] border border-gray-300 shadow-lg opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
-
-                            <a href="#manajemen"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Manajemen
-                            </a>
-
-                            <a href="#akuntansi"
-                                class="block px-4 py-3 text-[11px] font-semibold text-[#1d2d74] hover:bg-gray-200 transition">
-
-                                Akuntansi
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <a href="{{ route('news.frontend.index') }}"
-                        class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
-                        Berita
-                    </a>
-                    <a href="{{ $landing->leaflet_link }}"
-                        class="text-[12px] font-semibold tracking-wide text-white hover:text-yellow-300 transition">
-                        Brosur
-                    </a>
                 </div>
 
 
@@ -256,7 +269,7 @@
                 <div class="hidden lg:flex items-center">
 
                     <a href="{{ url('https://pmb.unsada.ac.id/') }}"
-                        class="h-9 px-5 inline-flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-[#1d2d74] text-[11px] font-bold tracking-wider rounded-sm transition-all duration-200 shadow-md">
+                        class="h-9 px-5 inline-flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-[#1d2d74] text-[13px] font-bold tracking-wider rounded-sm transition-all duration-200 shadow-md">
 
                         Pendaftaran
                     </a>
@@ -276,183 +289,210 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-[#29357A] border-t border-white/10">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-white border-t border-[#29357A]/10 shadow-lg max-h-[calc(100vh-80px)] overflow-y-auto">
 
-            <div class="px-4 py-4 space-y-1">
+            <div class="p-4 space-y-2">
 
                 <!-- Beranda -->
                 <a href="{{ route('landingpage') }}"
-                    class="block py-3 text-[12px] font-semibold tracking-wide text-white border-b border-white/10">
+                    class="flex items-center py-3 px-4 rounded-xl text-sm font-semibold text-[#29357A] hover:bg-[#29357A]/5 transition">
                     Beranda
                 </a>
 
-                <!-- Dosen -->
-                <div class="py-3 border-b border-white/10">
+                <!-- Tentang Kami -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
 
-                    <p class="text-[12px] font-bold tracking-wide text-yellow-300 mb-3">
-                        Dosen
-                    </p>
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
 
-                    <div class="pl-3 space-y-3">
+                        <span>Tentang Kami</span>
 
-                        <a href="{{ route('tutor') }}" class="block text-[12px] text-blue-100 hover:text-white">
+                        <i class="fa-solid fa-chevron-down transition" :class="{ 'rotate-180': open }"></i>
 
-                            Tenaga Pendidik
+                    </button>
+
+                    <div x-show="open" x-collapse class="bg-white">
+
+                        <a href="{{ route('about.fakultas-ekonomi') }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+                            Fakultas Ekonomi
                         </a>
 
-                        <a href="#kegiatan-dosen" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Kegiatan Dosen
+                        <a href="{{ route('about.visi-misi') }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+                            Visi Misi
                         </a>
+
+                        <a href="{{ route('about.struktur-organisasi') }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+                            Struktur Organisasi
+                        </a>
+
+                        <a href="{{ route('lecturers.index') }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+                            Tenaga Pengajar
+                        </a>
+
                     </div>
+
                 </div>
 
-                <!-- Penelitian -->
-                <div class="py-3 border-b border-white/10">
+                <!-- Fasilitas -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
 
-                    <p class="text-[12px] font-bold tracking-wide text-yellow-300 mb-3">
-                        Penelitian
-                    </p>
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
 
-                    <div class="pl-3 space-y-3">
+                        <span>Fasilitas</span>
 
-                        <a href="#penelitian" class="block text-[12px] text-blue-100 hover:text-white">
+                        <i class="fa-solid fa-chevron-down transition" :class="{ 'rotate-180': open }"></i>
 
-                            Penelitian
-                        </a>
+                    </button>
 
-                        <a href="#pengabdian" class="block text-[12px] text-blue-100 hover:text-white">
+                    <div x-show="open" x-collapse>
 
-                            Pengabdian Kepada Masyarakat
-                        </a>
+                        @foreach ($facilityCategories as $facility)
+                            <a href="{{ route('facility.category', $facility->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
 
-                        <a href="#publikasi" class="block text-[12px] text-blue-100 hover:text-white">
+                                {{ $facility->name }}
 
-                            Publikasi Ilmiah
-                        </a>
+                            </a>
+                        @endforeach
 
-                        <a href="#penghargaan" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Penghargaan
-                        </a>
                     </div>
+
                 </div>
 
-                <!-- Mahasiswa -->
-                <div class="py-3 border-b border-white/10">
+                <!-- Konten Ilmiah -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
 
-                    <p class="text-[12px] font-bold tracking-wide text-yellow-300 mb-3">
-                        Mahasiswa
-                    </p>
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
 
-                    <div class="pl-3 space-y-3">
+                        <span>Konten Ilmiah</span>
 
-                        <a href="#himpunan-mahasiswa" class="block text-[12px] text-blue-100 hover:text-white">
+                        <i class="fa-solid fa-chevron-down transition" :class="{ 'rotate-180': open }"></i>
 
-                            Himpunan Mahasiswa
-                        </a>
+                    </button>
 
-                        <a href="#mahasiswa-berprestasi" class="block text-[12px] text-blue-100 hover:text-white">
+                    <div x-show="open" x-collapse>
 
-                            Mahasiswa Berprestasi
-                        </a>
+                        @foreach ($contentCategories as $category)
+                            <a href="{{ route('content.category', $category->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
 
-                        <a href="#kegiatan-mahasiswa" class="block text-[12px] text-blue-100 hover:text-white">
+                                {{ $category->name }}
 
-                            Kegiatan Mahasiswa
-                        </a>
+                            </a>
+                        @endforeach
 
-                        <a href="#praktek-kerja-magang" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Praktek Kerja Magang
-                        </a>
                     </div>
+
+                </div>
+
+                <!-- Mahasiswa & Alumni -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
+
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
+
+                        <span>Mahasiswa & Alumni</span>
+
+                        <i class="fa-solid fa-chevron-down transition" :class="{ 'rotate-180': open }"></i>
+
+                    </button>
+
+                    <div x-show="open" x-collapse>
+
+                        @foreach ($studentCategories as $category)
+                            <a href="{{ route('students.category', $category->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+
+                                {{ $category->name }}
+
+                            </a>
+                        @endforeach
+
+                    </div>
+
                 </div>
 
                 <!-- Pusat Informasi -->
-                <div class="py-3 border-b border-white/10">
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
 
-                    <p class="text-[12px] font-bold tracking-wide text-yellow-300 mb-3">
-                        Pusat Informasi
-                    </p>
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
 
-                    <div class="pl-3 space-y-3">
+                        <span>Pusat Informasi</span>
 
-                        <a href="#kolaborasi-kerjasama" class="block text-[12px] text-blue-100 hover:text-white">
+                        <i class="fa-solid fa-chevron-down transition" :class="{ 'rotate-180': open }"></i>
 
-                            Kolaborasi dan Kerja Sama
-                        </a>
+                    </button>
 
-                        <a href="#seminar" class="block text-[12px] text-blue-100 hover:text-white">
+                    <div x-show="open" x-collapse>
 
-                            Seminar
-                        </a>
+                        @foreach ($informationCategories as $category)
+                            <a href="{{ route('information.category', $category->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
 
-                        <a href="#beasiswa" class="block text-[12px] text-blue-100 hover:text-white">
+                                {{ $category->name }}
 
-                            Beasiswa
-                        </a>
-
-                        <a href="#peluang-kerja" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Peluang Kerja
-                        </a>
-
-                        <a href="#sosial-media" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Sosial Media
-                        </a>
-
-                        <a href="#profil-lulusan" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Profil Lulusan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="py-3 border-b border-white/10">
-
-                    <p class="text-[12px] font-bold tracking-wide text-yellow-300 mb-3">
-                        Jurusan
-                    </p>
-
-                    <div class="pl-3 space-y-3">
-
-                        <a href="#manajemen" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Manajemen
-                        </a>
-
-                        <a href="#akuntansi" class="block text-[12px] text-blue-100 hover:text-white">
-
-                            Akuntansi
-                        </a>
+                            </a>
+                        @endforeach
 
                     </div>
-                </div>
-                <!-- Fasilitas -->
-                <a href="#berita"
-                    class="block py-3 text-[12px] font-semibold tracking-wide text-white border-b border-white/10">
-                    Berita
-                </a>
 
-                <a href="#berita"
-                    class="block py-3 text-[12px] font-semibold tracking-wide text-white border-b border-white/10">
-                    Brosur
-                </a>
-                <!-- Pendaftaran Button -->
+                </div>
+
+                <!-- Program Studi -->
+                <!-- Program Studi -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
+
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
+
+                        <span>Program Studi</span>
+
+                        <i class="fa-solid fa-chevron-down transition duration-300" :class="{ 'rotate-180': open }">
+                        </i>
+
+                    </button>
+
+                    <div x-show="open" x-collapse class="bg-white">
+
+                        @foreach ($studyPrograms as $studyProgram)
+                            <a href="{{ route('study-programs.show', $studyProgram->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5 hover:text-[#29357A] transition">
+
+                                {{ $studyProgram->name }}
+
+                            </a>
+                        @endforeach
+
+                    </div>
+
+                </div>
+
+                <!-- CTA -->
                 <div class="pt-4">
 
-                    <a href="{{ url('https://pmb.unsada.ac.id/') }}"
-                        class="flex items-center justify-center h-10 w-full bg-yellow-400 hover:bg-yellow-300 text-[#1d2d74] text-[11px] font-bold tracking-wider rounded-sm transition">
+                    <a href="https://pmb.unsada.ac.id/"
+                        class="flex items-center justify-center h-12 w-full rounded-xl bg-[#29357A] hover:bg-[#1f2c66] text-white text-sm font-bold transition shadow-lg">
 
-                        Pendaftaran
+                        Pendaftaran Mahasiswa Baru
+
                     </a>
+
                 </div>
 
             </div>
+
         </div>
     </nav>
+
 
 
     <!-- Interactive Scripts -->
@@ -486,3 +526,7 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs/dist/cdn.min.js"></script>

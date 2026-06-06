@@ -7,10 +7,15 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\StudyProgramController;
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('study-programs', StudyProgramController::class);
+    Route::resource('lecturers', LecturerController::class);
+    Route::resource('partner', PartnerController::class);
+
     Route::resource('news', NewsController::class);
     // =====================
     // INFORMATION (Penelitian, Publikasi, dll)

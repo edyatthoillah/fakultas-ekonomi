@@ -5,42 +5,95 @@ use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 require __DIR__.'/admin.php';
 
-Route::get('/berita', [LandingPageController::class, 'newsIndex'])
-    ->name('news.frontend.index');
+Route::controller(LandingPageController::class)->group(function () {
 
-Route::get('/berita/{slug}', [LandingPageController::class, 'newsShow'])
-    ->name('news.frontend.show');
+    // Home
+    Route::get('/', 'index')->name('landingpage');
 
-Route::get('/tentang/fakultas-ekonomi', [LandingPageController::class, 'about'])
-    ->name('about.fakultas-ekonomi');
+    /*
+    |-------------------------
+    | Study Program
+    |-------------------------
+    */
+    Route::prefix('program-studi')->group(function () {
+        Route::get('/{slug}', 'studyProgramShow')
+            ->name('study-programs.show');
+    });
 
-Route::get('/tentang/visi-misi', [LandingPageController::class, 'visionMission'])
-    ->name('about.visi-misi');
+    /*
+    |-------------------------
+    | Lecturers
+    |-------------------------
+    */
+    Route::prefix('tenaga-pengajar')->group(function () {
+        Route::get('/', 'lecturerIndex')
+            ->name('lecturers.index');
 
-Route::get('/tentang/struktur-organisasi', [LandingPageController::class, 'strukturOrganisasi'])
-    ->name('about.struktur-organisasi');
+        Route::get('/{lecturer}', 'show')
+            ->name('lecturers.show');
+    });
 
-Route::get('/fasilitas/{slug}',[LandingPageController::class, 'facilityCategory']
-    )->name('facility.category');
+    /*
+    |-------------------------
+    | News
+    |-------------------------
+    */
+    Route::prefix('berita')->group(function () {
+        Route::get('/', 'newsIndex')
+            ->name('news.frontend.index');
 
-Route::get('/content/{slug}',[LandingPageController::class, 'contentCategory']
-    )->name('content.category');
+        Route::get('/{slug}', 'newsShow')
+            ->name('news.frontend.show');
+    });
 
-Route::get('/information/{slug}',[LandingPageController::class, 'informationCategory']
-    )->name('information.category');
+    /*
+    |-------------------------
+    | About
+    |-------------------------
+    */
+    Route::prefix('tentang')->group(function () {
+        Route::get('/fakultas-ekonomi', 'about')
+            ->name('about.fakultas-ekonomi');
 
-Route::get('/students/{slug}', [LandingPageController::class, 'studentCategory'])
-    ->name('students.category');
+        Route::get('/visi-misi', 'visionMission')
+            ->name('about.visi-misi');
 
-Route::get('/tenaga-pengajar', function () {
-    return view('tutor');
-})->name('tutor');
+        Route::get('/struktur-organisasi', 'strukturOrganisasi')
+            ->name('about.struktur-organisasi');
+    });
+
+    /*
+    |-------------------------
+    | Categories
+    |-------------------------
+    */
+    Route::prefix('fasilitas')->group(function () {
+        Route::get('/{slug}', 'facilityCategory')
+            ->name('facility.category');
+    });
+
+    Route::prefix('content')->group(function () {
+        Route::get('/{slug}', 'contentCategory')
+            ->name('content.category');
+    });
+
+    Route::prefix('information')->group(function () {
+        Route::get('/{slug}', 'informationCategory')
+            ->name('information.category');
+    });
+
+    Route::prefix('students')->group(function () {
+        Route::get('/{slug}', 'studentCategory')
+            ->name('students.category');
+    });
+
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('admin.landingpage.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -86,7 +86,7 @@
 
                                 <!-- Header & Add Button -->
                                 <div class="flex justify-between items-center mb-3">
-                                    <h2 class="font-semibold text-gray-700 text-md">Fasilitas</h2>
+                                    <h2 class="font-semibold text-gray-700 text-md">{{ $category->name }}</h2>
                                     <div class="flex gap-1">
                                         <!-- Kembali -->
                                         <!-- Kembali -->
@@ -122,8 +122,8 @@
 
                                         <!-- Content -->
                                         <div class="p-4">
-                                            <form action="{{ route('admin.content.store') }}" method="POST"
-                                                enctype="multipart/form-data" class="space-y-4">
+                                            <form id="createContentForm" action="{{ route('admin.content.store') }}"
+                                                method="POST" enctype="multipart/form-data" class="space-y-4">
 
                                                 @csrf
 
@@ -164,9 +164,12 @@
                                                 <div>
                                                     <x-input-label value="Deskripsi" class="text-sm" />
 
-                                                    <textarea name="description" rows="4"
-                                                        class="block mt-1 w-full text-sm border-gray-300 rounded-md shadow-sm px-2 py-1.5"
-                                                        placeholder="Masukkan deskripsi content...">{{ old('description') }}</textarea>
+                                                    <input type="hidden" name="description" id="description">
+
+                                                    <div id="description-editor"
+                                                        class="mt-1 bg-white rounded-md border border-gray-300 min-h-[200px]">
+                                                        {!! old('description') !!}
+                                                    </div>
 
                                                     @if ($errors->store->has('description'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -253,11 +256,11 @@
                                                         <!-- EDIT -->
                                                         <button type="button"
                                                             @click="openModal({
-                                id: {{ $data->id }},
-                                title: @js($data->title),
-                                description: @js($data->description),
-                                image: @js($data->image ? asset('storage/' . $data->image) : null)
-                            })"
+                                                                    id: {{ $data->id }},
+                                                                    title: @js($data->title),
+                                                                    description: @js($data->description),
+                                                                    image: @js($data->image ? asset('storage/' . $data->image) : null)
+                                                                })"
                                                             class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
                                                             Edit
                                                         </button>
@@ -360,14 +363,14 @@
 
                                                         <input type="file" name="image"
                                                             class="block w-full text-sm text-gray-600
-                            file:mr-3
-                            file:px-3
-                            file:py-1.5
-                            file:rounded
-                            file:border-0
-                            file:bg-blue-50
-                            file:text-blue-700
-                            file:text-sm">
+                                                        file:mr-3
+                                                        file:px-3
+                                                        file:py-1.5
+                                                        file:rounded
+                                                        file:border-0
+                                                        file:bg-blue-50
+                                                        file:text-blue-700
+                                                        file:text-sm">
 
                                                     </div>
 
@@ -390,8 +393,12 @@
                                                     <x-input-label value="Deskripsi"
                                                         class="text-sm font-medium text-gray-700" />
 
-                                                    <textarea id="edit_description" name="description" rows="5" x-model="form.description"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                                    <input type="hidden" id="edit_description" name="description"
+                                                        x-model="form.description">
+
+                                                    <div id="edit-description-editor"
+                                                        class="mt-1 bg-white border border-gray-300 rounded-md min-h-[200px]">
+                                                    </div>
 
                                                     @error('description', 'update')
                                                         <p class="text-red-500 text-xs mt-1">
@@ -469,7 +476,6 @@
 
                     this.show = true;
 
-                    // isi form
                     this.form = {
                         id: data.id ?? null,
                         title: data.title ?? '',
@@ -479,11 +485,13 @@
 
                     this.$nextTick(() => {
 
-                        // set action form
                         document.getElementById('editContentForm').action =
                             '/admin/content/' + data.id;
 
-                        // isi textarea (fallback kalau x-model tidak dipakai penuh)
+                        if (editQuill) {
+                            editQuill.root.innerHTML = data.description ?? '';
+                        }
+
                         document.getElementById('edit_description').value =
                             data.description ?? '';
 
@@ -491,6 +499,72 @@
                 }
             }
         }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script>
+        const quillDescription = new Quill('#description-editor', {
+            theme: 'snow',
+            placeholder: 'Masukkan deskripsi content...',
+            modules: {
+                toolbar: [
+                    [{
+                        header: [1, 2, 3, false]
+                    }],
+                    ['bold', 'italic', 'underline'],
+                    [{
+                        list: 'ordered'
+                    }, {
+                        list: 'bullet'
+                    }],
+                    ['link'],
+                    ['clean']
+                ]
+            }
+        });
+
+        const createForm = document.getElementById('createContentForm');
+
+        createForm.addEventListener('submit', function() {
+            document.getElementById('description').value =
+                quillDescription.root.innerHTML;
+        });
+    </script>
+
+    <script>
+        let editQuill;
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            editQuill = new Quill('#edit-description-editor', {
+                theme: 'snow',
+                placeholder: 'Masukkan deskripsi...',
+                modules: {
+                    toolbar: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        ['link'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            editQuill.on('text-change', function() {
+                document.getElementById('edit_description').value =
+                    editQuill.root.innerHTML;
+
+                document.getElementById('edit_description')
+                    .dispatchEvent(new Event('input'));
+            });
+        });
     </script>
 
     <script src="{{ asset('assets/js/main.min.js?v=1772427751095') }}"></script>

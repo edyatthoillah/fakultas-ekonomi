@@ -4,101 +4,171 @@
 
 @section('content')
     <!-- Fasilitas Section -->
-    <section id="fasilitas" class="py-20 bg-bg-light dark:bg-[#181818]">
+    <section id="fasilitas" class="py-20 bg-white">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Heading -->
-            <div class="text-center max-w-3xl mx-auto">
+            <div class="text-center max-w-3xl mt-4 mx-auto">
 
                 <span
-                    class="inline-flex items-center px-4 py-2 rounded-full bg-[#29357A]/10 text-[#29357A] dark:text-blue-300 text-[11px] font-bold tracking-[0.18em] uppercase">
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
 
-                    {{ $category->name }}
+                    {{ strtoupper($category->name) }}
+
                 </span>
 
-                <h2 class="mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#29357A] dark:text-white">
-
+                <h2 class="mt-6 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A]">
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-[15px] leading-8 text-gray-600 dark:text-gray-300">
-                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah, penghargaan, serta akreditasi yang
-                    mencerminkan capaian dan kontribusi akademik institusi.
+                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah,
+                    penghargaan, serta akreditasi yang mencerminkan capaian dan kontribusi
+                    akademik institusi.
                 </p>
+
             </div>
 
             <!-- Cards -->
-            <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div x-data="{
+                open: false,
+                title: '',
+                image: '',
+                description: ''
+            }">
 
-                <!-- Card -->
-                <!-- 1 -->
+                <!-- GRID -->
+                <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                @foreach ($contents as $item)
-                    <div
-                        class="group bg-white dark:bg-[#202020] rounded-xs overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                    @foreach ($contents as $item)
+                        <div
+                            class="group bg-white border border-[#29357A]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-                        <!-- IMAGE -->
-                        <div class="overflow-hidden">
-                            <img src="{{ asset('storage/' . $item->image) }}"
-                                class="w-full object-cover group-hover:scale-105 transition duration-500">
-                        </div>
+                            <!-- IMAGE -->
+                            <div class="relative aspect-[4/3] overflow-hidden">
 
-                        <!-- CONTENT -->
-                        <div class="p-4">
+                                <img src="{{ asset('storage/' . $item->image) }}"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                    alt="{{ $item->title }}">
 
-                            <!-- TITLE -->
-                            <h3 class="text-sm font-bold text-[#29357A] dark:text-white mb-1 line-clamp-1">
-                                {{ $item->title }}
-                            </h3>
+                                <!-- Gradient overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition">
+                                </div>
 
-                            <div x-data="{ open: false }">
+                                <!-- subtle badge (optional feel modern) -->
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="px-3 py-1 text-[10px] font-bold tracking-wide uppercase bg-white/80 backdrop-blur text-[#29357A] rounded-full">
+                                        Content
+                                    </span>
+                                </div>
 
-                                <!-- DESCRIPTION SHORT -->
-                                <p class="text-xs text-gray-500 dark:text-gray-300 leading-relaxed">
-                                    {{ Str::limit($item->description, 200) }}
+                            </div>
+
+                            <!-- CONTENT -->
+                            <div class="p-5">
+
+                                <h3 class="text-lg font-bold text-[#29357A] line-clamp-2 leading-snug">
+                                    {{ $item->title }}
+                                </h3>
+
+                                <p class="mt-2 text-sm text-gray-600 leading-7 line-clamp-3">
+                                    {{ Str::limit(strip_tags($item->description), 180) }}
                                 </p>
 
                                 <!-- BUTTON -->
-                                <button @click="open = true" class="mt-1 text-[11px] text-blue-600 hover:underline">
+                                <button
+                                    @click="
+                open = true;
+                title = @js($item->title);
+                image = @js(asset('storage/' . $item->image));
+                description = @js($item->description);
+            "
+                                    class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#29357A] hover:text-[#1f2c66] transition group/button">
 
-                                    Lihat selengkapnya
+                                    <span>Baca Selengkapnya</span>
+
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1"
+                                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+
+                                    </svg>
+
                                 </button>
 
-                                <!-- MODAL / POPUP -->
-                                <div x-show="open" x-transition
-                                    class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                            </div>
 
-                                    <div
-                                        class="bg-white dark:bg-[#202020] w-[90%] md:w-[600px] p-5 rounded-xs shadow-lg relative">
+                        </div>
+                    @endforeach
 
-                                        <!-- CLOSE -->
-                                        <button @click="open = false"
-                                            class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-sm">
-                                            ✕
-                                        </button>
+                </div>
 
-                                        <!-- TITLE -->
-                                        <h3 class="text-sm font-bold text-[#29357A] mb-3">
-                                            {{ $item->title }}
-                                        </h3>
+                <!-- MODAL -->
+                <div x-show="open" x-cloak x-transition.opacity
+                    class="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+                    @keydown.escape.window="open = false">
 
-                                        <!-- FULL DESCRIPTION -->
-                                        <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                                            {{ $item->description }}
-                                        </p>
+                    <!-- MODAL BOX -->
+                    <div @click.away="open = false" x-transition.scale.duration.200ms
+                        class="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
 
-                                    </div>
+                        <!-- IMAGE (fixed) -->
+                        <div class="relative flex-shrink-0">
+                            <img :src="image" :alt="title" class="w-full h-44 sm:h-52 object-cover">
 
-                                </div>
+                            <!-- Close -->
+                            <button @click="open = false"
+                                class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-gray-700 transition">
 
+                                ✕
+                            </button>
+                        </div>
+
+                        <!-- CONTENT (scrollable) -->
+                        <div class="p-5 md:p-6 overflow-y-auto">
+
+                            <!-- TITLE -->
+                            <h2 class="text-lg md:text-xl font-bold text-[#29357A] mb-4" x-text="title">
+                            </h2>
+
+                            <!-- DESCRIPTION -->
+                            <div class="text-sm md:text-base text-gray-600 leading-7 prose max-w-none" x-html="description">
                             </div>
 
                         </div>
 
                     </div>
-                @endforeach
+
+                </div>
             </div>
         </div>
     </section>
+
+    <style>
+        .prose img {
+            border-radius: 12px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .prose table td,
+        .prose table th {
+            border: 1px solid #e5e7eb;
+            padding: 8px;
+        }
+
+        .prose iframe {
+            width: 100%;
+            min-height: 400px;
+            border-radius: 12px;
+        }
+    </style>
 @endsection

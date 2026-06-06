@@ -84,7 +84,7 @@
                             <div class="mb-4">
                                 <!-- Header & Add Button -->
                                 <div class="flex justify-between items-center mb-3">
-                                    <h2 class="font-semibold text-gray-700 text-md">Fasilitas</h2>
+                                    <h2 class="font-semibold text-gray-700 text-md">{{ $category->name }}</h2>
                                     <div class="flex gap-1">
                                         <!-- Kembali -->
                                         <!-- Kembali -->
@@ -191,17 +191,25 @@
 
                                                 <!-- Deskripsi -->
                                                 <div>
-                                                    <x-input-label value="Deskripsi"
-                                                        class="text-sm font-medium text-gray-700" />
 
-                                                    <textarea name="description" rows="4" placeholder="Masukkan deskripsi informasi..."
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ old('description') }}</textarea>
+                                                    <x-input-label value="Deskripsi"
+                                                        class="text-sm font-medium text-gray-700 dark:text-gray-300" />
+
+                                                    <!-- Quill Editor -->
+                                                    <div id="information-description-editor"
+                                                        class="mt-1 bg-white rounded-lg border border-gray-300 min-h-[250px]">
+                                                    </div>
+
+                                                    <!-- Hidden Input -->
+                                                    <input type="hidden" name="description" id="information-description"
+                                                        value="{{ old('description') }}">
 
                                                     @if ($errors->store->has('description'))
                                                         <p class="text-red-500 text-xs mt-1">
                                                             {{ $errors->store->first('description') }}
                                                         </p>
                                                     @endif
+
                                                 </div>
 
                                                 <!-- Footer -->
@@ -373,8 +381,8 @@
 
                                                 <x-input-label value="Judul" class="text-sm font-medium text-gray-700" />
 
-                                                <input id="edit_title" type="text" name="title"
-                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                <input type="text" name="title" x-model="form.title"
+                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm">
 
                                                 @error('title', 'update')
                                                     <p class="text-red-500 text-xs mt-1">
@@ -417,10 +425,15 @@
                                             <div>
 
                                                 <x-input-label value="Deskripsi"
-                                                    class="text-sm font-medium text-gray-700" />
+                                                    class="text-sm font-medium text-gray-700 dark:text-gray-300" />
 
-                                                <textarea id="edit_description" name="description" rows="5"
-                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                                <!-- Hidden Input -->
+                                                <input type="hidden" name="description" id="edit_description">
+
+                                                <!-- Quill Editor -->
+                                                <div id="edit-information-editor"
+                                                    class="mt-1 bg-white rounded-lg border border-gray-300 min-h-[250px]">
+                                                </div>
 
                                                 @error('description', 'update')
                                                     <p class="text-red-500 text-xs mt-1">
@@ -429,7 +442,6 @@
                                                 @enderror
 
                                             </div>
-
                                             <!-- Footer -->
                                             <div class="flex justify-end gap-2 border-t pt-4">
 
@@ -460,6 +472,92 @@
             </section>
         </div>
     </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const informationQuill = new Quill(
+                '#information-description-editor', {
+                    theme: 'snow',
+                    placeholder: 'Masukkan deskripsi informasi...',
+                    modules: {
+                        toolbar: [
+                            [{
+                                header: [1, 2, 3, false]
+                            }],
+                            ['bold', 'italic', 'underline'],
+                            [{
+                                list: 'ordered'
+                            }, {
+                                list: 'bullet'
+                            }],
+                            ['blockquote'],
+                            ['link'],
+                            ['clean']
+                        ]
+                    }
+                }
+            );
+
+            // Restore old value jika validasi gagal
+            const oldContent =
+                document.getElementById('information-description').value;
+
+            if (oldContent) {
+                informationQuill.root.innerHTML = oldContent;
+            }
+
+            // Sinkronkan ke hidden input
+            informationQuill.on('text-change', function() {
+                document.getElementById('information-description').value =
+                    informationQuill.root.innerHTML;
+            });
+
+        });
+    </script>
+
+    <script>
+        let editInformationQuill;
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            editInformationQuill = new Quill(
+                '#edit-information-editor', {
+                    theme: 'snow',
+                    placeholder: 'Masukkan deskripsi informasi...',
+                    modules: {
+                        toolbar: [
+                            [{
+                                header: [1, 2, 3, false]
+                            }],
+                            ['bold', 'italic', 'underline'],
+                            [{
+                                list: 'ordered'
+                            }, {
+                                list: 'bullet'
+                            }],
+                            ['blockquote'],
+                            ['link'],
+                            ['clean']
+                        ]
+                    }
+                }
+            );
+
+            editInformationQuill.on('text-change', function() {
+
+                document.getElementById('edit_description').value =
+                    editInformationQuill.root.innerHTML;
+
+            });
+
+        });
+    </script>
+
+
     <script>
         function previewModalAdd() {
             return {
@@ -499,19 +597,25 @@
 
                     this.show = true;
 
-                    this.form = data;
+                    this.form = {
+                        id: data.id ?? null,
+                        title: data.title ?? '',
+                        description: data.description ?? '',
+                        image: data.image ?? ''
+                    };
 
                     this.$nextTick(() => {
 
                         document.getElementById('editInformationForm').action =
                             '/admin/information/' + data.id;
 
-                        document.getElementById('edit_title').value =
-                            data.title ?? '';
+                        if (editInformationQuill) {
+                            editInformationQuill.root.innerHTML =
+                                this.form.description;
+                        }
 
-                        document.getElementById('edit_description').value =
-                            data.description ?? '';
                     });
+
                 }
             }
         }

@@ -7,8 +7,7 @@
     <section id="beranda" class="relative pt-28 lg:pt-36 pb-20 overflow-hidden bg-[#f4f6fb]">
 
         <!-- Background -->
-        <div
-            class="absolute top-0 left-0 w-full h-[540px] bg-gradient-to-br from-[#1f2c6c] via-[#29357A] to-[#3d4fc4] rounded-b-[28px]">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#1f2c6c] via-[#29357A] to-[#3d4fc4]">
         </div>
 
         <!-- Glow -->
@@ -110,83 +109,75 @@
                     <!-- Mini Stats -->
                     <div class="grid grid-cols-3 gap-3 pt-7">
 
-                        <!-- Item -->
+                        <!-- Kurikulum Adaptif -->
                         <div
                             class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
 
-                            <!-- Glow -->
                             <div
                                 class="absolute -top-4 -right-4 w-14 h-14 bg-blue-400/25 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
                             </div>
 
-                            <!-- Shine -->
                             <div
                                 class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
                             </div>
 
-                            <div class="relative flex items-center gap-2">
-
-                                <h3 class="text-lg lg:text-xl font-black text-white leading-none">
-                                    25+
+                            <div class="relative">
+                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
+                                    Fasilitas
                                 </h3>
 
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase">
-                                    Dosen
+                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
+                                    Terbaik
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Item -->
+                        <!-- Dosen Profesional -->
                         <div
                             class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
 
-                            <!-- Glow -->
                             <div
                                 class="absolute -top-4 -right-4 w-14 h-14 bg-cyan-300/20 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
                             </div>
 
-                            <!-- Shine -->
                             <div
                                 class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
                             </div>
 
-                            <div class="relative flex items-center gap-2">
-
-                                <h3 class="text-lg lg:text-xl font-black text-white leading-none">
-                                    1.2K+
+                            <div class="relative">
+                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
+                                    Dosen
                                 </h3>
 
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase">
-                                    Mahasiswa
+                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
+                                    Profesional
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Item -->
+                        <!-- Lulusan Berdaya Saing -->
                         <div
                             class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
 
-                            <!-- Glow -->
                             <div
                                 class="absolute -top-4 -right-4 w-14 h-14 bg-yellow-300/20 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
                             </div>
 
-                            <!-- Shine -->
                             <div
                                 class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
                             </div>
 
-                            <div class="relative flex items-center gap-2">
-
-                                <h3 class="text-lg lg:text-xl font-black text-white leading-none">
-                                    A
+                            <div class="relative">
+                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
+                                    Lulusan
                                 </h3>
 
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase">
-                                    Akreditasi
+                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
+                                    Terbaik
                                 </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -222,11 +213,11 @@
                             <div>
 
                                 <h4 class="text-[13px] font-black tracking-wide text-[#29357A]">
-                                    Dr. Sukardi., S.E., M.M Dekan FE Unsada
+                                    Dr. Sukardi., S.E., M.M
                                 </h4>
 
-                                <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">
-                                    Mendukung pendidikan berkualitas dan lulusan siap kerja.
+                                <p class="text-[12px] text-black mt-1 leading-relaxed">
+                                    Dekan Fakultas Ekonomi Universitas Darma Persada
                                 </p>
                             </div>
                         </div>
@@ -246,11 +237,11 @@
                         <div>
 
                             <h4 class="text-[12px] font-black text-[#29357A] tracking-wide">
-                                KURIKULUM MODERN
+                                LULUSAN UNGGUL
                             </h4>
 
                             <p class="text-[10px] text-gray-500 mt-1">
-                                Berbasis kebutuhan industri
+                                Siap bersaing global
                             </p>
                         </div>
                     </div>
@@ -275,7 +266,7 @@
             <div class="grid lg:grid-cols-2 gap-14 items-center">
 
                 <!-- Left Content -->
-                <div>
+                <div class="profile-left">
 
                     <!-- Badge -->
                     <span
@@ -292,13 +283,14 @@
 
                     <!-- Description -->
                     <p class="mt-6 text-[15px] leading-8 text-gray-600 max-w-xl">
-                        {{ $landing->about_us }}
+                        {{ $landing->hero_title }}
                     </p>
 
                     <!-- Highlight -->
                     <div class="mt-8 space-y-4">
 
-                        <div class="flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
+                        <div
+                            class="profile-item flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
 
                             <div
                                 class="w-11 h-11 rounded-lg bg-[#29357A] text-white flex items-center justify-center shrink-0">
@@ -317,8 +309,8 @@
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
-
+                        <div
+                            class="profile-item flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
                             <div
                                 class="w-11 h-11 rounded-lg bg-yellow-400 text-[#29357A] flex items-center justify-center shrink-0">
 
@@ -339,11 +331,11 @@
                 </div>
 
                 <!-- Right Video -->
-                <div class="relative">
+                <div class="relative profile-video">
 
                     <!-- Glow -->
                     <div
-                        class="absolute -inset-5 bg-gradient-to-r from-[#29357A]/20 to-yellow-300/20 blur-2xl rounded-[30px]">
+                        class="profile-glow absolute -inset-5 bg-gradient-to-r from-[#29357A]/20 to-yellow-300/20 blur-2xl rounded-[30px]">
                     </div>
 
                     <!-- Video Card -->
@@ -354,7 +346,7 @@
                         <div class="aspect-video">
 
                             <iframe class="w-full h-full"
-                                src="https://www.youtube.com/embed/9pN21ckF8rI?autoplay=1&mute=1&loop=1&playlist=9pN21ckF8rI&controls=1&rel=0&modestbranding=1"
+                                src="https://www.youtube.com/embed/9pN21ckF8rI?autoplay=1&mute=0&loop=1&playlist=9pN21ckF8rI&controls=1&rel=0&modestbranding=1"
                                 title="Profil Fakultas Ekonomi" frameborder="0" allow="autoplay; encrypted-media"
                                 allowfullscreen>
                             </iframe>
@@ -386,6 +378,154 @@
         </div>
     </section>
 
+    <style>
+        /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                   PROFILE SECTION ANIMATION
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================== */
+
+        .profile-left {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .profile-left.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition:
+                opacity .8s ease,
+                transform .8s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .profile-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-video {
+            opacity: 0;
+            transform: translateX(80px) scale(.92);
+            transition: all 1.2s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .profile-video.show {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        /* Floating glow */
+
+        .profile-glow {
+            animation: profileFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Hover highlight */
+
+        .profile-item:hover {
+            transform: translateY(-4px);
+            transition: .3s ease;
+        }
+
+        /* Optional: smooth video hover */
+
+        .profile-video .aspect-video iframe {
+            transition: transform 1.2s ease;
+        }
+
+        .profile-video:hover iframe {
+            transform: scale(1.03);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const observerItems = () => {
+
+                const items = document.querySelectorAll('.profile-item');
+
+                items.forEach((item, index) => {
+
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, 250 + (index * 180));
+
+                });
+
+            };
+
+            const resetItems = () => {
+
+                document.querySelectorAll('.profile-item').forEach(item => {
+                    item.classList.remove('show');
+                });
+
+            };
+
+            const profileObserver = new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        // Left Content
+                        if (entry.target.classList.contains('profile-left')) {
+                            entry.target.classList.add('show');
+                            observerItems();
+                        }
+
+                        // Video
+                        if (entry.target.classList.contains('profile-video')) {
+
+                            setTimeout(() => {
+                                entry.target.classList.add('show');
+                            }, 200);
+
+                        }
+
+                    } else {
+
+                        // Reset animasi saat keluar viewport
+                        if (entry.target.classList.contains('profile-left')) {
+                            entry.target.classList.remove('show');
+                            resetItems();
+                        }
+
+                        if (entry.target.classList.contains('profile-video')) {
+                            entry.target.classList.remove('show');
+                        }
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.2
+            });
+
+            document.querySelectorAll('.profile-left, .profile-video')
+                .forEach(el => profileObserver.observe(el));
+
+        });
+    </script>
+
     <!-- Career Section -->
     <section id="karir" class="py-24 overflow-hidden">
 
@@ -413,156 +553,266 @@
             <!-- Cards -->
             <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-                <!-- Card -->
+                <!-- Pelaku Bisnis/Wirausaha -->
                 <div
-                    class="group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
 
-                    <!-- Image -->
                     <div class="relative overflow-hidden h-56">
-
-                        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
-                            alt="Akuntan"
+                        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
+                            alt="Pelaku Bisnis"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
                         </div>
 
                         <div class="absolute bottom-4 left-4">
-
                             <span
                                 class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                AKUNTANSI
+                                WIRAUSAHA
                             </span>
                         </div>
                     </div>
 
-                    <!-- Content -->
                     <div class="p-6">
-
                         <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Akuntan Profesional
+                            Pelaku Bisnis/Wirausaha
                         </h3>
 
                         <p class="text-[14px] leading-7 text-gray-600">
-                            Berkarir sebagai auditor, akuntan publik, konsultan pajak,
-                            maupun financial analyst di perusahaan nasional dan internasional.
+                            Orang yang memiliki visi dan kompetensi dalam membangun dan
+                            mengelola bisnis yang baik.
                         </p>
                     </div>
                 </div>
 
-                <!-- Card -->
+                <!-- Manajer Lini -->
                 <div
-                    class="group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
 
-                    <!-- Image -->
                     <div class="relative overflow-hidden h-56">
-
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
-                            alt="Manajemen"
+                            alt="Manajer Lini"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
                         </div>
 
                         <div class="absolute bottom-4 left-4">
-
                             <span
                                 class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                MANAJEMEN
+                                MANAJERIAL
                             </span>
                         </div>
                     </div>
 
-                    <!-- Content -->
                     <div class="p-6">
-
                         <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Business Manager
+                            Manajer Lini
                         </h3>
 
                         <p class="text-[14px] leading-7 text-gray-600">
-                            Memiliki kompetensi dalam pengelolaan bisnis, strategi perusahaan,
-                            pemasaran, dan pengembangan sumber daya manusia.
+                            Orang yang ahli dalam mengelola tugas-tugas manajerial dalam
+                            perusahaan.
                         </p>
                     </div>
                 </div>
 
-                <!-- Card -->
+                <!-- Pendidik/Pengajar -->
                 <div
-                    class="group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
 
-                    <!-- Image -->
                     <div class="relative overflow-hidden h-56">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+                            alt="Pendidik"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
+                        </div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <span
+                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
+                                PENDIDIKAN
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
+                            Pendidik/Pengajar
+                        </h3>
+
+                        <p class="text-[14px] leading-7 text-gray-600">
+                            Orang yang memiliki kompetensi untuk merancang dan melaksanakan
+                            proses pembelajaran yang efektif serta memiliki pemahaman mendalam
+                            tentang bidang ajarnya.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Konsultan -->
+                <div
+                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+
+                    <div class="relative overflow-hidden h-56">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop"
-                            alt="Entrepreneur"
+                            alt="Konsultan"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
                         </div>
 
                         <div class="absolute bottom-4 left-4">
-
                             <span
                                 class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                ENTREPRENEUR
+                                KONSULTAN
                             </span>
                         </div>
                     </div>
 
-                    <!-- Content -->
                     <div class="p-6">
-
                         <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Wirausaha Modern
+                            Konsultan
                         </h3>
 
                         <p class="text-[14px] leading-7 text-gray-600">
-                            Mengembangkan bisnis mandiri berbasis digital, startup,
-                            UMKM modern, hingga industri kreatif berbasis teknologi.
+                            Orang yang ahli dalam menganalisis masalah, menyusun strategi,
+                            serta memberikan solusi dan rekomendasi kepada klien.
                         </p>
                     </div>
                 </div>
 
-                <!-- Card -->
-                <div
-                    class="group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
-
-                    <!-- Image -->
-                    <div class="relative overflow-hidden h-56">
-
-                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1200&auto=format&fit=crop"
-                            alt="Perbankan"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
-                        </div>
-
-                        <div class="absolute bottom-4 left-4">
-
-                            <span
-                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                PERBANKAN
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="p-6">
-
-                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Staff Perbankan
-                        </h3>
-
-                        <p class="text-[14px] leading-7 text-gray-600">
-                            Berpeluang bekerja di sektor perbankan, lembaga keuangan,
-                            fintech, serta bidang investasi dan pasar modal.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <style>
+        /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           Smooth Reveal Animation
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           Career Cards
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
+
+        .career-card {
+            opacity: 0;
+            transform: translateY(35px) scale(0.98);
+            transition:
+                opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .career-card.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Smooth hover */
+
+        .career-card {
+            transition:
+                opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow .45s ease,
+                border-color .45s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Reduce motion preference */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .reveal-up,
+            .career-card {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    // Saat masuk viewport
+                    if (entry.isIntersecting) {
+
+                        if (entry.target.classList.contains('reveal-up')) {
+                            entry.target.classList.add('show');
+                        }
+
+                        if (entry.target.classList.contains('career-card')) {
+                            entry.target.classList.add('show');
+                        }
+
+                    } else {
+
+                        // Saat keluar viewport
+                        entry.target.classList.remove('show');
+                    }
+
+                });
+
+            }, {
+                threshold: 0.15
+            });
+
+            document.querySelectorAll('.reveal-up')
+                .forEach(el => observer.observe(el));
+
+            const cards = document.querySelectorAll('.career-card');
+
+            cards.forEach((card, index) => {
+
+                const cardObserver = new IntersectionObserver((entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            setTimeout(() => {
+                                entry.target.classList.add('show');
+                            }, index * 120);
+
+                        } else {
+
+                            entry.target.classList.remove('show');
+                        }
+
+                    });
+
+                }, {
+                    threshold: 0.15
+                });
+
+                cardObserver.observe(card);
+            });
+
+        });
+    </script>
 
     <!-- Partnership Section -->
     <section id="kerjasama" class="py-20 bg-[#f4f6fb] overflow-hidden border-y border-gray-200">
@@ -681,297 +931,575 @@
     </style>
 
     <!-- Latest News -->
-    <section id="berita" class="py-20 bg-bg-light dark:bg-[#181818]">
+    <section id="berita" class="py-24 bg-[#F8F9FC] overflow-hidden">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-end mb-12">
+
+            <!-- Heading -->
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+
+                <!-- Left -->
                 <div>
-                    <h2 class="text-3xl font-bold text-[#29357A] dark:text-white tracking-tight">Berita Terkini
+
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
+
+                        BERITA & INFORMASI
+
+                    </span>
+
+                    <h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#29357A]">
+                        Berita Terkini
                     </h2>
-                    <p class="mt-2 text-text-sec dark:text-gray-400">Informasi terbaru seputar kegiatan dinas dan
-                        teknologi.</p>
+
                 </div>
-                <a href="#"
-                    class="hidden md:inline-flex items-center px-4 py-2 border border-primary text-[#29357A] dark:text-blue-400 dark:border-blue-400 rounded-lg hover:bg-primary hover:text-white transition-all text-sm font-medium">
-                    Lihat Semua
-                </a>
+
+                <!-- Right -->
+                <div class="flex justify-start lg:justify-end">
+
+                    <a href="{{ route('news.frontend.index') }}"
+                        class="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white text-[#29357A] font-semibold border border-[#29357A]/10 hover:border-[#29357A]/20 hover:shadow-md transition-all duration-300">
+
+                        <span>Lihat Semua Berita</span>
+
+                        <i
+                            class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1">
+                        </i>
+
+                    </a>
+
+                </div>
+
             </div>
+            <!-- Slider -->
+            <div class="relative">
 
-            <style>
-                /* Hide scrollbar (cross-browser) */
-                .no-scrollbar::-webkit-scrollbar {
-                    display: none;
-                }
+                <div class="swiper beritaSwiper">
 
-                .no-scrollbar {
-                    -ms-overflow-style: none;
-                    /* IE & Edge */
-                    scrollbar-width: none;
-                    /* Firefox */
-                }
-            </style>
+                    <div class="swiper-wrapper">
 
-            <div class="w-full overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+                        @foreach ($news as $item)
+                            <div class="swiper-slide h-auto">
 
-                <div class="flex gap-6 w-max snap-x snap-mandatory px-2">
+                                <article
+                                    class="group bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
 
-                    @foreach ($news as $item)
-                        <article
-                            class="max-w-[300px] md:max-w-[350px] snap-start bg-white dark:bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-border-light dark:border-gray-700 flex flex-col">
+                                    <!-- IMAGE -->
+                                    <div class="relative overflow-hidden">
 
-                            <!-- IMAGE / SLIDER -->
-                            <div class="h-48 overflow-hidden">
+                                        @if ($item->images->count() > 1)
+                                            <div class="swiper newsSwiper-{{ $item->id }} h-56">
 
-                                @if ($item->images->count() > 1)
-                                    <div class="swiper newsSwiper-{{ $item->id }} h-48">
-                                        <div class="swiper-wrapper">
+                                                <div class="swiper-wrapper">
 
-                                            @if ($item->thumbnail)
-                                                <div class="swiper-slide">
-                                                    <img src="{{ asset('storage/' . $item->thumbnail) }}"
-                                                        class="w-full h-48 object-cover">
+                                                    @if ($item->thumbnail)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/' . $item->thumbnail) }}"
+                                                                class="w-full h-56 object-cover">
+                                                        </div>
+                                                    @endif
+
+                                                    @foreach ($item->images as $img)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset('storage/' . $img->image_path) }}"
+                                                                class="w-full h-56 object-cover">
+                                                        </div>
+                                                    @endforeach
+
                                                 </div>
-                                            @endif
 
-                                            @foreach ($item->images as $img)
-                                                <div class="swiper-slide">
-                                                    <img src="{{ asset('storage/' . $img->image_path) }}"
-                                                        class="w-full h-48 object-cover">
-                                                </div>
-                                            @endforeach
+                                            </div>
+                                        @else
+                                            <img src="{{ asset('storage/' . $item->thumbnail) }}"
+                                                class="w-full h-56 object-cover transition duration-700 group-hover:scale-110">
+                                        @endif
 
-                                        </div>
                                     </div>
-                                @else
-                                    <img src="{{ asset('storage/' . $item->thumbnail) }}"
-                                        class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500">
-                                @endif
+
+                                    <!-- CONTENT -->
+                                    <div class="p-6 flex flex-col flex-1">
+
+                                        {{-- <span
+                                            class="inline-flex items-center gap-2 text-xs font-semibold text-gray-500 mb-3">
+                                            <i class="fa-regular fa-calendar"></i>
+                                            {{ $item->created_at->format('d M Y') }}
+                                        </span> --}}
+
+                                        <h3 class="text-xl font-bold text-[#29357A] mb-3 line-clamp-2 leading-snug">
+                                            {{ $item->title }}
+                                        </h3>
+
+                                        <p class="text-gray-600 text-sm leading-7 line-clamp-3 flex-1">
+                                            {{ Str::limit(strip_tags($item->content), 120) }}
+                                        </p>
+
+                                        <a href="{{ route('news.frontend.show', $item->slug) }}"
+                                            class="mt-6 inline-flex items-center gap-2 font-bold text-[#29357A] hover:gap-3 transition-all">
+
+                                            Baca Selengkapnya
+
+                                            <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </article>
 
                             </div>
+                        @endforeach
 
-                            <!-- CONTENT -->
-                            <div class="p-6 flex-1 flex flex-col">
-
-                                <span class="text-xs font-semibold text-text-sec mb-2 flex items-center gap-1">
-                                    📅 {{ $item->created_at->format('d M Y') }}
-                                </span>
-
-                                <h3 class="text-lg font-bold text-[#29357A] dark:text-blue-400 mb-3 line-clamp-2">
-                                    {{ $item->title }}
-                                </h3>
-
-                                <p class="text-text-sec text-sm line-clamp-3 mb-4 flex-1">
-                                    {{ Str::limit(strip_tags($item->content), 100) }}
-                                </p>
-
-                                <a href="{{ route('news.frontend.show', $item->slug) }}"
-                                    class="inline-flex items-center text-[#29357A] dark:text-blue-400 text-sm font-semibold hover:underline">
-                                    Baca Selengkapnya →
-                                </a>
-
-                            </div>
-
-                        </article>
-                    @endforeach
+                    </div>
 
                 </div>
 
+                <!-- Navigation -->
+                <div class="flex items-center justify-center gap-6 mt-10">
+
+                    <div class="berita-prev">
+                        <button
+                            class="w-11 h-11 rounded-full border border-[#29357A]/20 bg-white text-[#29357A] hover:bg-[#29357A]/5 hover:border-[#29357A]/40 transition-all duration-300">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                    </div>
+
+                    <div class="swiper-pagination !relative !bottom-auto !w-auto"></div>
+
+                    <div class="berita-next">
+                        <button
+                            class="w-11 h-11 rounded-full border border-[#29357A]/20 bg-white text-[#29357A] hover:bg-[#29357A]/5 hover:border-[#29357A]/40 transition-all duration-300">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                </div>
             </div>
+
         </div>
+
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 bg-bg-light dark:bg-[#181818]">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-[#29357A] dark:text-white tracking-tight mb-8 text-center">
-                Tanya Jawab (FAQ)
-            </h2>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-gray-50 overflow-hidden">
 
-            <div class="space-y-4">
-
-                <!-- FAQ 1 -->
-                <details
-                    class="group bg-white dark:bg-surface rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-
-                    <summary
-                        class="flex justify-between items-center cursor-pointer p-6 font-semibold text-[#29357A] dark:text-blue-400">
-
-                        Apa saja program studi yang tersedia di Fakultas Ekonomi Universitas Darma Persada?
-
-                        <span class="transition group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                    </summary>
-
-                    <div class="px-6 pb-6 text-text-sec text-sm leading-relaxed">
-                        Fakultas Ekonomi Universitas Darma Persada menyediakan beberapa program studi yang berfokus
-                        pada
-                        pengembangan ilmu ekonomi dan bisnis, seperti Manajemen, Akuntansi, dan program lainnya yang
-                        mendukung kebutuhan dunia kerja modern.
-                    </div>
-                </details>
-
-                <!-- FAQ 2 -->
-                <details
-                    class="group bg-white dark:bg-surface rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-
-                    <summary
-                        class="flex justify-between items-center cursor-pointer p-6 font-semibold text-[#29357A] dark:text-blue-400">
-
-                        Bagaimana proses pendaftaran mahasiswa baru?
-
-                        <span class="transition group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                    </summary>
-
-                    <div class="px-6 pb-6 text-text-sec text-sm leading-relaxed">
-                        Calon mahasiswa dapat melakukan pendaftaran secara online melalui website resmi Universitas
-                        Darma
-                        Persada dengan mengisi formulir pendaftaran, mengunggah dokumen persyaratan, dan mengikuti
-                        tahapan
-                        seleksi yang telah ditentukan.
-                    </div>
-                </details>
-
-                <!-- FAQ 3 -->
-                <details
-                    class="group bg-white dark:bg-surface rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-
-                    <summary
-                        class="flex justify-between items-center cursor-pointer p-6 font-semibold text-[#29357A] dark:text-blue-400">
-
-                        Apakah Fakultas Ekonomi menyediakan program magang?
-
-                        <span class="transition group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                    </summary>
-
-                    <div class="px-6 pb-6 text-text-sec text-sm leading-relaxed">
-                        Ya, Fakultas Ekonomi Universitas Darma Persada menyediakan program magang dan kerja praktik
-                        yang
-                        bekerja sama dengan berbagai perusahaan, instansi, dan dunia industri untuk meningkatkan
-                        pengalaman
-                        mahasiswa sebelum lulus.
-                    </div>
-                </details>
-
-                <!-- FAQ 4 -->
-                <details
-                    class="group bg-white dark:bg-surface rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-
-                    <summary
-                        class="flex justify-between items-center cursor-pointer p-6 font-semibold text-[#29357A] dark:text-blue-400">
-
-                        Apakah tersedia beasiswa untuk mahasiswa?
-
-                        <span class="transition group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                    </summary>
-
-                    <div class="px-6 pb-6 text-text-sec text-sm leading-relaxed">
-                        Fakultas Ekonomi Universitas Darma Persada menyediakan berbagai informasi terkait program
-                        beasiswa,
-                        baik dari pemerintah, yayasan, maupun mitra perusahaan untuk mahasiswa berprestasi maupun
-                        yang
-                        membutuhkan dukungan biaya pendidikan.
-                    </div>
-                </details>
-
-                <!-- FAQ 5 -->
-                <details
-                    class="group bg-white dark:bg-surface rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-
-                    <summary
-                        class="flex justify-between items-center cursor-pointer p-6 font-semibold text-[#29357A] dark:text-blue-400">
-
-                        Bagaimana fasilitas pendukung pembelajaran di Fakultas Ekonomi?
-
-                        <span class="transition group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </span>
-                    </summary>
-
-                    <div class="px-6 pb-6 text-text-sec text-sm leading-relaxed">
-                        Fakultas Ekonomi didukung dengan ruang kelas modern, laboratorium komputer, perpustakaan,
-                        koneksi internet, serta berbagai kegiatan organisasi mahasiswa untuk menunjang proses
-                        belajar dan
-                        pengembangan soft skill mahasiswa.
-                    </div>
-                </details>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="kontak" class="relative py-16 overflow-hidden bg-bg-light dark:bg-[#181818]">
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-            <!-- Label -->
-            <div
-                class="inline-flex items-center justify-center px-5 h-10 rounded-xl border border-gray-300 dark:border-gray-700 text-[#29357A] dark:text-blue-300 text-[11px] font-bold tracking-[0.18em] uppercase bg-white dark:bg-[#202020] shadow-sm">
-
-                Wujudkan Karir Impian
-            </div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Heading -->
-            <h2
-                class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-[#29357A] dark:text-white">
+            <div class="text-center max-w-3xl mx-auto mb-16">
 
-                Wujudkan Masa Depan Bersama <br>
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md shadow-sm">
 
-                <span class="text-[#29357A]/90 dark:text-blue-300">
-                    Fakultas Ekonomi UNSADA
+                    FAQ
                 </span>
-            </h2>
 
-            <!-- Description -->
-            <p class="mt-6 text-[15px] leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <h2 class="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
+                    Pertanyaan yang Sering Diajukan
+                </h2>
 
-                Bergabunglah bersama lingkungan akademik yang inovatif,
-                profesional, dan berorientasi pada dunia industri untuk
-                mencetak generasi unggul yang siap bersaing global.
-            </p>
+                <p class="mt-5 text-[15px] leading-8 text-gray-600">
+                    Temukan jawaban atas berbagai pertanyaan seputar Fakultas Ekonomi
+                    Universitas Darma Persada mulai dari program studi, pendaftaran,
+                    fasilitas, hingga peluang pengembangan mahasiswa.
+                </p>
 
-            <!-- Button -->
-            <div class="mt-8 flex justify-center">
+            </div>
 
-                <a href="#pendaftaran"
-                    class="group inline-flex items-center justify-center h-12 px-8 rounded-xl bg-[#29357A] hover:bg-[#1f2b68] text-white text-[12px] font-bold tracking-[0.15em] uppercase transition-all duration-300 hover:-translate-y-1 shadow-lg">
+            <div class="space-y-5">
+                <details
+                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
 
-                    <span class="flex items-center gap-2">
+                    <!-- Accent Line -->
+                    <div
+                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
+                    </div>
 
-                        Daftar Sekarang
+                    <summary
+                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
 
-                        <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1">
-                        </i>
-                    </span>
-                </a>
+                        <div class="flex-1">
+
+                            <h3
+                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
+
+                                Apa saja program studi yang tersedia di Fakultas Ekonomi Universitas Darma Persada?
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
+
+                            <i
+                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
+                            </i>
+
+                        </div>
+
+                    </summary>
+
+                    <div class="px-8 lg:px-10 animate-faq">
+
+                        <div class="border-t border-slate-100 py-6">
+
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                                Fakultas Ekonomi Universitas Darma Persada menyediakan beberapa program studi yang berfokus
+                                pada pengembangan ilmu ekonomi dan bisnis, seperti Manajemen, Akuntansi, dan program lainnya
+                                yang mendukung kebutuhan dunia kerja modern.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+                <details
+                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
+
+                    <!-- Accent Line -->
+                    <div
+                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
+                    </div>
+
+                    <summary
+                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
+
+                        <div class="flex-1">
+
+                            <h3
+                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
+
+                                Bagaimana proses pendaftaran mahasiswa baru?
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
+
+                            <i
+                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
+                            </i>
+
+                        </div>
+
+                    </summary>
+
+                    <div class="px-8 lg:px-10 animate-faq">
+
+                        <div class="border-t border-slate-100 py-6">
+
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                                Calon mahasiswa dapat melakukan pendaftaran secara online melalui website resmi Universitas
+                                Darma Persada dengan mengisi formulir pendaftaran, mengunggah dokumen persyaratan, dan
+                                mengikuti tahapan seleksi yang telah ditentukan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+                <details
+                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
+
+                    <!-- Accent Line -->
+                    <div
+                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
+                    </div>
+
+                    <summary
+                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
+
+                        <div class="flex-1">
+
+                            <h3
+                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
+
+                                Apakah Fakultas Ekonomi menyediakan program magang?
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
+
+                            <i
+                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
+                            </i>
+
+                        </div>
+
+                    </summary>
+
+                    <div class="px-8 lg:px-10 animate-faq">
+
+                        <div class="border-t border-slate-100 py-6">
+
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                                Ya, Fakultas Ekonomi Universitas Darma Persada menyediakan program magang dan kerja praktik
+                                yang bekerja sama dengan berbagai perusahaan, instansi, dan dunia industri untuk
+                                meningkatkan pengalaman mahasiswa sebelum lulus.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+                <details
+                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
+
+                    <!-- Accent Line -->
+                    <div
+                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
+                    </div>
+
+                    <summary
+                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
+
+                        <div class="flex-1">
+
+                            <h3
+                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
+
+                                Apakah tersedia beasiswa untuk mahasiswa?
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
+
+                            <i
+                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
+                            </i>
+
+                        </div>
+
+                    </summary>
+
+                    <div class="px-8 lg:px-10 animate-faq">
+
+                        <div class="border-t border-slate-100 py-6">
+
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                                Fakultas Ekonomi Universitas Darma Persada menyediakan berbagai informasi terkait program
+                                beasiswa, baik dari pemerintah, yayasan, maupun mitra perusahaan untuk mahasiswa berprestasi
+                                maupun yang membutuhkan dukungan biaya pendidikan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+                <details
+                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
+
+                    <!-- Accent Line -->
+                    <div
+                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
+                    </div>
+
+                    <summary
+                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
+
+                        <div class="flex-1">
+
+                            <h3
+                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
+
+                                Bagaimana fasilitas pendukung pembelajaran di Fakultas Ekonomi?
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
+
+                            <i
+                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
+                            </i>
+
+                        </div>
+
+                    </summary>
+
+                    <div class="px-8 lg:px-10 animate-faq">
+
+                        <div class="border-t border-slate-100 py-6">
+
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                                Fakultas Ekonomi didukung dengan ruang kelas modern,
+                                laboratorium komputer, perpustakaan, koneksi internet,
+                                serta berbagai kegiatan organisasi mahasiswa untuk
+                                menunjang proses belajar dan pengembangan soft skill
+                                mahasiswa.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
             </div>
 
         </div>
+
     </section>
+
+    <style>
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details summary {
+            list-style: none;
+        }
+
+        @keyframes faqFade {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        details[open] .animate-faq {
+            animation: faqFade .35s ease;
+        }
+
+        details[open] {
+            transform: translateY(-2px);
+        }
+
+        details[open] summary {
+            padding-bottom: 1.5rem;
+        }
+    </style>
+
+    <!-- CTA Section -->
+    <section id="kontak" class="py-24 overflow-hidden">
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="relative bg-white  px-8 md:px-12 lg:px-16  text-center overflow-hidden">
+
+                <!-- Badge -->
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
+
+                    WUJUDKAN KARIR IMPIAN
+
+                </span>
+
+                <!-- Heading -->
+                <h2 class="mt-6 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
+
+                    Wujudkan Masa Depan Bersama
+                    <br>
+
+                    <span class="text-[#29357A]/80">
+                        Fakultas Ekonomi UNSADA
+                    </span>
+
+                </h2>
+
+                <!-- Description -->
+                <p class="mt-6 max-w-2xl mx-auto text-[15px] lg:text-[16px] leading-8 text-gray-600">
+
+                    Bergabunglah bersama lingkungan akademik yang inovatif,
+                    profesional, dan berorientasi pada dunia industri untuk
+                    mencetak generasi unggul yang siap bersaing di tingkat
+                    nasional maupun global.
+
+                </p>
+
+                <!-- CTA -->
+                <div class="mt-10 flex justify-center">
+
+                    <a href="https://pmb.unsada.ac.id/" target="_blank"
+                        class="group inline-flex items-center gap-3 rounded-2xl border border-[#29357A] bg-[#29357A] px-8 py-4 text-white font-bold uppercase tracking-[0.08em] transition-all duration-300 hover:bg-[#1f2c66] hover:border-[#1f2c66] hover:-translate-y-1 hover:shadow-xl">
+
+                        <span>Daftar Sekarang</span>
+
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10">
+
+                            <i
+                                class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1">
+                            </i>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
+
+            new Swiper('.beritaSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+
+                navigation: {
+                    nextEl: '.berita-next',
+                    prevEl: '.berita-prev',
+                },
+
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    }
+                }
+            });
 
             @foreach ($news as $item)
-                @if ($item->images->count() > 1 || $item->thumbnail)
 
-                    new Swiper(".newsSwiper-{{ $item->id }}", {
+                @if ($item->images->count() > 1)
+                    new Swiper('.newsSwiper-{{ $item->id }}', {
                         loop: true,
                         autoplay: {
-                            delay: 3000,
-                        },
+                            delay: 2500,
+                        }
                     });
                 @endif
             @endforeach
-
         });
     </script>
 @endsection

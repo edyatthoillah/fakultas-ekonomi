@@ -4,38 +4,54 @@
 
 @section('content')
 
-    <section class="py-20 bg-bg-light dark:bg-[#181818]">
+    <section class="py-20 bg-white">
 
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- CATEGORY + META -->
-            <div class="mb-6 text-center">
+            <!-- HEADER -->
+            <div class="max-w-4xl mx-auto mt-4 text-center mb-10">
 
                 @if ($news->category)
-                    <span class="inline-block px-3 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">
+                    <span
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md uppercase">
+
                         {{ $news->category->name }}
+
                     </span>
                 @endif
 
-                <h1 class="mt-4 text-3xl sm:text-4xl font-bold text-[#29357A] dark:text-white">
+                <h1 class="mt-6 text-3xl lg:text-4xl font-black tracking-tight text-[#29357A] leading-tight">
                     {{ $news->title }}
                 </h1>
 
-                <div class="mt-3 text-sm text-gray-500 dark:text-gray-400 flex justify-center gap-4">
+                {{-- <div class="mt-6 flex flex-wrap justify-center items-center gap-3 text-sm text-gray-500">
 
-                    <span>
-                        📅 {{ $news->created_at->format('d M Y') }}
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white">
+
+                        <i class="fa-regular fa-calendar text-[#29357A]"></i>
+
+                        {{ $news->created_at->translatedFormat('d F Y') }}
+
                     </span>
 
-                    <span>
-                        👁 {{ $news->views ?? 0 }} views
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white">
+
+                        <i class="fa-regular fa-eye text-[#29357A]"></i>
+
+                        {{ number_format($news->views ?? 0) }} Dilihat
+
                     </span>
 
-                    <span>
-                        ✍ {{ $news->user->name ?? 'Admin' }}
+                    <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white">
+
+                        <i class="fa-regular fa-user text-[#29357A]"></i>
+
+                        {{ $news->user->name ?? 'Admin' }}
+
                     </span>
 
-                </div>
+                </div> --}}
 
             </div>
 
@@ -50,7 +66,7 @@
             @if ($news->images->count())
                 <div class="my-10">
 
-                    <h3 class="text-lg font-semibold text-[#29357A] dark:text-white mb-4">
+                    <h3 class="text-lg font-semibold text-black mb-4">
                         Galeri Kegiatan
                     </h3>
 
@@ -71,7 +87,7 @@
             @endif
 
             <!-- CONTENT -->
-            <div class="prose max-w-none dark:prose-invert text-gray-700 dark:text-gray-300">
+            <div class="prose max-w-none dark:prose-invert text-gray-700 text-justify leading-8">
                 {!! $news->content !!}
             </div>
 

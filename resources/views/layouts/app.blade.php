@@ -18,8 +18,6 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon.png') }}">
 
-    <!-- Tailwind CSS (Script for standalone usage) -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Iconify -->

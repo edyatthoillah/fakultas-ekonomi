@@ -86,7 +86,7 @@
 
                                 <!-- Header & Add Button -->
                                 <div class="flex justify-between items-center mb-3">
-                                    <h2 class="font-semibold text-gray-700 text-md">Fasilitas</h2>
+                                    <h2 class="font-semibold text-gray-700 text-md">{{ $category->name }}</h2>
                                     <div class="flex gap-1">
                                         <!-- Kembali -->
                                         <!-- Kembali -->
@@ -193,10 +193,16 @@
                                                 <div>
 
                                                     <x-input-label value="Deskripsi"
-                                                        class="text-sm font-medium text-gray-700" />
+                                                        class="text-sm font-medium text-gray-700 dark:text-gray-300" />
 
-                                                    <textarea name="description" rows="4" placeholder="Masukkan deskripsi student..."
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ old('description') }}</textarea>
+                                                    <!-- Quill Editor -->
+                                                    <div id="student-description-editor"
+                                                        class="mt-1 bg-white rounded-lg border border-gray-300 min-h-[200px]">
+                                                    </div>
+
+                                                    <!-- Hidden Input -->
+                                                    <input type="hidden" name="description" id="student-description"
+                                                        value="{{ old('description') }}">
 
                                                     @if ($errors->store->has('description'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -331,13 +337,13 @@
                                                         <!-- Edit -->
                                                         <button type="button"
                                                             @click="openModal({
-                                id: {{ $data->id }},
-                                name: @js($data->name),
-                                institution: @js($data->institution),
-                                date: @js($data->date),
-                                description: @js($data->description),
-                                image: @js($data->image ? asset('storage/' . $data->image) : null)
-                            })"
+                                                                id: {{ $data->id }},
+                                                                name: @js($data->name),
+                                                                institution: @js($data->institution),
+                                                                date: @js($data->date),
+                                                                description: @js($data->description),
+                                                                image: @js($data->image ? asset('storage/' . $data->image) : null)
+                                                            })"
                                                             class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
                                                             Edit
                                                         </button>
@@ -382,11 +388,11 @@
 
                                             <div>
                                                 <h2 class="text-base font-semibold text-white">
-                                                    Edit Fasilitas
+                                                    Edit {{ $category->name }}
                                                 </h2>
 
                                                 <p class="text-blue-100 text-xs">
-                                                    Perbarui data fasilitas
+                                                    Perbarui data {{ $category->name }}
                                                 </p>
                                             </div>
 
@@ -479,14 +485,14 @@
 
                                                         <input type="file" name="image"
                                                             class="block w-full text-sm text-gray-600
-                file:mr-3
-                file:px-3
-                file:py-1.5
-                file:rounded
-                file:border-0
-                file:bg-blue-50
-                file:text-blue-700
-                file:text-sm">
+                                                            file:mr-3
+                                                            file:px-3
+                                                            file:py-1.5
+                                                            file:rounded
+                                                            file:border-0
+                                                            file:bg-blue-50
+                                                            file:text-blue-700
+                                                            file:text-sm">
 
                                                     </div>
 
@@ -496,10 +502,16 @@
                                                 <div>
 
                                                     <x-input-label value="Deskripsi"
-                                                        class="text-sm font-medium text-gray-700" />
+                                                        class="text-sm font-medium text-gray-700 dark:text-gray-300" />
 
-                                                    <textarea id="edit_description" name="description" rows="5" x-model="form.description"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                                    <!-- Hidden Input -->
+                                                    <input type="hidden" name="description" id="edit_description"
+                                                        x-model="form.description">
+
+                                                    <!-- Quill -->
+                                                    <div id="edit-quill-editor"
+                                                        class="mt-1 bg-white border border-gray-300 min-h-[250px]">
+                                                    </div>
 
                                                 </div>
 
@@ -532,6 +544,47 @@
             </section>
         </div>
     </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const quill = new Quill('#student-description-editor', {
+                theme: 'snow',
+                placeholder: 'Masukkan deskripsi student...',
+                modules: {
+                    toolbar: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        ['blockquote'],
+                        ['link'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // Isi old value jika validasi gagal
+            const oldContent = document.getElementById('student-description').value;
+
+            if (oldContent) {
+                quill.root.innerHTML = oldContent;
+            }
+
+            // Sinkronkan ke hidden input
+            quill.on('text-change', function() {
+                document.getElementById('student-description').value = quill.root.innerHTML;
+            });
+
+        });
+    </script>
     <script>
         function previewModalAdd() {
             return {
@@ -555,6 +608,46 @@
     </script>
 
     <script>
+        let editQuill;
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            editQuill = new Quill('#edit-quill-editor', {
+                theme: 'snow',
+                placeholder: 'Masukkan deskripsi student...',
+                modules: {
+                    toolbar: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        ['blockquote'],
+                        ['link'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            editQuill.on('text-change', function() {
+
+                let html = editQuill.root.innerHTML;
+
+                document.getElementById('edit_description').value = html;
+
+                document.getElementById('edit_description')
+                    .dispatchEvent(new Event('input'));
+
+            });
+
+        });
+    </script>
+
+    <script>
         function modalEditInformation() {
             return {
 
@@ -573,7 +666,6 @@
 
                     this.show = true;
 
-                    // isi form
                     this.form = {
                         id: data.id ?? null,
                         name: data.name ?? '',
@@ -585,15 +677,21 @@
 
                     this.$nextTick(() => {
 
-                        // set action form
                         document.getElementById('editStudentForm').action =
                             '/admin/students/' + data.id;
 
-                        // isi textarea manual (kalau belum pakai x-model)
+                        // Isi hidden input
                         document.getElementById('edit_description').value =
                             data.description ?? '';
 
+                        // Isi Quill Editor
+                        if (editQuill) {
+                            editQuill.root.innerHTML =
+                                data.description ?? '';
+                        }
+
                     });
+
                 }
             }
         }

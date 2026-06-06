@@ -5,65 +5,86 @@
 @section('content')
 
     <!-- STRUKTUR ORGANISASI SECTION -->
-    <section class="py-20 bg-bg-light dark:bg-[#181818]">
+    <section class="py-20 bg-white">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Heading -->
-            <div class="text-center max-w-3xl mx-auto mb-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 mt-4">
 
                 <span
-                    class="inline-flex items-center px-4 py-2 rounded-full bg-[#29357A]/10 text-[#29357A] dark:text-blue-300 text-[11px] font-bold tracking-[0.18em] uppercase">
-                    Struktur Organisasi
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
+
+                    STRUKTUR ORGANISASI
                 </span>
 
-                <h2 class="mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#29357A] dark:text-white">
+                <h2 class="mt-6 text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
                     Fakultas Ekonomi
                 </h2>
+
+                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                    Struktur kepemimpinan dan organisasi Fakultas Ekonomi yang mendukung
+                    tata kelola akademik, administrasi, dan pengembangan institusi secara profesional.
+                </p>
 
             </div>
             <!-- IMAGE FULL (STRUCTURE ORGANIZATION) -->
             <div class="w-full flex justify-center">
 
                 @if ($landing->organization_structure)
-                    <div class="relative w-full max-w-5xl">
+                    <div class="relative w-full max-w-6xl">
 
                         <!-- Card Wrapper -->
                         <div
-                            class="bg-white dark:bg-[#1f1f1f] rounded-xl shadow-lg border border-gray-100 dark:border-[#2a2a2a] p-3">
+                            class="bg-white rounded-2xl border border-[#29357A]/10 p-4 hover:shadow-lg transition-all duration-300">
 
-                            <!-- Label kecil -->
-                            <div class="mb-3 flex items-center justify-between">
-                                <span
-                                    class="text-xs font-semibold tracking-widest uppercase text-[#29357A] dark:text-blue-300">
+                            <!-- Label -->
+                            <div class="mb-4 flex items-center gap-3">
+
+                                <div
+                                    class="w-9 h-9 rounded-xl bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center">
+
+                                    <i class="fa-solid fa-sitemap text-[#29357A] text-sm"></i>
+
+                                </div>
+
+                                <span class="text-xs font-black tracking-[0.18em] uppercase text-[#29357A]">
                                     Struktur Organisasi
                                 </span>
+
                             </div>
 
                             <!-- Image -->
-                            <div class="overflow-hidden rounded-lg bg-gray-50 dark:bg-[#2a2a2a]">
+                            <div class="overflow-hidden rounded-xl bg-gray-50 border border-gray-100">
+
                                 <img src="{{ asset('storage/' . $landing->organization_structure) }}"
-                                    class="w-full h-auto max-h-[80vh] object-contain mx-auto transition-transform duration-300 hover:scale-[1.02]"
+                                    class="w-full h-auto max-h-[80vh] object-contain mx-auto transition-transform duration-500 hover:scale-[1.01]"
                                     alt="Struktur Organisasi">
+
                             </div>
 
                         </div>
 
                     </div>
                 @else
-                    <div class="w-full max-w-5xl mx-auto">
+                    <div class="w-full max-w-6xl">
+
                         <div
-                            class="h-[420px] bg-gray-100 dark:bg-[#2a2a2a] rounded-xl border border-dashed border-gray-300 dark:border-gray-600 flex flex-col items-center justify-center">
+                            class="h-[420px] bg-gray-50 rounded-2xl border border-dashed border-[#29357A]/20 flex flex-col items-center justify-center">
 
-                            <svg class="w-10 h-10 text-gray-400 mb-2" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14" />
-                            </svg>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center mb-4">
 
-                            <span class="text-gray-500 text-sm">Belum ada struktur organisasi</span>
+                                <i class="fa-solid fa-sitemap text-[#29357A] text-xl"></i>
+
+                            </div>
+
+                            <span class="text-gray-500 font-medium">
+                                Belum ada struktur organisasi
+                            </span>
 
                         </div>
+
                     </div>
                 @endif
 

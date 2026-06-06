@@ -161,100 +161,122 @@
 
                             </div>
 
-                            <!-- Table News -->
-                            <div x-data="modalEditNews()" @keydown.escape.window="show = false"
-                                class="overflow-x-auto bg-white  shadow-sm rounded">
-                                <table id="submittedTable" class="w-full text-sm border border-gray-200">
+
+                            <div x-data="modalEditInformation()" class="overflow-x-auto bg-white shadow-sm rounded">
+
+                                <table class="w-full text-sm border border-gray-200">
                                     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                                         <tr>
-                                            <th class="px-3 py-2 border">No</th>
-                                            <th class="px-3 py-2 border">Gambar</th>
-                                            <th class="px-3 py-2 border">Deskripsi</th>
-                                            <th class="px-3 py-2 border">Aksi</th>
+                                            <th class="px-3 py-2 border w-16">No</th>
+                                            <th class="px-3 py-2 border">Logo</th>
+                                            <th class="px-3 py-2 border">Nama Partner</th>
+                                            <th class="px-3 py-2 border w-40">Aksi</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
-                                        @foreach ($partners as $data)
+                                        @forelse ($partners as $data)
                                             <tr class="hover:bg-gray-50">
+
+                                                <!-- No -->
                                                 <td class="text-center px-3 py-2 border">
                                                     {{ $loop->iteration }}
                                                 </td>
 
+                                                <!-- Logo -->
                                                 <td class="px-3 py-2 border">
-                                                    <img src="{{ asset('storage/' . $data->logo) }}"
-                                                        class="h-20 w-20 object-cover rounded">
+                                                    @if ($data->logo)
+                                                        <img src="{{ asset('storage/' . $data->logo) }}"
+                                                            class="h-20 w-20 object-contain rounded-md border">
+                                                    @else
+                                                        <div
+                                                            class="h-20 w-20 bg-gray-100 flex items-center justify-center text-xs text-gray-400 rounded-md">
+                                                            No Logo
+                                                        </div>
+                                                    @endif
                                                 </td>
 
+                                                <!-- Nama -->
                                                 <td class="px-3 py-2 border">
-                                                    {!! Str::limit(strip_tags($data->name), 150) !!}
+                                                    {{ $data->name }}
                                                 </td>
 
+                                                <!-- Aksi -->
                                                 <td class="px-3 py-2 border">
                                                     <div class="inline-flex">
-                                                        <!-- EDIT -->
-                                                        <button
+
+                                                        <!-- Edit -->
+                                                        <button type="button"
                                                             @click="openModal({
-                                                                id: @js($data->id),
-                                                                description: @js($data->name),
-                                                                image: @js(asset('storage/' . $data->logo))
+                                                                id: {{ $data->id }},
+                                                                name: @js($data->name),
+                                                                logo: @js(asset('storage/' . $data->logo))
                                                             })"
                                                             class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
                                                             Edit
                                                         </button>
 
-                                                        <!-- DELETE -->
-                                                        <form action="{{ route('admin.content.destroy', $data->id) }}"
+                                                        <!-- Delete -->
+                                                        <form action="{{ route('admin.partner.destroy', $data->id) }}"
                                                             method="POST"
-                                                            onsubmit="return confirm('Yakin ingin menghapus fasilitas ini?')">
+                                                            onsubmit="return confirm('Yakin ingin menghapus partner ini?')">
+
                                                             @csrf
                                                             @method('DELETE')
+
                                                             <button type="submit"
                                                                 class="px-3 py-1 text-xs bg-red-600 hover:bg-red-700 text-white border border-red-800 rounded-r -ml-px transition">
                                                                 Delete
                                                             </button>
+
                                                         </form>
+
                                                     </div>
                                                 </td>
+
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="text-center py-5 text-gray-500">
+                                                    Belum ada data partner.
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
-
-
-                                <div x-show="show" x-transition x-init="if ({{ $errors->update->any() ? 'true' : 'false' }}) {
-                                    show = true;
-                                
-                                    $nextTick(() => {
-                                        document.getElementById('editFacilityForm').action =
-                                            '{{ session('edit_id') ? route('facilities.update', session('edit_id')) : '' }}';
-                                    });
-                                }"
+                                <!-- Modal Edit -->
+                                <div x-show="show" x-cloak x-transition
                                     class="fixed inset-0 bg-black/40 z-50 flex items-start justify-center p-4 overflow-y-auto">
 
                                     <div
-                                        class="bg-white rounded-lg shadow-md w-full max-w-md max-h-screen overflow-y-auto relative">
+                                        class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
-                                        <!-- HEADER -->
-                                        <div class="flex items-center justify-between p-4 border-b">
-                                            <h2 class="text-base font-semibold">Edit Fasilitas</h2>
+                                        <!-- Header -->
+                                        <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
+
+                                            <div>
+                                                <h2 class="text-base font-semibold text-white">
+                                                    Edit Partner
+                                                </h2>
+
+                                                <p class="text-blue-100 text-xs">
+                                                    Perbarui data Partner
+                                                </p>
+                                            </div>
+
                                             <button @click="show = false"
-                                                class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+                                                class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                                &times;
+                                            </button>
+
                                         </div>
 
-                                        <!-- CONTENT -->
-                                        <div class="p-4">
+                                        <!-- Content -->
+                                        <div class="p-5">
 
-                                            <!-- ERROR GLOBAL -->
-                                            @if (session('error'))
-                                                <div class="mb-3 p-3 bg-red-100 text-red-700 rounded text-sm">
-                                                    {{ session('error') }}
-                                                </div>
-                                            @endif
-
-                                            <!-- ERROR VALIDASI -->
                                             @if ($errors->update->any())
-                                                <div class="mb-3 p-3 bg-red-100 text-red-700 rounded text-sm">
-                                                    <ul class="list-disc pl-5">
+                                                <div class="mb-4 p-3 rounded-md border border-red-200 bg-red-50">
+                                                    <ul class="list-disc pl-5 text-sm text-red-600">
                                                         @foreach ($errors->update->all() as $error)
                                                             <li>{{ $error }}</li>
                                                         @endforeach
@@ -262,93 +284,144 @@
                                                 </div>
                                             @endif
 
-                                            <form id="editFacilityForm"
-                                                action="{{ session('edit_id') ? route('facilities.update', session('edit_id')) : '' }}"
-                                                method="POST" enctype="multipart/form-data" class="space-y-4">
+                                            <form id="editPartnerForm" method="POST" enctype="multipart/form-data"
+                                                class="space-y-4">
+
                                                 @csrf
                                                 @method('PUT')
 
-                                                <!-- PREVIEW -->
-                                                <div>
-                                                    <x-input-label value="Preview Gambar" />
-                                                    <img :src="form.image"
-                                                        class="h-24 w-24 object-cover rounded border mt-1">
+                                                <!-- Preview -->
+                                                <div x-show="form.logo">
+
+                                                    <x-input-label value="Preview Logo"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <div class="mt-2">
+                                                        <img :src="form.logo"
+                                                            class="h-32 w-32 object-contain rounded-md border bg-white p-2">
+                                                    </div>
+
                                                 </div>
 
-                                                <!-- IMAGE -->
+                                                <!-- Nama Partner -->
                                                 <div>
-                                                    <x-input-label value="Ganti Gambar (Opsional)" />
-                                                    <input type="file" name="image"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md">
 
-                                                    @error('image', 'update')
-                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    <x-input-label value="Nama Partner"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <input type="text" name="name" x-model="form.name"
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                    @error('name', 'update')
+                                                        <p class="text-red-500 text-xs mt-1">
+                                                            {{ $message }}
+                                                        </p>
                                                     @enderror
+
                                                 </div>
 
-                                                <!-- DESCRIPTION -->
+                                                <!-- Upload Logo -->
                                                 <div>
-                                                    <x-input-label value="Deskripsi" />
-                                                    <textarea id="edit_description" name="description" rows="4"
-                                                        class="block mt-1 w-full text-sm border-gray-300 rounded-md px-2 py-1.5">{{ old('description') }}</textarea>
 
-                                                    @error('description', 'update')
-                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    <x-input-label value="Ganti Logo (Opsional)"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <div class="mt-2 border border-dashed border-gray-300 rounded-md p-3">
+
+                                                        <input type="file" name="logo"
+                                                            class="block w-full text-sm text-gray-600
+                                                            file:mr-3
+                                                            file:px-3
+                                                            file:py-1.5
+                                                            file:rounded
+                                                            file:border-0
+                                                            file:bg-blue-50
+                                                            file:text-blue-700
+                                                            file:text-sm">
+
+                                                    </div>
+
+                                                    @error('logo', 'update')
+                                                        <p class="text-red-500 text-xs mt-1">
+                                                            {{ $message }}
+                                                        </p>
                                                     @enderror
+
                                                 </div>
 
-                                                <!-- ACTION -->
-                                                <div class="flex justify-end gap-2 pt-2">
+                                                <!-- Footer -->
+                                                <div class="flex justify-end gap-2 border-t pt-4">
+
                                                     <button type="button" @click="show=false"
-                                                        class="bg-gray-400 text-white text-sm px-3 py-1.5 rounded-md">
-                                                        Close
+                                                        class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
+                                                        Batal
                                                     </button>
 
                                                     <button type="submit"
-                                                        class="bg-blue-600 text-white text-sm px-3 py-1.5 rounded-md">
+                                                        class="px-4 py-2 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded-md">
                                                         Update
                                                     </button>
+
                                                 </div>
+
                                             </form>
+
                                         </div>
+
                                     </div>
+
                                 </div>
-                                <script>
-                                    function modalEditNews() {
-                                        return {
-                                            show: false,
-                                            form: {
-                                                id: null,
-                                                description: '',
-                                                image: ''
-                                            },
-
-                                            openModal(data) {
-                                                this.show = true;
-
-                                                this.form.id = data.id;
-                                                this.form.description = data.description;
-                                                this.form.image = data.image;
-
-                                                this.$nextTick(() => {
-                                                    document.getElementById("editFacilityForm").action = "/admin/facilities/" + data.id;
-
-                                                    // 🔥 hanya isi jika tidak ada error
-                                                    if (!{{ $errors->update->any() ? 'true' : 'false' }}) {
-                                                        document.getElementById("edit_description").value = data.description ?? '';
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    }
-                                </script>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    <script>
+        function modalEditInformation() {
+            return {
+                show: false,
+
+                form: {
+                    id: null,
+                    name: '',
+                    logo: ''
+                },
+
+                openModal(data) {
+
+                    this.show = true;
+
+                    this.form = {
+                        id: data.id,
+                        name: data.name,
+                        logo: data.logo
+                    };
+
+                    this.$nextTick(() => {
+
+                        document.getElementById('editPartnerForm').action =
+                            "{{ url('admin/partner') }}/" + data.id;
+
+                    });
+                }
+            }
+        }
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#submittedTable').DataTable({
+                pageLength: 5,
+                responsive: true
+            });
+        });
+    </script>
+
     <script>
         function previewModalAdd() {
             return {
@@ -361,16 +434,6 @@
             }
         }
     </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#submittedTable').DataTable({
-                pageLength: 5,
-                responsive: true
-            });
-        });
-    </script>
-
 
 
     <script src="{{ asset('assets/js/main.min.js?v=1772427751095') }}"></script>

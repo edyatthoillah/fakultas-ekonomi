@@ -21,7 +21,7 @@
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
                     Kumpulan data dan informasi terkait penelitian, publikasi ilmiah,
                     penghargaan, serta akreditasi yang mencerminkan capaian dan kontribusi
                     akademik institusi.
@@ -53,7 +53,7 @@
                                     {{ $item->name }}
                                 </h3>
 
-                                <p class="text-sm text-gray-600 leading-6">
+                                <p class="text-sm text-black font-bold leading-6">
                                     {{ Str::limit(trim(strip_tags(html_entity_decode($item->description))), 160) }}
                                 </p>
 
@@ -114,10 +114,11 @@
                         <!-- TITLE SECTION (NO OVERLAP) -->
                         <div class="px-6 pt-5 pb-3 border-b border-gray-100">
 
-                            <h3 class="text-lg font-bold text-[#29357A] leading-snug" x-text="item.name">
+                            <h3 class="text-lg font-bold text-black leading-snug" x-text="item.name">
                             </h3>
 
-                            <p class="text-sm text-gray-500 mt-1" x-show="item.institution" x-text="item.institution">
+                            <p class="text-sm text-black font-bold mt-1" x-show="item.institution"
+                                x-text="item.institution">
                             </p>
 
                         </div>
@@ -125,7 +126,7 @@
                         <!-- CONTENT -->
                         <div class="p-6 overflow-y-auto">
 
-                            <p class="text-sm leading-7 text-gray-600" x-text="item.description">
+                            <p class="text-sm leading-7 text-black font-bold" x-text="item.description">
                             </p>
 
                         </div>

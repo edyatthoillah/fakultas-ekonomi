@@ -21,7 +21,7 @@
                     Dosen Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8">
+                <p class="mt-5 text-black font-bold leading-8">
                     Mengenal lebih dekat para dosen dan tenaga pengajar yang berperan
                     dalam mendukung proses pendidikan di Fakultas Ekonomi.
                 </p>

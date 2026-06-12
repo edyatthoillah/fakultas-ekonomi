@@ -216,7 +216,7 @@
                                     Dr. Sukardi., S.E., M.M
                                 </h4>
 
-                                <p class="text-[12px] text-black mt-1 leading-relaxed">
+                                <p class="text-[12px] text-black font-bold mt-1 leading-relaxed">
                                     Dekan Fakultas Ekonomi Universitas Darma Persada
                                 </p>
                             </div>
@@ -282,7 +282,7 @@
                     </h2>
 
                     <!-- Description -->
-                    <p class="mt-6 text-[15px] leading-8 text-gray-600 max-w-xl">
+                    <p class="mt-6 text-[15px] leading-8 text-black font-bold max-w-xl">
                         {{ $landing->hero_title }}
                     </p>
 
@@ -303,7 +303,7 @@
                                     Kurikulum Modern
                                 </h4>
 
-                                <p class="text-[13px] text-gray-600 mt-1 leading-6">
+                                <p class="text-[13px] text-black mt-1 leading-6 font-bold">
                                     Pembelajaran berbasis industri dan teknologi digital.
                                 </p>
                             </div>
@@ -322,7 +322,7 @@
                                     Lingkungan Akademik Aktif
                                 </h4>
 
-                                <p class="text-[13px] text-gray-600 mt-1 leading-6">
+                                <p class="text-[13px] text-black mt-1 leading-6 font-bold">
                                     Mendukung pengembangan kreativitas dan soft skill mahasiswa.
                                 </p>
                             </div>
@@ -380,8 +380,8 @@
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                   PROFILE SECTION ANIMATION
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       PROFILE SECTION ANIMATION
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========================== */
 
         .profile-left {
             opacity: 0;
@@ -544,7 +544,7 @@
                     Prospek Karir Lulusan
                 </h2>
 
-                <p class="mt-5 text-[15px] leading-8 text-gray-600">
+                <p class="mt-5 text-[15px] leading-8 text-black font-bold">
                     Lulusan Fakultas Ekonomi Universitas Darma Persada memiliki peluang karir luas
                     di berbagai sektor industri, bisnis, keuangan, dan pemerintahan.
                 </p>
@@ -578,7 +578,7 @@
                             Pelaku Bisnis/Wirausaha
                         </h3>
 
-                        <p class="text-[14px] leading-7 text-gray-600">
+                        <p class="text-[14px] leading-7 text-black font-bold">
                             Orang yang memiliki visi dan kompetensi dalam membangun dan
                             mengelola bisnis yang baik.
                         </p>
@@ -610,7 +610,7 @@
                             Manajer Lini
                         </h3>
 
-                        <p class="text-[14px] leading-7 text-gray-600">
+                        <p class="text-[14px] leading-7 text-black font-bold">
                             Orang yang ahli dalam mengelola tugas-tugas manajerial dalam
                             perusahaan.
                         </p>
@@ -642,7 +642,7 @@
                             Pendidik/Pengajar
                         </h3>
 
-                        <p class="text-[14px] leading-7 text-gray-600">
+                        <p class="text-[14px] leading-7 text-black font-bold">
                             Orang yang memiliki kompetensi untuk merancang dan melaksanakan
                             proses pembelajaran yang efektif serta memiliki pemahaman mendalam
                             tentang bidang ajarnya.
@@ -675,7 +675,7 @@
                             Konsultan
                         </h3>
 
-                        <p class="text-[14px] leading-7 text-gray-600">
+                        <p class="text-[14px] leading-7 text-black font-bold">
                             Orang yang ahli dalam menganalisis masalah, menyusun strategi,
                             serta memberikan solusi dan rekomendasi kepada klien.
                         </p>
@@ -688,8 +688,8 @@
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           Smooth Reveal Animation
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Smooth Reveal Animation
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
 
         .reveal-up {
             opacity: 0;
@@ -706,8 +706,8 @@
         }
 
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                           Career Cards
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Career Cards
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
 
         .career-card {
             opacity: 0;
@@ -832,7 +832,7 @@
                     Mitra & Kerja Sama
                 </h2>
 
-                <p class="mt-5 text-[15px] leading-8 text-gray-600">
+                <p class="mt-5 text-[15px] leading-8 text-black font-bold">
                     Fakultas Ekonomi Universitas Darma Persada menjalin kerja sama
                     dengan berbagai institusi pendidikan, perusahaan, dan industri nasional maupun Internasional.
                 </p>
@@ -1029,7 +1029,7 @@
                                             {{ $item->title }}
                                         </h3>
 
-                                        <p class="text-gray-600 text-sm leading-7 line-clamp-3 flex-1">
+                                        <p class="text-black font-bold text-sm leading-7 line-clamp-3 flex-1">
                                             {{ Str::limit(strip_tags($item->content), 120) }}
                                         </p>
 
@@ -1098,7 +1098,7 @@
                     Pertanyaan yang Sering Diajukan
                 </h2>
 
-                <p class="mt-5 text-[15px] leading-8 text-gray-600">
+                <p class="mt-5 text-[15px] leading-8 text-black font-bold">
                     Temukan jawaban atas berbagai pertanyaan seputar Fakultas Ekonomi
                     Universitas Darma Persada mulai dari program studi, pendaftaran,
                     fasilitas, hingga peluang pengembangan mahasiswa.
@@ -1144,7 +1144,7 @@
 
                         <div class="border-t border-slate-100 py-6">
 
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
                                 Fakultas Ekonomi Universitas Darma Persada menyediakan beberapa program studi yang berfokus
                                 pada pengembangan ilmu ekonomi dan bisnis, seperti Manajemen, Akuntansi, dan program lainnya
                                 yang mendukung kebutuhan dunia kerja modern.
@@ -1193,7 +1193,7 @@
 
                         <div class="border-t border-slate-100 py-6">
 
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
                                 Calon mahasiswa dapat melakukan pendaftaran secara online melalui website resmi Universitas
                                 Darma Persada dengan mengisi formulir pendaftaran, mengunggah dokumen persyaratan, dan
                                 mengikuti tahapan seleksi yang telah ditentukan.
@@ -1242,7 +1242,7 @@
 
                         <div class="border-t border-slate-100 py-6">
 
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
                                 Ya, Fakultas Ekonomi Universitas Darma Persada menyediakan program magang dan kerja praktik
                                 yang bekerja sama dengan berbagai perusahaan, instansi, dan dunia industri untuk
                                 meningkatkan pengalaman mahasiswa sebelum lulus.
@@ -1291,7 +1291,7 @@
 
                         <div class="border-t border-slate-100 py-6">
 
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
                                 Fakultas Ekonomi Universitas Darma Persada menyediakan berbagai informasi terkait program
                                 beasiswa, baik dari pemerintah, yayasan, maupun mitra perusahaan untuk mahasiswa berprestasi
                                 maupun yang membutuhkan dukungan biaya pendidikan.
@@ -1340,7 +1340,7 @@
 
                         <div class="border-t border-slate-100 py-6">
 
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9">
+                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
                                 Fakultas Ekonomi didukung dengan ruang kelas modern,
                                 laboratorium komputer, perpustakaan, koneksi internet,
                                 serta berbagai kegiatan organisasi mahasiswa untuk
@@ -1422,7 +1422,7 @@
                 </h2>
 
                 <!-- Description -->
-                <p class="mt-6 max-w-2xl mx-auto text-[15px] lg:text-[16px] leading-8 text-gray-600">
+                <p class="mt-6 max-w-2xl mx-auto text-[15px] lg:text-[16px] font-bold leading-8 text-black">
 
                     Bergabunglah bersama lingkungan akademik yang inovatif,
                     profesional, dan berorientasi pada dunia industri untuk

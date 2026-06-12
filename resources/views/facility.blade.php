@@ -22,7 +22,7 @@
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
                     Berbagai fasilitas modern tersedia untuk mendukung kegiatan akademik,
                     penelitian, organisasi mahasiswa, dan pengembangan kompetensi mahasiswa.
                 </p>

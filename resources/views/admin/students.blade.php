@@ -112,27 +112,17 @@
                                         class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                         <!-- Header -->
-                                        <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
-
-                                            <div>
-                                                <h2 class="text-base font-semibold text-white">
-                                                    Tambah {{ $category->name }}
-                                                </h2>
-
-                                                <p class="text-blue-100 text-xs">
-                                                    Tambahkan data student baru
-                                                </p>
-                                            </div>
-
+                                        <!-- Header -->
+                                        <div class="flex items-center justify-between p-4 border-b">
+                                            <h2 class="text-base font-semibold">Tambah Data {{ $category->name }}</h2>
                                             <button @click="show = false"
-                                                class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                                class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                                 &times;
                                             </button>
-
                                         </div>
 
                                         <!-- Content -->
-                                        <div class="p-5">
+                                        <div class="px-4">
 
                                             <form action="{{ route('admin.students.store') }}" method="POST"
                                                 enctype="multipart/form-data" class="space-y-4">
@@ -143,14 +133,14 @@
                                                     value="{{ $category->id }}">
 
                                                 <!-- Nama -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Nama / Judul"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="text" name="name" value="{{ old('name') }}"
                                                         placeholder="Masukkan nama atau judul student"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 block w-full p-4 text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @if ($errors->store->has('name'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -161,7 +151,7 @@
                                                 </div>
 
                                                 <!-- Upload Gambar -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Gambar"
                                                         class="text-sm font-medium text-gray-700" />
@@ -190,7 +180,7 @@
                                                 </div>
 
                                                 <!-- Deskripsi -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Deskripsi"
                                                         class="text-sm font-medium text-gray-700 dark:text-gray-300" />
@@ -213,7 +203,7 @@
                                                 </div>
 
                                                 <!-- Institution -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Instansi / Keterangan"
                                                         class="text-sm font-medium text-gray-700" />
@@ -221,7 +211,7 @@
                                                     <input type="text" name="institution"
                                                         value="{{ old('institution') }}"
                                                         placeholder="Contoh: Universitas, Perusahaan, Lomba, dll"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 block p-4 w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @if ($errors->store->has('institution'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -232,13 +222,13 @@
                                                 </div>
 
                                                 <!-- Tanggal -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Tanggal"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="date" name="date" value="{{ old('date') }}"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @if ($errors->store->has('date'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -384,23 +374,12 @@
                                         class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                         <!-- Header -->
-                                        <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
-
-                                            <div>
-                                                <h2 class="text-base font-semibold text-white">
-                                                    Edit {{ $category->name }}
-                                                </h2>
-
-                                                <p class="text-blue-100 text-xs">
-                                                    Perbarui data {{ $category->name }}
-                                                </p>
-                                            </div>
-
+                                        <div class="flex items-center justify-between p-4 border-b">
+                                            <h2 class="text-base font-semibold">Edit Data {{ $category->name }}</h2>
                                             <button @click="show = false"
-                                                class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                                class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                                 &times;
                                             </button>
-
                                         </div>
 
                                         <!-- Content -->
@@ -417,7 +396,7 @@
                                             @endif
 
                                             <form id="editStudentForm" method="POST" enctype="multipart/form-data"
-                                                class="space-y-4">
+                                                class="">
 
                                                 @csrf
                                                 @method('PUT')
@@ -436,13 +415,13 @@
                                                 </div>
 
                                                 <!-- Nama -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Nama"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="text" name="name" x-model="form.name"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @error('name', 'update')
                                                         <p class="text-red-500 text-xs mt-1">
@@ -453,30 +432,30 @@
                                                 </div>
 
                                                 <!-- Institusi -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Institusi"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="text" name="institution" x-model="form.institution"
                                                         placeholder="Kampus / Lomba / Perusahaan"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                 </div>
 
                                                 <!-- Tanggal -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Tanggal"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="date" name="date" x-model="form.date"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                 </div>
 
                                                 <!-- Upload -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Ganti Gambar (Opsional)"
                                                         class="text-sm font-medium text-gray-700" />
@@ -499,7 +478,7 @@
                                                 </div>
 
                                                 <!-- Deskripsi -->
-                                                <div>
+                                                <div class="my-4">
 
                                                     <x-input-label value="Deskripsi"
                                                         class="text-sm font-medium text-gray-700 dark:text-gray-300" />

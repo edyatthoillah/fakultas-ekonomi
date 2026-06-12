@@ -22,7 +22,7 @@
                     Visi & Misi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
                     Arah dan tujuan Fakultas Ekonomi dalam mengembangkan pendidikan,
                     penelitian, dan pengabdian kepada masyarakat guna menghasilkan lulusan
                     yang unggul, profesional, dan berdaya saing.
@@ -51,7 +51,7 @@
 
                     </div>
 
-                    <div class="text-gray-600 leading-8 text-[15px]">
+                    <div class="text-black leading-8 text-[15px]">
                         {!! $landing->vision !!}
                     </div>
 
@@ -76,7 +76,7 @@
 
                     </div>
 
-                    <div class="text-gray-600 leading-8 text-[15px]">
+                    <div class="text-black leading-8 text-[15px]">
                         {!! $landing->mission !!}
                     </div>
 

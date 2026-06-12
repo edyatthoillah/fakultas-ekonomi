@@ -22,7 +22,7 @@
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                <p class="mt-5 text-black font-bold  leading-8 max-w-2xl mx-auto">
                     Struktur kepemimpinan dan organisasi Fakultas Ekonomi yang mendukung
                     tata kelola akademik, administrasi, dan pengembangan institusi secara profesional.
                 </p>

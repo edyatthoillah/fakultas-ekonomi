@@ -113,25 +113,13 @@
                                         class="relative w-full max-w-2xl bg-white rounded shadow-xl overflow-hidden">
 
                                         <!-- Header -->
-                                        <div class="flex items-center justify-between px-4 py-3 bg-blue-600">
-
-                                            <div>
-                                                <h2 class="text-base font-semibold text-white">
-                                                    Tambah Tenaga Pengajar
-                                                </h2>
-
-                                                <p class="text-xs text-blue-100">
-                                                    Tambahkan data tenaga pengajar Fakultas Ekonomi
-                                                </p>
-                                            </div>
-
+                                        <!-- Header -->
+                                        <div class="flex items-center justify-between p-4 border-b">
+                                            <h2 class="text-base font-semibold">Tambah Tenaga Pengajar</h2>
                                             <button @click="show = false"
-                                                class="w-7 h-7 flex items-center justify-center rounded bg-white/20 hover:bg-white/30 text-white transition">
-
-                                                <i class="fas fa-times text-xs"></i>
-
+                                                class="text-gray-400 hover:text-gray-600 text-xl leading-none">
+                                                &times;
                                             </button>
-
                                         </div>
 
                                         <!-- Content -->
@@ -455,23 +443,13 @@
                                     class="relative w-full max-w-2xl bg-white rounded-xs shadow-xl overflow-hidden">
 
                                     <!-- Header -->
-                                    <div class="flex items-center justify-between px-4 py-3 bg-blue-600">
-
-                                        <div>
-                                            <h2 class="text-base font-semibold text-white">
-                                                Edit Data Dosen
-                                            </h2>
-
-                                            <p class="text-xs text-blue-100">
-                                                Perbarui informasi dosen
-                                            </p>
-                                        </div>
-
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between p-4 border-b">
+                                        <h2 class="text-base font-semibold">Edit Data Pengajar</h2>
                                         <button @click="show = false"
-                                            class="w-7 h-7 flex items-center justify-center rounded bg-white/20 hover:bg-white/30 text-white transition">
-                                            <i class="fas fa-times text-xs"></i>
+                                            class="text-gray-400 hover:text-gray-600 text-xl leading-none">
+                                            &times;
                                         </button>
-
                                     </div>
 
                                     <!-- Content -->

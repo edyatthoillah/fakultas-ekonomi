@@ -112,25 +112,16 @@
                                         class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                         <!-- Header -->
-                                        <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
-
-                                            <div>
-                                                <h2 class="text-base font-semibold text-white">
-                                                    Tambah Fasilitas
-                                                </h2>
-                                                <p class="text-blue-100 text-xs">
-                                                    Tambahkan data fasilitas baru
-                                                </p>
-                                            </div>
-
+                                        <div class="flex items-center justify-between p-4 border-b">
+                                            <h2 class="text-base font-semibold">Tambah {{ $category->name }}</h2>
                                             <button @click="show = false"
-                                                class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                                class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                                 &times;
                                             </button>
                                         </div>
 
                                         <!-- Content -->
-                                        <div class="p-5">
+                                        <div class="px-4">
 
                                             <form action="{{ route('admin.facilities.store') }}" method="POST"
                                                 enctype="multipart/form-data" class="space-y-4">
@@ -173,7 +164,7 @@
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <textarea name="description" rows="4" placeholder="Masukkan deskripsi fasilitas..."
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ old('description') }}</textarea>
+                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ old('description') }}</textarea>
 
                                                     @if ($errors->store->has('description'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -183,7 +174,7 @@
                                                 </div>
 
                                                 <!-- Footer -->
-                                                <div class="flex justify-end gap-2 border-t pt-4">
+                                                <div class="flex justify-end gap-2 border-t py-4 ">
 
                                                     <button type="button" @click="show=false"
                                                         class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
@@ -289,23 +280,14 @@
                                     class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                     <!-- Header -->
-                                    <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
 
-                                        <div>
-                                            <h2 class="text-base font-semibold text-white">
-                                                Edit Fasilitas
-                                            </h2>
-
-                                            <p class="text-blue-100 text-xs">
-                                                Perbarui data fasilitas
-                                            </p>
-                                        </div>
-
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between p-4 border-b">
+                                        <h2 class="text-base font-semibold">Edit {{ $category->name }}</h2>
                                         <button @click="show = false"
-                                            class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                            class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                             &times;
                                         </button>
-
                                     </div>
 
                                     <!-- Content -->
@@ -376,7 +358,7 @@
                                                     class="text-sm font-medium text-gray-700" />
 
                                                 <textarea id="edit_description" name="description" rows="5"
-                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                                    class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
 
                                                 @error('description', 'update')
                                                     <p class="text-red-500 text-xs mt-1">
@@ -387,7 +369,7 @@
                                             </div>
 
                                             <!-- Footer -->
-                                            <div class="flex justify-end gap-2 border-t pt-4">
+                                            <div class="flex justify-end gap-2 border-t py-4">
 
                                                 <button type="button" @click="show=false"
                                                     class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">

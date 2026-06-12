@@ -110,25 +110,16 @@
                                         class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                         <!-- Header -->
-                                        <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
-
-                                            <div>
-                                                <h2 class="text-base font-semibold text-white">
-                                                    Tambah {{ $category->name }}
-                                                </h2>
-                                                <p class="text-blue-100 text-xs">
-                                                    Tambahkan data informasi baru
-                                                </p>
-                                            </div>
-
+                                        <div class="flex items-center justify-between p-4 border-b">
+                                            <h2 class="text-base font-semibold">Tambah {{ $category->name }}</h2>
                                             <button @click="show = false"
-                                                class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
+                                                class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                                 &times;
                                             </button>
                                         </div>
 
                                         <!-- Content -->
-                                        <div class="p-5">
+                                        <div class="px-4">
 
                                             @if (session('error'))
                                                 <div class="mb-4 p-3 rounded-md border border-red-200 bg-red-50">
@@ -153,7 +144,7 @@
 
                                                     <input type="text" name="title" value="{{ old('title') }}"
                                                         placeholder="Masukkan judul informasi"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md p-4 shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @if ($errors->store->has('title'))
                                                         <p class="text-red-500 text-xs mt-1">
@@ -324,28 +315,16 @@
                                     class="bg-white rounded-md shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto relative">
 
                                     <!-- Header -->
-                                    <div class="flex items-center justify-between px-5 py-3 bg-blue-600 rounded-t-md">
-
-                                        <div>
-                                            <h2 class="text-base font-semibold text-white">
-                                                Edit Informasi
-                                            </h2>
-
-                                            <p class="text-blue-100 text-xs">
-                                                Perbarui data informasi
-                                            </p>
-                                        </div>
-
+                                    <div class="flex items-center justify-between p-4 border-b">
+                                        <h2 class="text-base font-semibold">Edit Data {{ $category->name }}</h2>
                                         <button @click="show = false"
-                                            class="w-7 h-7 flex items-center justify-center rounded-sm bg-white/20 hover:bg-white/30 text-white transition">
-
+                                            class="text-gray-400 hover:text-gray-600 text-xl leading-none">
                                             &times;
                                         </button>
-
                                     </div>
 
                                     <!-- Content -->
-                                    <div class="p-5">
+                                    <div class="px-4">
 
                                         @if ($errors->update->any())
                                             <div class="mb-4 p-3 rounded-md border border-red-200 bg-red-50">
@@ -382,7 +361,7 @@
                                                 <x-input-label value="Judul" class="text-sm font-medium text-gray-700" />
 
                                                 <input type="text" name="title" x-model="form.title"
-                                                    class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm">
+                                                    class="mt-1 block w-full p-4 text-sm border-gray-300 rounded-md shadow-sm">
 
                                                 @error('title', 'update')
                                                     <p class="text-red-500 text-xs mt-1">

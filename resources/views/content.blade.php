@@ -22,7 +22,7 @@
                     Fakultas Ekonomi
                 </h2>
 
-                <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
+                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
                     Kumpulan data dan informasi terkait penelitian, publikasi ilmiah,
                     penghargaan, serta akreditasi yang mencerminkan capaian dan kontribusi
                     akademik institusi.
@@ -74,7 +74,7 @@
                                     {{ $item->title }}
                                 </h3>
 
-                                <p class="mt-2 text-sm text-gray-600 leading-7 line-clamp-3">
+                                <p class="mt-2 text-sm text-black font-bold leading-7 line-clamp-3">
                                     {{ Str::limit(strip_tags($item->description), 180) }}
                                 </p>
 
@@ -135,7 +135,8 @@
                             </h2>
 
                             <!-- DESCRIPTION -->
-                            <div class="text-sm md:text-base text-gray-600 leading-7 prose max-w-none" x-html="description">
+                            <div class="text-sm md:text-base text-black font-bold leading-7 prose max-w-none"
+                                x-html="description">
                             </div>
 
                         </div>

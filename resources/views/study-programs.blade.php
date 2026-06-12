@@ -161,7 +161,7 @@
                                 {{ $studyProgram->name }}
                             </h2>
 
-                            <p class="text-gray-500">
+                            <p class="text-black font-bold">
                                 Program Studi
                             </p>
 
@@ -209,7 +209,7 @@
 
                     <div class="bg-white rounded-lg border border-gray-100 shadow-lg p-8 lg:p-10">
 
-                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        <div class="prose prose-lg max-w-none text-black font-bold leading-relaxed">
 
                             {!! $studyProgram->description !!}
 
@@ -226,7 +226,7 @@
                                 Program Berkualitas
                             </h3>
 
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <p class="text-black font-bold text-sm leading-relaxed">
                                 Didukung kurikulum yang relevan dengan kebutuhan dunia kerja,
                                 dunia usaha, dan perkembangan teknologi terkini.
                             </p>
@@ -239,7 +239,7 @@
                                 Lulusan Kompetitif
                             </h3>
 
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <p class="text-black font-bold text-sm leading-relaxed">
                                 Menghasilkan lulusan yang profesional, adaptif,
                                 dan siap bersaing di tingkat nasional maupun global.
                             </p>
@@ -300,7 +300,7 @@
                                 {{ $studyProgram->head_of_program }}
                             </h3>
 
-                            <p class="text-gray-500 mt-2">
+                            <p class="text-black font-bold mt-2">
                                 Ketua Program Studi {{ $studyProgram->name }}
                             </p>
 
@@ -367,7 +367,7 @@
                                 {{ $studyProgram->head_of_program }}
                             </h4>
 
-                            <p class="text-gray-500">
+                            <p class="text-black font-bold">
                                 Ketua Program Studi {{ $studyProgram->name }}
                             </p>
 
@@ -406,7 +406,7 @@
                     Visi & Misi
                 </h2>
 
-                <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+                <p class="mt-4 text-black font-bold max-w-3xl mx-auto">
                     Landasan dalam mengembangkan pendidikan, penelitian,
                     dan pengabdian kepada masyarakat di Program Studi
                     {{ $studyProgram->name }}.
@@ -652,7 +652,7 @@
                     Akreditasi & Kontak
                 </h2>
 
-                <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+                <p class="mt-4 text-black font-bold max-w-3xl mx-auto">
                     Informasi resmi mengenai akreditasi, kontak, dan dokumen
                     Program Studi {{ $studyProgram->name }}.
                 </p>
@@ -680,7 +680,7 @@
                     <div class="space-y-4">
 
                         <div>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-sm text-black font-bold">
                                 Status
                             </p>
 
@@ -690,7 +690,7 @@
                         </div>
 
                         <div>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-sm text-black font-bold">
                                 Nomor SK
                             </p>
 
@@ -720,7 +720,7 @@
                     <div class="space-y-5">
 
                         <div>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-sm text-black font-bold">
                                 Email
                             </p>
 
@@ -730,7 +730,7 @@
                         </div>
 
                         <div>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-sm text-black font-bold">
                                 Telepon
                             </p>
 

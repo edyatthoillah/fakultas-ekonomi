@@ -81,7 +81,7 @@
                             </h3>
                         </div>
 
-                        <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
 
                             <div>
                                 <label class="block text-xs font-medium text-gray-700 mb-1">
@@ -91,6 +91,15 @@
                                 <input type="text" name="app_name" value="{{ $landing->app_name ?? '' }}"
                                     class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2 focus:ring-1 focus:ring-green-500"
                                     required>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-700 mb-1">
+                                    Nama Dekan
+                                </label>
+
+                                <input type="text" name="head_of_faculty" value="{{ $landing->head_of_faculty ?? '' }}"
+                                    class="w-full text-sm rounded-xs border border-gray-300 px-3 py-2 focus:ring-1 focus:ring-blue-500">
                             </div>
 
                             <div>

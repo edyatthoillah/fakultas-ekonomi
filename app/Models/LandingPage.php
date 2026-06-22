@@ -22,6 +22,7 @@ class LandingPage extends Model
         'about_us',
         'about_us_image',
         'vision',
+        'head_of_faculty',
         'mission',
         'organization_structure',
         'leaflet_link',

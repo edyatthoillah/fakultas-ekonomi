@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-                Schema::create('landing_pages', function (Blueprint $table) {
+            Schema::create('landing_pages', function (Blueprint $table) {
             $table->id();
 
             // Branding
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('app_name')->nullable();
 
             // Hero Section
+            $table->string('head_of_faculty')->nullable();
             $table->text('hero_title')->nullable();
             $table->string('hero_image')->nullable();
 

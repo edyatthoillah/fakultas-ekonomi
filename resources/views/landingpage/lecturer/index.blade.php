@@ -78,10 +78,10 @@
 
                                             <div class="mt-3 text-sm text-gray-600 space-y-1">
 
-                                                <p>
+                                                {{-- <p>
                                                     <span class="font-semibold text-[#29357A]">NIP:</span>
                                                     {{ $lecturer->nip ?: '-' }}
-                                                </p>
+                                                </p> --}}
 
                                                 <p>
                                                     <span class="font-semibold text-[#29357A]">NIDN:</span>

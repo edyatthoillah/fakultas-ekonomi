@@ -213,11 +213,11 @@
                             <div>
 
                                 <h4 class="text-[13px] font-black tracking-wide text-[#29357A]">
-                                    Dr. Sukardi., S.E., M.M
+                                    {{ $landing->head_of_faculty }}
                                 </h4>
 
-                                <p class="text-[12px] text-black font-bold mt-1 leading-relaxed">
-                                    Dekan Fakultas Ekonomi Universitas Darma Persada
+                                <p class="text-[12px] text-black font-bold leading-relaxed">
+                                    Dekan {{ $landing->app_name }} (Universitas Darma Persada)
                                 </p>
                             </div>
                         </div>
@@ -380,8 +380,8 @@
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       PROFILE SECTION ANIMATION
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           PROFILE SECTION ANIMATION
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
 
         .profile-left {
             opacity: 0;
@@ -688,8 +688,8 @@
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Smooth Reveal Animation
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Smooth Reveal Animation
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================== */
 
         .reveal-up {
             opacity: 0;
@@ -706,8 +706,8 @@
         }
 
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Career Cards
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Career Cards
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================== */
 
         .career-card {
             opacity: 0;

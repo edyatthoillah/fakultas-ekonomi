@@ -241,6 +241,7 @@ class LandingPageController extends Controller
 
         $landing->update([
             'app_name' => $request->app_name,
+            'head_of_faculty' => $request->head_of_faculty,
             'hero_title' => $request->hero_title,
             'instagram' => $request->instagram,
             'email' => $request->email,

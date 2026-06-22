@@ -253,9 +253,7 @@
                             <a href="{{ url('https://karirlink.id/') }}"
                                 class="block px-4 py-2 text-[13px] font-semibold text-gray-700
                                      hover:bg-gray-100 hover:text-[#1d2d74] transition">
-
                                 Pusat Karir
-
                             </a>
 
                         </div>
@@ -300,6 +298,34 @@
                     class="flex items-center py-3 px-4 rounded-xl text-sm font-semibold text-[#29357A] hover:bg-[#29357A]/5 transition">
                     Beranda
                 </a>
+                <!-- Program Studi -->
+                <!-- Program Studi -->
+                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
+
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
+
+                        <span>Program Studi</span>
+
+                        <i class="fa-solid fa-chevron-down transition duration-300" :class="{ 'rotate-180': open }">
+                        </i>
+
+                    </button>
+
+                    <div x-show="open" x-collapse class="bg-white">
+
+                        @foreach ($studyPrograms as $studyProgram)
+                            <a href="{{ route('study-programs.show', $studyProgram->slug) }}"
+                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5 hover:text-[#29357A] transition">
+
+                                {{ $studyProgram->name }}
+
+                            </a>
+                        @endforeach
+
+                    </div>
+
+                </div>
 
                 <!-- Tentang Kami -->
                 <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
@@ -333,6 +359,10 @@
                         <a href="{{ route('lecturers.index') }}"
                             class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
                             Tenaga Pengajar
+                        </a>
+                        <a href="{{ url('https://jurnalfe.unsada.ac.id/index.php/jmafe', []) }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
+                            Jurnal Fakultas Ekonomi
                         </a>
 
                     </div>
@@ -442,36 +472,15 @@
 
                             </a>
                         @endforeach
+                        <a href="{{ url(
+                            'https://karirlink.id/
+                                                                                                                                                                                                ',
+                        ) }}"
+                            class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5">
 
-                    </div>
+                            Pusat Karir
 
-                </div>
-
-                <!-- Program Studi -->
-                <!-- Program Studi -->
-                <div x-data="{ open: false }" class="border border-gray-100 rounded-xl overflow-hidden">
-
-                    <button @click="open = !open"
-                        class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 text-[#29357A] font-semibold text-sm">
-
-                        <span>Program Studi</span>
-
-                        <i class="fa-solid fa-chevron-down transition duration-300" :class="{ 'rotate-180': open }">
-                        </i>
-
-                    </button>
-
-                    <div x-show="open" x-collapse class="bg-white">
-
-                        @foreach ($studyPrograms as $studyProgram)
-                            <a href="{{ route('study-programs.show', $studyProgram->slug) }}"
-                                class="block px-5 py-3 text-sm text-gray-600 hover:bg-[#29357A]/5 hover:text-[#29357A] transition">
-
-                                {{ $studyProgram->name }}
-
-                            </a>
-                        @endforeach
-
+                        </a>
                     </div>
 
                 </div>

@@ -19,131 +19,130 @@
                 </span>
 
                 <h2 class="mt-6 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A]">
-                    Fakultas Ekonomi
+                    Daftar {{ $category->name }}
                 </h2>
 
-                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
-                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah,
-                    penghargaan, serta akreditasi yang mencerminkan capaian dan kontribusi
-                    akademik institusi.
-                </p>
-
             </div>
+            <div class="w-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
 
-            <!-- Cards -->
-            <div x-data="{
-                open: false,
-                title: '',
-                image: '',
-                description: ''
-            }">
+                <!-- Header -->
+                <div class="px-6 py-5 border-b border-gray-100">
+                    <h3 class="text-2xl font-bold text-[#29357A]">
+                        Daftar Mitra Kerja Sama
+                    </h3>
 
-                <!-- GRID -->
-                <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <p class="mt-1 text-sm text-gray-500">
+                        Data mitra kerja sama yang telah terjalin melalui {{ $landing->app_name }} Universitas Darma
+                        Persada.
+                    </p>
+                </div>
 
-                    @foreach ($contents as $item)
-                        <div
-                            class="group bg-white border border-[#29357A]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <!-- Table -->
+                <div class="overflow-x-auto">
 
-                            <!-- IMAGE -->
-                            <div class="relative aspect-[4/3] overflow-hidden">
+                    <table class="w-full min-w-full">
 
-                                <img src="{{ asset('storage/' . $item->image) }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                                    alt="{{ $item->title }}">
+                        <thead>
+                            <tr class="bg-[#29357A] text-white">
 
-                                <!-- Gradient overlay -->
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition">
-                                </div>
+                                <th class="w-20 px-6 py-4 text-left text-sm font-semibold">
+                                    No
+                                </th>
 
-                                <!-- subtle badge (optional feel modern) -->
-                                <div class="absolute top-3 left-3">
-                                    <span
-                                        class="px-3 py-1 text-[10px] font-bold tracking-wide uppercase bg-white/80 backdrop-blur text-[#29357A] rounded-full">
-                                        Content
-                                    </span>
-                                </div>
+                                <th class="px-6 py-4 text-left text-sm font-semibold">
+                                    Nama Mitra
+                                </th>
 
-                            </div>
+                                <th class="w-56 px-6 py-4 text-center text-sm font-semibold">
+                                    Masa Berlaku Awal
+                                </th>
 
-                            <!-- CONTENT -->
-                            <div class="p-5">
+                                <th class="w-56 px-6 py-4 text-center text-sm font-semibold">
+                                    Masa Berlaku Akhir
+                                </th>
 
-                                <h3 class="text-lg font-bold text-[#29357A] line-clamp-2 leading-snug">
-                                    {{ $item->title }}
-                                </h3>
+                                {{-- <th class="w-40 px-6 py-4 text-center text-sm font-semibold">
+                                    Status
+                                </th> --}}
 
-                                <p class="mt-2 text-sm text-black font-bold leading-7 line-clamp-3">
-                                    {{ Str::limit(strip_tags($item->description), 180) }}
-                                </p>
+                            </tr>
+                        </thead>
 
-                                <!-- BUTTON -->
-                                <button
-                                    @click="
-                open = true;
-                title = @js($item->title);
-                image = @js(asset('storage/' . $item->image));
-                description = @js($item->description);
-            "
-                                    class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#29357A] hover:text-[#1f2c66] transition group/button">
+                        <tbody class="divide-y divide-gray-100">
 
-                                    <span>Baca Selengkapnya</span>
+                            @forelse ($contents as $item)
+                                <tr class="hover:bg-blue-50 transition-all duration-200">
 
-                                    <svg class="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1"
-                                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <!-- No -->
+                                    <td class="px-6 py-5 text-gray-600">
+                                        {{ $loop->iteration }}
+                                    </td>
 
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    <!-- Nama Mitra -->
+                                    <td class="px-6 py-5">
 
-                                    </svg>
+                                        <div class="font-semibold text-gray-800 text-base">
+                                            {{ $item->title }}
+                                        </div>
 
-                                </button>
+                                    </td>
 
-                            </div>
+                                    <!-- Masa Berlaku Awal -->
+                                    <td class="px-6 py-5 text-center text-gray-600 whitespace-nowrap">
+                                        {{ \Carbon\Carbon::parse($item->valid_from)->format('d M Y') }}
+                                    </td>
 
-                        </div>
-                    @endforeach
+                                    <!-- Masa Berlaku Akhir -->
+                                    <td class="px-6 py-5 text-center text-gray-600 whitespace-nowrap">
+                                        {{ \Carbon\Carbon::parse($item->valid_until)->format('d M Y') }}
+                                    </td>
+
+                                    {{-- <!-- Status -->
+                                    <td class="px-6 py-5 text-center">
+
+                                        @if (\Carbon\Carbon::parse($item->valid_until)->gte(now()))
+                                            <span
+                                                class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold bg-green-100 text-green-700">
+                                                Aktif
+                                            </span>
+                                        @else
+                                            <span
+                                                class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold bg-red-100 text-red-700">
+                                                Berakhir
+                                            </span>
+                                        @endif
+
+                                    </td> --}}
+
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="py-16 text-center">
+
+                                        <div class="flex flex-col items-center">
+
+                                            <svg class="w-12 h-12 text-gray-300 mb-3" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                    d="M9 17v-2m3 2v-4m3 4v-6M5 21h14a2 2 0 002-2V7.828a2 2 0 00-.586-1.414l-4.828-4.828A2 2 0 0014.172 1H5a2 2 0 00-2 2v16a2 2 0 002 2z" />
+                                            </svg>
+
+                                            <p class="text-gray-500">
+                                                Belum ada data mitra kerja sama.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforelse
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 
-                <!-- MODAL -->
-                <div x-show="open" x-cloak x-transition.opacity
-                    class="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
-                    @keydown.escape.window="open = false">
-
-                    <!-- MODAL BOX -->
-                    <div @click.away="open = false" x-transition.scale.duration.200ms
-                        class="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
-
-                        <!-- IMAGE (fixed) -->
-                        <div class="relative flex-shrink-0">
-                            <img :src="image" :alt="title" class="w-full h-44 sm:h-52 object-cover">
-
-                            <!-- Close -->
-                            <button @click="open = false"
-                                class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-gray-700 transition">
-
-                                ✕
-                            </button>
-                        </div>
-
-                        <!-- CONTENT (scrollable) -->
-                        <div class="p-5 md:p-6 overflow-y-auto">
-
-                            <!-- TITLE -->
-                            <h2 class="text-lg md:text-xl font-bold text-[#29357A] mb-4" x-text="title">
-                            </h2>
-
-                            <!-- DESCRIPTION -->
-                            <div class="text-sm md:text-base text-black font-bold leading-7 prose max-w-none"
-                                x-html="description">
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
         </div>
     </section>

@@ -11,13 +11,18 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Akademik',
-            'Kemahasiswaan',
             'Pengumuman',
-            'Beasiswa',
-            'Kegiatan',
-            'Seminar & Workshop',
-            'Prestasi Mahasiswa',
+            'Kerja Sama Dalam Negeri',
+            'Kerja Sama Internasional',
+            'MoU & MoA',
+            'Kunjungan & Delegasi',
+            'Program Pertukaran',
+            'Beasiswa & Mobilitas',
+            'Riset & Kolaborasi Akademik',
+            'Seminar & Workshop Internasional',
+            'Konferensi & Event',
+            'Kemitraan Industri',
+            'Publikasi & Prestasi Internasional',
         ];
 
         foreach ($categories as $cat) {

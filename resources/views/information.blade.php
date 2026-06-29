@@ -18,13 +18,8 @@
                 </span>
 
                 <h2 class="mt-6 text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
-                    Fakultas Ekonomi
+                    {{ $landing->app_name }}
                 </h2>
-
-                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
-                    Kumpulan data dan informasi terkait penelitian, publikasi ilmiah, penghargaan, serta akreditasi yang
-                    mencerminkan capaian dan kontribusi akademik institusi.
-                </p>
 
             </div>
 

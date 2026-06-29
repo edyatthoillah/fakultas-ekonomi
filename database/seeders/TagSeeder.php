@@ -11,21 +11,21 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $tags = [
-            'Ekonomi',
-            'Bisnis',
-            'Akuntansi',
-            'Manajemen',
-            'UMKM',
-            'Beasiswa',
-            'Seminar',
-            'Workshop',
-            'Magang',
-            'Prestasi',
-            'Mahasiswa',
-            'Dosen',
-            'Penelitian',
-            'Pengabdian',
-            'Kampus Merdeka',
+            'PKSUI',
+            'UNSADA',
+            'Kerja Sama Internasional',
+            'Hubungan Internasional',
+            'MoU',
+            'MoA',
+            'Kemitraan Global',
+            'Kolaborasi Internasional',
+            'Internasionalisasi Kampus',
+            'Pertukaran Mahasiswa',
+            'Student Exchange',
+            'Visiting Lecturer',
+            'Joint Research',
+            'Mobility Program',
+            'Beasiswa Internasional',
         ];
 
         foreach ($tags as $tag) {

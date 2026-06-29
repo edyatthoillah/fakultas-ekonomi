@@ -19,11 +19,11 @@
                         <!-- Text -->
                         <div>
 
-                            <h2 class="text-2xl font-black tracking-tight text-white">
-                                Fakultas Ekonomi
+                            <h2 class="text-sm font-black tracking-tight text-white">
+                                {{ $landing->app_name }}
                             </h2>
 
-                            <p class="text-sm text-white/80 mt-1">
+                            <p class="text-xs text-white/80 mt-1">
                                 Universitas Darma Persada
                             </p>
                         </div>

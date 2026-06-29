@@ -143,112 +143,39 @@
 
                                             <!-- FORM TAMBAH DOSEN -->
                                             <form id="addFacilityForm" action="{{ route('admin.lecturers.store') }}"
-                                                method="POST" enctype="multipart/form-data" class="space-y-5">
+                                                method="POST" class="space-y-5">
 
                                                 @csrf
 
                                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                                    <!-- Nama Lengkap -->
+                                                    <!-- Nama Dokumen -->
                                                     <div class="md:col-span-2">
-                                                        <x-input-label value="Nama Lengkap"
+                                                        <x-input-label value="Nama Dokumen"
                                                             class="text-xs font-medium text-gray-600" />
 
-                                                        <input type="text" name="name" value="{{ old('name') }}"
-                                                            placeholder="Masukkan nama dosen"
+                                                        <input type="text" name="document_name"
+                                                            value="{{ old('document_name') }}"
+                                                            placeholder="Masukkan nama dokumen"
                                                             class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                                     </div>
 
-                                                    <!-- NIDN -->
-                                                    <div>
-                                                        <x-input-label value="NIDN"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="text" name="nidn" value="{{ old('nidn') }}"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- NIP -->
-                                                    <div>
-                                                        <x-input-label value="NIP"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="text" name="nip" value="{{ old('nip') }}"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- NUPTK -->
-                                                    <div>
-                                                        <x-input-label value="NUPTK"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="text" name="nuptk" value="{{ old('nuptk') }}"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- Jabatan -->
-                                                    <div>
-                                                        <x-input-label value="Jabatan"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="text" name="position" value="{{ old('position') }}"
-                                                            placeholder="Lektor, Asisten Ahli, dll"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- Program Studi -->
+                                                    <!-- Link Dokumen -->
                                                     <div class="md:col-span-2">
-                                                        <x-input-label value="Program Studi"
+                                                        <x-input-label value="Link Dokumen"
                                                             class="text-xs font-medium text-gray-600" />
 
-                                                        <select name="study_program"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                            <option value="">-- Pilih Program Studi --</option>
-                                                            <option value="S1 Manajemen"
-                                                                {{ old('study_program') == 'S1 Manajemen' ? 'selected' : '' }}>
-                                                                S1 Manajemen
-                                                            </option>
-                                                            <option value="S1 Akuntansi"
-                                                                {{ old('study_program') == 'S1 Akuntansi' ? 'selected' : '' }}>
-                                                                S1 Akuntansi
-                                                            </option>
-                                                        </select>
-                                                    </div>
-
-                                                    <!-- Email -->
-                                                    <div>
-                                                        <x-input-label value="Email"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="email" name="email" value="{{ old('email') }}"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- No HP -->
-                                                    <div>
-                                                        <x-input-label value="No. HP"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="text" name="phone" value="{{ old('phone') }}"
-                                                            class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                    </div>
-
-                                                    <!-- Urutan -->
-                                                    <div>
-                                                        <x-input-label value="Urutan Tampil"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <input type="number" name="order" value="{{ old('order', 0) }}"
+                                                        <input type="text" name="document_link"
+                                                            value="{{ old('document_link') }}" placeholder="https://..."
                                                             class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                                     </div>
 
                                                     <!-- Status -->
-                                                    <div class="flex items-center mt-5">
+                                                    <div class="flex items-center mt-2">
 
                                                         <label class="inline-flex items-center gap-2 cursor-pointer">
 
-                                                            <input type="checkbox" name="is_active" value="1"
-                                                                checked
+                                                            <input type="checkbox" name="status" value="active" checked
                                                                 class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
 
                                                             <span class="text-sm text-gray-700">
@@ -256,29 +183,6 @@
                                                             </span>
 
                                                         </label>
-
-                                                    </div>
-
-                                                    <!-- Upload Foto -->
-                                                    <div class="md:col-span-2">
-
-                                                        <x-input-label value="Foto Dosen"
-                                                            class="text-xs font-medium text-gray-600" />
-
-                                                        <div class="mt-1 border border-dashed border-gray-300 rounded p-3">
-
-                                                            <input type="file" name="photo"
-                                                                class="block w-full text-sm text-gray-600
-                                                                    file:mr-3
-                                                                    file:px-3
-                                                                    file:py-1.5
-                                                                    file:rounded
-                                                                    file:border
-                                                                    file:border-gray-200
-                                                                    file:bg-gray-50
-                                                                    file:text-gray-700">
-
-                                                        </div>
 
                                                     </div>
 
@@ -313,11 +217,8 @@
                                 <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                                     <tr>
                                         <th class="px-3 py-2 border w-16">No</th>
-                                        <th class="px-3 py-2 border">Foto</th>
-                                        <th class="px-3 py-2 border">Nama</th>
-                                        <th class="px-3 py-2 border">NIDN</th>
-                                        <th class="px-3 py-2 border">Jabatan</th>
-                                        <th class="px-3 py-2 border">Program Studi</th>
+                                        <th class="px-3 py-2 border">Nama Dokumen</th>
+                                        <th class="px-3 py-2 border">Link</th>
                                         <th class="px-3 py-2 border">Status</th>
                                         <th class="px-3 py-2 border">Aksi</th>
                                     </tr>
@@ -327,48 +228,27 @@
                                     @forelse ($lecturers as $data)
                                         <tr class="hover:bg-gray-50">
 
+                                            <!-- No -->
                                             <td class="text-center px-3 py-2 border">
                                                 {{ $loop->iteration }}
                                             </td>
 
-                                            <td class="px-3 py-2 border">
-                                                @if ($data->photo)
-                                                    <img src="{{ asset('storage/' . $data->photo) }}"
-                                                        class="h-16 w-16 object-cover rounded-md border">
-                                                @else
-                                                    <div
-                                                        class="h-16 w-16 rounded-md border bg-gray-100 flex items-center justify-center text-xs text-gray-400">
-                                                        No Image
-                                                    </div>
-                                                @endif
+                                            <!-- Nama Dokumen -->
+                                            <td class="px-3 py-2 border font-medium text-gray-800">
+                                                {{ $data->document_name }}
                                             </td>
 
+                                            <!-- Link -->
                                             <td class="px-3 py-2 border">
-                                                <div class="font-medium text-gray-800">
-                                                    {{ $data->name }}
-                                                </div>
-
-                                                @if ($data->email)
-                                                    <div class="text-xs text-gray-500">
-                                                        {{ $data->email }}
-                                                    </div>
-                                                @endif
+                                                <a href="{{ $data->document_link }}" target="_blank"
+                                                    class="text-blue-600 hover:underline break-all">
+                                                    {{ $data->document_link }}
+                                                </a>
                                             </td>
 
-                                            <td class="px-3 py-2 border">
-                                                {{ $data->nidn ?: '-' }}
-                                            </td>
-
-                                            <td class="px-3 py-2 border">
-                                                {{ $data->position ?: '-' }}
-                                            </td>
-
-                                            <td class="px-3 py-2 border">
-                                                {{ $data->study_program ?: '-' }}
-                                            </td>
-
+                                            <!-- Status -->
                                             <td class="px-3 py-2 border text-center">
-                                                @if ($data->is_active)
+                                                @if ($data->status === 'active')
                                                     <span
                                                         class="inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
                                                         Aktif
@@ -381,6 +261,7 @@
                                                 @endif
                                             </td>
 
+                                            <!-- Aksi -->
                                             <td class="px-3 py-2 border">
                                                 <div class="inline-flex">
 
@@ -388,34 +269,24 @@
                                                     <button type="button"
                                                         @click="openModal({
                                 id: {{ $data->id }},
-                                name: @js($data->name),
-                                nidn: @js($data->nidn),
-                                nip: @js($data->nip),
-                                nuptk: @js($data->nuptk),
-                                position: @js($data->position),
-                                study_program: @js($data->study_program),
-                                email: @js($data->email),
-                                phone: @js($data->phone),
-                                order: {{ $data->order }},
-                                is_active: {{ $data->is_active ? 'true' : 'false' }},
-                                photo: @js($data->photo ? asset('storage/' . $data->photo) : null)
+                                document_name: @js($data->document_name),
+                                document_link: @js($data->document_link),
+                                status: @js($data->status)
                             })"
                                                         class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
-
                                                         Edit
                                                     </button>
 
                                                     <!-- DELETE -->
                                                     <form action="{{ route('admin.lecturers.destroy', $data->id) }}"
                                                         method="POST"
-                                                        onsubmit="return confirm('Yakin ingin menghapus tenaga pengajar ini?')">
+                                                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
 
                                                         @csrf
                                                         @method('DELETE')
 
                                                         <button type="submit"
                                                             class="px-3 py-1 text-xs bg-red-600 hover:bg-red-700 text-white border border-red-800 rounded-r -ml-px transition">
-
                                                             Delete
                                                         </button>
 
@@ -427,8 +298,8 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="8" class="text-center py-5 text-gray-500">
-                                                Belum ada data tenaga pengajar.
+                                            <td colspan="5" class="text-center py-5 text-gray-500">
+                                                Belum ada data.
                                             </td>
                                         </tr>
                                     @endforelse
@@ -465,120 +336,40 @@
                                             </div>
                                         @endif
 
-                                        <form id="editFacilityForm" method="POST" enctype="multipart/form-data"
-                                            class="space-y-5">
+                                        <form id="editFacilityForm" method="POST" class="space-y-5">
 
                                             @csrf
                                             @method('PUT')
 
-                                            <!-- Preview Foto -->
-                                            <div x-show="form.photo">
-
-                                                <x-input-label value="Foto Saat Ini"
-                                                    class="text-xs font-medium text-gray-600" />
-
-                                                <div class="mt-2">
-                                                    <img :src="form.photo"
-                                                        class="h-24 w-24 object-cover rounded border border-gray-300">
-                                                </div>
-
-                                            </div>
-
-                                            <!-- Form Fields -->
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                                <!-- Nama Lengkap -->
+                                                <!-- Nama Dokumen -->
                                                 <div class="md:col-span-2">
-                                                    <x-input-label value="Nama Lengkap"
+                                                    <x-input-label value="Nama Dokumen"
                                                         class="text-xs font-medium text-gray-600" />
 
-                                                    <input type="text" name="name" x-model="form.name"
+                                                    <input type="text" name="document_name"
+                                                        x-model="form.document_name"
                                                         class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                                 </div>
 
-                                                <!-- NIDN -->
-                                                <div>
-                                                    <x-input-label value="NIDN"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="text" name="nidn" x-model="form.nidn"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- NIP -->
-                                                <div>
-                                                    <x-input-label value="NIP"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="text" name="nip" x-model="form.nip"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- NUPTK -->
-                                                <div>
-                                                    <x-input-label value="NUPTK"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="text" name="nuptk" x-model="form.nuptk"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- Jabatan -->
-                                                <div>
-                                                    <x-input-label value="Jabatan"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="text" name="position" x-model="form.position"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- Program Studi -->
+                                                <!-- Link Dokumen -->
                                                 <div class="md:col-span-2">
-                                                    <x-input-label value="Program Studi"
+                                                    <x-input-label value="Link Dokumen"
                                                         class="text-xs font-medium text-gray-600" />
 
-                                                    <select name="study_program" x-model="form.study_program"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                        <option value="">-- Pilih Program Studi --</option>
-                                                        <option value="S1 Manajemen">S1 Manajemen</option>
-                                                        <option value="S1 Akuntansi">S1 Akuntansi</option>
-                                                    </select>
-                                                </div>
-
-                                                <!-- Email -->
-                                                <div>
-                                                    <x-input-label value="Email"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="email" name="email" x-model="form.email"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- No HP -->
-                                                <div>
-                                                    <x-input-label value="No. HP"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="text" name="phone" x-model="form.phone"
-                                                        class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                                                </div>
-
-                                                <!-- Urutan -->
-                                                <div>
-                                                    <x-input-label value="Urutan Tampil"
-                                                        class="text-xs font-medium text-gray-600" />
-
-                                                    <input type="number" name="order" x-model="form.order"
+                                                    <input type="text" name="document_link"
+                                                        x-model="form.document_link"
                                                         class="mt-1 w-full h-10 px-3 text-sm border border-gray-300 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
                                                 </div>
 
                                                 <!-- Status -->
-                                                <div class="flex items-center mt-5">
+                                                <div class="flex items-center mt-2">
 
                                                     <label class="inline-flex items-center gap-2 cursor-pointer">
 
-                                                        <input type="checkbox" name="is_active" value="1"
-                                                            :checked="form.is_active"
+                                                        <input type="checkbox" name="status" value="active"
+                                                            :checked="form.status === 'active'"
                                                             class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
 
                                                         <span class="text-sm text-gray-700">
@@ -591,34 +382,6 @@
 
                                             </div>
 
-                                            <!-- Upload Foto -->
-                                            <div>
-
-                                                <x-input-label value="Ganti Foto (Opsional)"
-                                                    class="text-xs font-medium text-gray-600" />
-
-                                                <div class="mt-1 border border-dashed border-gray-300 rounded p-3">
-
-                                                    <input type="file" name="photo"
-                                                        class="block w-full text-sm text-gray-600
-                                                        file:mr-3
-                                                        file:px-3
-                                                        file:py-1.5
-                                                        file:rounded
-                                                        file:border
-                                                        file:border-gray-200
-                                                        file:bg-gray-50
-                                                        file:text-gray-700">
-
-                                                </div>
-
-                                                @error('photo', 'update')
-                                                    <p class="mt-2 text-sm text-red-500">
-                                                        {{ $message }}
-                                                    </p>
-                                                @enderror
-
-                                            </div>
                                         </form>
 
                                     </div>
@@ -669,7 +432,6 @@
             });
         });
     </script>
-
     <script>
         function modalEditInformation() {
             return {
@@ -677,17 +439,9 @@
 
                 form: {
                     id: null,
-                    name: '',
-                    nidn: '',
-                    nip: '',
-                    nuptk: '',
-                    position: '',
-                    study_program: '',
-                    email: '',
-                    phone: '',
-                    order: '',
-                    is_active: false,
-                    photo: ''
+                    document_name: '',
+                    document_link: '',
+                    status: 'active',
                 },
 
                 openModal(data) {
@@ -695,7 +449,10 @@
                     this.show = true;
 
                     this.form = {
-                        ...data
+                        id: data.id ?? null,
+                        document_name: data.document_name ?? '',
+                        document_link: data.document_link ?? '',
+                        status: data.status ?? 'active',
                     };
 
                     this.$nextTick(() => {
@@ -703,8 +460,6 @@
                         const form = document.getElementById('editFacilityForm');
 
                         form.action = `/admin/lecturers/${data.id}`;
-
-                        console.log(form.action);
 
                     });
                 }

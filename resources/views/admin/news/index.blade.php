@@ -63,7 +63,7 @@
                 <div class="border-t-4 border-green-500 pt-4 flex justify-between items-center mb-4">
 
                     <h2 class="text-lg font-semibold text-gray-700">
-                        Berita Fakultas Ekonomi
+                        Berita {{ $landing->app_name }}
                     </h2>
 
                     <a href="{{ route('admin.news.create') }}"

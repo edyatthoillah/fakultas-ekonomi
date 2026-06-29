@@ -12,20 +12,12 @@ class Lecturer extends Model
     protected $table = 'lecturers';
 
     protected $fillable = [
-        'name',
-        'nidn',
-        'nip',
-        'nuptk',
-        'position',
-        'study_program',
-        'email',
-        'phone',
-        'photo',
-        'order',
-        'is_active',
+        'document_name',
+        'document_link',
+        'status',
     ];
 
     protected $casts = [
-        'is_active' => 'boolean',
+        'status' => 'string',
     ];
 }

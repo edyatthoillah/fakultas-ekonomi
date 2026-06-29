@@ -15,11 +15,7 @@ class InformationCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Kolaborasi dan Kerja sama',
-            'Seminar',
-            'Beasiswa',
-            'Peluang Kerja',
-            'Profil Lulusan',
+            'Galeri Kegiatan'
         ];
 
         foreach ($categories as $category) {

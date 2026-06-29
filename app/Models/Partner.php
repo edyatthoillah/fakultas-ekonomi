@@ -12,5 +12,13 @@ class Partner extends Model
     protected $fillable = [
         'name',
         'logo',
+        'description',
+        'latitude',
+        'longitude',
+    ];
+
+    protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
 }

@@ -20,7 +20,7 @@
 
                 <h2 class="mt-5 text-4xl sm:text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
 
-                    Fakultas Ekonomi
+                    {{ $landing->app_name }}
                 </h2>
 
             </div>
@@ -46,7 +46,7 @@
                 <div>
 
                     <h3 class="text-xl font-bold text-black mb-4">
-                        Tentang Fakultas Ekonomi
+                        Tentang {{ $landing->app_name }}
                     </h3>
 
                     <div class="text-black leading-8 text-[15px]">

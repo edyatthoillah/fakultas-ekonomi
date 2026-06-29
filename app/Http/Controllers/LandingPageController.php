@@ -61,27 +61,47 @@ class LandingPageController extends Controller
     /**
      * 📖 DETAIL BERITA (SHOW)
      */
-    public function newsShow($slug)
-    {
-        $news = News::with(['category', 'tags', 'images', 'user'])
-            ->where('slug', $slug)
-            ->where('status', 'published')
-            ->firstOrFail();
+public function newsShow($slug)
+{
+    $news = News::with([
+        'category',
+        'tags',
+        'images',
+        'user'
+    ])
+    ->where('slug', $slug)
+    ->where('status', 'published')
+    ->firstOrFail();
 
-        // 🔥 tambah views otomatis
+    // View count
+    $sessionKey = 'news_viewed_' . $news->id;
+
+    if (!session()->has($sessionKey)) {
         $news->increment('views');
-
-        // 📌 related news (opsional tapi bagus)
-        $relatedNews = News::with('category')
-            ->where('status', 'published')
-            ->where('category_id', $news->category_id)
-            ->where('id', '!=', $news->id)
-            ->latest()
-            ->limit(5)
-            ->get();
-
-        return view('landingpage.news.show', compact('news', 'relatedNews'));
+        session()->put($sessionKey, true);
     }
+
+    // Related news by category
+    $relatedNews = News::with('category')
+        ->where('status', 'published')
+        ->where('category_id', $news->category_id)
+        ->where('id', '!=', $news->id)
+        ->orderByDesc('published_at')
+        ->limit(5)
+        ->get();
+
+    // Popular news
+    $popularNews = News::where('status', 'published')
+        ->orderByDesc('views')
+        ->limit(5)
+        ->get();
+
+    return view('landingpage.news.show', compact(
+        'news',
+        'relatedNews',
+        'popularNews'
+    ));
+}
 
     public function about()
     {

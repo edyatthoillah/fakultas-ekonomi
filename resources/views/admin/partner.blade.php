@@ -94,6 +94,11 @@
                                             <span>Kembali ke Dashboard</span>
                                         </a>
 
+                                        <a href="{{ url('https://www.geolocatify.com/', []) }}"
+                                            class="flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 border border-cyan-600 leading-none">
+                                            <span>Geolocator</span>
+                                        </a>
+
                                         <!-- Tambah -->
                                         <button @click="openModalAddHero()"
                                             class="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 border border-blue-700 leading-none">
@@ -124,11 +129,12 @@
                                             <form action="{{ route('admin.partner.store') }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
+
                                                 <!-- Nama -->
                                                 <div>
                                                     <label class="text-sm font-medium">Nama Mitra</label>
                                                     <input type="text" name="name"
-                                                        class="w-full border rounded-md mt-1 text-sm px-2 py-1.5 @error('name') border-red-500 @enderror"
+                                                        class="w-full border rounded-md mt-1 text-sm px-3 py-2 @error('name') border-red-500 @enderror"
                                                         value="{{ old('name') }}">
 
                                                     @error('name')
@@ -136,23 +142,70 @@
                                                     @enderror
                                                 </div>
 
+                                                <!-- Deskripsi -->
+                                                <div class="mt-3">
+                                                    <label class="text-sm font-medium">Deskripsi</label>
+
+                                                    <textarea name="description" rows="4"
+                                                        class="w-full border rounded-md mt-1 text-sm px-3 py-2 @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
+
+                                                    @error('description')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+
+                                                <!-- Koordinat -->
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+
+                                                    <div>
+                                                        <label class="text-sm font-medium">Latitude</label>
+
+                                                        <input type="number" step="0.0000001" name="latitude"
+                                                            value="{{ old('latitude') }}" placeholder="-6.2000000"
+                                                            class="w-full border rounded-md mt-1 text-sm px-3 py-2 @error('latitude') border-red-500 @enderror">
+
+                                                        @error('latitude')
+                                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div>
+                                                        <label class="text-sm font-medium">Longitude</label>
+
+                                                        <input type="number" step="0.0000001" name="longitude"
+                                                            value="{{ old('longitude') }}" placeholder="106.8166667"
+                                                            class="w-full border rounded-md mt-1 text-sm px-3 py-2 @error('longitude') border-red-500 @enderror">
+
+                                                        @error('longitude')
+                                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
                                                 <!-- Logo -->
                                                 <div class="mt-3">
-                                                    <label class="text-sm font-medium">Logo</label>
+                                                    <label class="text-sm font-medium">Logo Mitra</label>
+
                                                     <input type="file" name="logo"
-                                                        class="w-full border rounded-md mt-1 text-sm px-2 py-1.5 @error('logo') border-red-500 @enderror">
+                                                        class="w-full border rounded-md mt-1 text-sm px-3 py-2 @error('logo') border-red-500 @enderror">
 
                                                     @error('logo')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
                                                 </div>
 
-                                                <div class="flex justify-end gap-2 pt-3">
+                                                <!-- Actions -->
+                                                <div class="flex justify-end gap-2 pt-4">
                                                     <button type="button" @click="show=false"
-                                                        class="bg-gray-400 text-white px-3 py-1.5 rounded-md">Close</button>
+                                                        class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md text-sm transition">
+                                                        Batal
+                                                    </button>
 
                                                     <button type="submit"
-                                                        class="bg-blue-600 text-white px-3 py-1.5 rounded-md">Simpan</button>
+                                                        class="bg-[#29357A] hover:bg-[#1f2c66] text-white px-4 py-2 rounded-md text-sm transition">
+                                                        Simpan
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>
@@ -167,10 +220,31 @@
                                 <table class="w-full text-sm border border-gray-200">
                                     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                                         <tr>
-                                            <th class="px-3 py-2 border w-16">No</th>
-                                            <th class="px-3 py-2 border">Logo</th>
-                                            <th class="px-3 py-2 border">Nama Partner</th>
-                                            <th class="px-3 py-2 border w-40">Aksi</th>
+                                            <th class="px-3 py-3 border w-16 text-center">No</th>
+
+                                            <th class="px-3 py-3 border w-24 text-center">
+                                                Logo
+                                            </th>
+
+                                            <th class="px-3 py-3 border">
+                                                Nama Mitra
+                                            </th>
+
+                                            <th class="px-3 py-3 border">
+                                                Deskripsi
+                                            </th>
+
+                                            <th class="px-3 py-3 border w-36 text-center">
+                                                Latitude
+                                            </th>
+
+                                            <th class="px-3 py-3 border w-36 text-center">
+                                                Longitude
+                                            </th>
+
+                                            <th class="px-3 py-3 border w-40 text-center">
+                                                Aksi
+                                            </th>
                                         </tr>
                                     </thead>
 
@@ -201,6 +275,20 @@
                                                     {{ $data->name }}
                                                 </td>
 
+                                                <td class="px-3 py-2 border">
+                                                    <div class="max-w-xs line-clamp-2 text-sm text-gray-600">
+                                                        {{ $data->description }}
+                                                    </div>
+                                                </td>
+
+                                                <td class="px-3 py-2 border text-center text-sm">
+                                                    {{ $data->latitude }}
+                                                </td>
+
+                                                <td class="px-3 py-2 border text-center text-sm">
+                                                    {{ $data->longitude }}
+                                                </td>
+
                                                 <!-- Aksi -->
                                                 <td class="px-3 py-2 border">
                                                     <div class="inline-flex">
@@ -210,10 +298,15 @@
                                                             @click="openModal({
                                                                 id: {{ $data->id }},
                                                                 name: @js($data->name),
+                                                                description: @js($data->description),
+                                                                latitude: @js($data->latitude),
+                                                                longitude: @js($data->longitude),
                                                                 logo: @js(asset('storage/' . $data->logo))
                                                             })"
                                                             class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
+
                                                             Edit
+
                                                         </button>
 
                                                         <!-- Delete -->
@@ -290,7 +383,7 @@
                                                 @csrf
                                                 @method('PUT')
 
-                                                <!-- Preview -->
+                                                <!-- Preview Logo -->
                                                 <div x-show="form.logo">
 
                                                     <x-input-label value="Preview Logo"
@@ -303,20 +396,68 @@
 
                                                 </div>
 
-                                                <!-- Nama Partner -->
+                                                <!-- Nama Mitra -->
                                                 <div>
 
-                                                    <x-input-label value="Nama Partner"
+                                                    <x-input-label value="Nama Mitra"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="text" name="name" x-model="form.name"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-3 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                     @error('name', 'update')
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $message }}
-                                                        </p>
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
+
+                                                </div>
+
+                                                <!-- Deskripsi -->
+                                                <div>
+
+                                                    <x-input-label value="Deskripsi"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <textarea name="description" rows="4" x-model="form.description"
+                                                        class="mt-1 block p-3 w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+
+                                                    @error('description', 'update')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
+
+                                                </div>
+
+                                                <!-- Latitude & Longitude -->
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                                    <div>
+
+                                                        <x-input-label value="Latitude"
+                                                            class="text-sm font-medium text-gray-700" />
+
+                                                        <input type="number" step="0.0000001" name="latitude"
+                                                            x-model="form.latitude"
+                                                            class="mt-1 block w-full p-3 text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                        @error('latitude', 'update')
+                                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                        @enderror
+
+                                                    </div>
+
+                                                    <div>
+
+                                                        <x-input-label value="Longitude"
+                                                            class="text-sm font-medium text-gray-700" />
+
+                                                        <input type="number" step="0.0000001" name="longitude"
+                                                            x-model="form.longitude"
+                                                            class="mt-1 block w-full p-3 text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                        @error('longitude', 'update')
+                                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                        @enderror
+
+                                                    </div>
 
                                                 </div>
 
@@ -330,21 +471,19 @@
 
                                                         <input type="file" name="logo"
                                                             class="block w-full text-sm text-gray-600
-                                                            file:mr-3
-                                                            file:px-3
-                                                            file:py-1.5
-                                                            file:rounded
-                                                            file:border-0
-                                                            file:bg-blue-50
-                                                            file:text-blue-700
-                                                            file:text-sm">
+                file:mr-3
+                file:px-3
+                file:py-1.5
+                file:rounded
+                file:border-0
+                file:bg-blue-50
+                file:text-blue-700
+                file:text-sm">
 
                                                     </div>
 
                                                     @error('logo', 'update')
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $message }}
-                                                        </p>
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
 
                                                 </div>
@@ -358,8 +497,8 @@
                                                     </button>
 
                                                     <button type="submit"
-                                                        class="px-4 py-2 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded-md">
-                                                        Update
+                                                        class="px-4 py-2 text-sm text-white bg-[#29357A] hover:bg-[#1f2c66] rounded-md">
+                                                        Update Mitra
                                                     </button>
 
                                                 </div>
@@ -388,6 +527,9 @@
                 form: {
                     id: null,
                     name: '',
+                    description: '',
+                    latitude: '',
+                    longitude: '',
                     logo: ''
                 },
 
@@ -398,7 +540,10 @@
                     this.form = {
                         id: data.id,
                         name: data.name,
-                        logo: data.logo
+                        description: data.description ?? '',
+                        latitude: data.latitude ?? '',
+                        longitude: data.longitude ?? '',
+                        logo: data.logo ?? ''
                     };
 
                     this.$nextTick(() => {

@@ -29,43 +29,57 @@ class LecturerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'nidn' => 'nullable|string|max:50',
-            'nip' => 'nullable|string|max:50',
-            'nuptk' => 'nullable|string|max:50',
-            'position' => 'nullable|string|max:255',
-            'study_program' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'order' => 'nullable|integer',
-            'is_active' => 'nullable|boolean',
-        ]);
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'document_name' => 'required|string|max:255',
+        'document_link' => 'required|string|max:255',
+        'status' => 'nullable|in:active,inactive',
+    ]);
 
-        // Upload Foto
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')
-                ->store('lecturers', 'public');
-        }
+    // default status jika tidak dikirim
+    $validated['status'] = $request->status ?? 'active';
 
-        $validated['is_active'] = $request->has('is_active');
+    Lecturer::create($validated);
 
-        Lecturer::create($validated);
+    return redirect()
+        ->back()
+        ->with('success', 'Data berhasil ditambahkan.');
+}
 
-        return redirect()
-            ->back()
-            ->with('success', 'Data tenaga pengajar berhasil ditambahkan.');
-    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+public function update(Request $request, Lecturer $lecturer)
+{
+    $validated = $request->validate([
+        'document_name' => 'required|string|max:255',
+        'document_link' => 'required|string|max:255',
+        'status' => 'nullable|in:active,inactive',
+    ]);
+
+    // default status jika tidak dikirim
+    $validated['status'] = $request->status ?? 'active';
+
+    $lecturer->update($validated);
+
+    return redirect()
+        ->back()
+        ->with('success', 'Data berhasil diperbarui.');
+}
+
 
     /**
      * Display the specified resource.
      */
     public function show(Lecturer $lecturer)
     {
-        return view('lecturers.show', compact('lecturer'));
+        if ($lecturer->status !== 'active') {
+            abort(404);
+        }
+
+        return redirect($lecturer->document_link);
     }
 
     /**
@@ -74,46 +88,6 @@ class LecturerController extends Controller
     public function edit(Lecturer $lecturer)
     {
         return view('lecturers.edit', compact('lecturer'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Lecturer $lecturer)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'nidn' => 'nullable|string|max:50',
-            'nip' => 'nullable|string|max:50',
-            'nuptk' => 'nullable|string|max:50',
-            'position' => 'nullable|string|max:255',
-            'study_program' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'order' => 'nullable|integer',
-            'is_active' => 'nullable|boolean',
-        ]);
-
-        // Upload Foto Baru
-        if ($request->hasFile('photo')) {
-
-            // Hapus Foto Lama
-            if ($lecturer->photo && Storage::disk('public')->exists($lecturer->photo)) {
-                Storage::disk('public')->delete($lecturer->photo);
-            }
-
-            $validated['photo'] = $request->file('photo')
-                ->store('lecturers', 'public');
-        }
-
-        $validated['is_active'] = $request->has('is_active');
-
-        $lecturer->update($validated);
-
-        return redirect()
-            ->back()
-            ->with('success', 'Data tenaga pengajar berhasil diperbarui.');
     }
 
     /**

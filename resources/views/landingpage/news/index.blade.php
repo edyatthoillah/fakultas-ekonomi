@@ -18,13 +18,9 @@
                     Berita Terbaru
                 </span>
 
-                <h2 class="mt-6 text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
-                    Berita Fakultas Ekonomi
-                </h2>
-
                 <p class="mt-5 text-gray-600 leading-8 max-w-2xl mx-auto">
-                    Kumpulan informasi terbaru seputar kegiatan akademik, pengumuman, seminar,
-                    prestasi mahasiswa, dan berbagai aktivitas Fakultas Ekonomi yang terus berkembang.
+                    Informasi dan dokumen resmi terkait kerja sama nasional dan internasional yang dikelola oleh
+                    {{ $landing->app_name }} Universitas Darma Persada.
                 </p>
 
             </div>
@@ -113,7 +109,6 @@
 
             </div>
 
-            <!-- PAGINATION -->
             <!-- PAGINATION -->
             @if ($news->hasPages())
                 <div class="mt-14 flex justify-center">

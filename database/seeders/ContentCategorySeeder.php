@@ -14,11 +14,9 @@ class ContentCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            'Penelitian',
-            'Pengabdian kepada Masyarakat',
-            'Publikasi Ilmiah',
-            'Penghargaan',
-            'Akreditasi',
+            'MoU (Memorandum of Understanding/Nota Kesepahaman)',
+            'MoA (Memorandum of Agreement/Perjanjian Kerja Sama)',
+            'IA (Implementation Agreement/Perjanjian Implementasi)'
         ];
 
         foreach ($categories as $category) {

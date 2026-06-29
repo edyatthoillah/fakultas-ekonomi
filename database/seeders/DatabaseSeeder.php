@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             ContentCategorySeeder::class,
             StudentCategorySeeder::class,
             InformationCategorySeeder::class,
-            StudyProgramSeeder::class,
             TagSeeder::class
         ]);
     }

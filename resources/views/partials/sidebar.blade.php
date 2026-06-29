@@ -13,8 +13,8 @@
             <img src="{{ asset('assets/images/logo.png') }}" class="w-9 h-9 object-contain rounded-sm bg-white p-1">
 
             <div>
-                <h1 class="text-sm font-bold leading-tight">
-                    Fakultas Ekonomi
+                <h1 class="text-[10px] font-bold leading-tight">
+                    {{ $landing->app_name }}
                 </h1>
                 <p class="text-[11px] text-gray-400">
                     Admin Panel
@@ -54,69 +54,6 @@
 
         </a>
 
-        <!-- PROGRAM STUDI -->
-        <div x-data="{ openStudyProgram: {{ request()->is('admin/study-programs*') ? 'true' : 'false' }} }" class="space-y-1">
-
-            <button @click="openStudyProgram = !openStudyProgram"
-                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
-               hover:bg-gray-800 transition">
-
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-graduation-cap text-gray-300"></i>
-                    Program Studi
-                </div>
-
-                <i class="fas text-xs" :class="openStudyProgram ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-
-            </button>
-
-            <div x-show="openStudyProgram" x-transition class="pl-6 space-y-1">
-
-                @foreach ($studyPrograms as $studyProgram)
-                    <a href="{{ route('admin.study-programs.edit', $studyProgram) }}"
-                        class="block px-3 py-2 rounded-md text-xs text-gray-300
-                       hover:bg-gray-800 hover:text-white transition">
-
-                        {{ $studyProgram->name }}
-
-                    </a>
-                @endforeach
-
-            </div>
-
-        </div>
-
-        <!-- FACILITY -->
-        <div x-data="{ openFacility: {{ request()->is('admin/fasilitas*') ? 'true' : 'false' }} }" class="space-y-1">
-
-            <button @click="openFacility = !openFacility"
-                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
-                       hover:bg-gray-800 transition">
-
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-building text-gray-300"></i>
-                    Fasilitas
-                </div>
-
-                <i class="fas text-xs" :class="openFacility ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-
-            </button>
-
-            <div x-show="openFacility" x-transition class="pl-6 space-y-1">
-
-                @foreach ($facilityCategories as $category)
-                    <a href="{{ route('admin.facilities.category', $category->slug) }}"
-                        class="block px-3 py-2 rounded-md text-xs text-gray-300
-                               hover:bg-gray-800 hover:text-white transition">
-
-                        {{ $category->name }}
-
-                    </a>
-                @endforeach
-
-            </div>
-        </div>
-
         <!-- CONTENT -->
         <div x-data="{ openContent: {{ request()->is('admin/content*') ? 'true' : 'false' }} }" class="space-y-1">
 
@@ -126,7 +63,7 @@
 
                 <div class="flex items-center gap-3">
                     <i class="fas fa-folder-open text-gray-300"></i>
-                    Konten Ilmiah
+                    Mitra & Kerjasama
                 </div>
 
                 <i class="fas text-xs" :class="openContent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
@@ -148,38 +85,6 @@
             </div>
         </div>
 
-        <!-- STUDENT -->
-        <div x-data="{ openStudent: {{ request()->is('admin/students*') ? 'true' : 'false' }} }" class="space-y-1">
-
-            <button @click="openStudent = !openStudent"
-                class="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm
-               hover:bg-gray-800 transition">
-
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-user-graduate text-gray-300"></i>
-                    Mahasiswa
-                </div>
-
-                <i class="fas text-xs" :class="openStudent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-
-            </button>
-
-            <div x-show="openStudent" x-transition class="pl-6 space-y-1">
-
-                @foreach ($studentCategories as $category)
-                    <a href="{{ route('admin.students.category', $category->slug) }}"
-                        class="block px-3 py-2 rounded-md text-xs text-gray-300
-                       hover:bg-gray-800 hover:text-white transition">
-
-                        {{ $category->name }}
-
-                    </a>
-                @endforeach
-
-            </div>
-
-        </div>
-
         <!-- CONTENT -->
         <div x-data="{ openContent: {{ request()->is('admin/information*') ? 'true' : 'false' }} }" class="space-y-1">
 
@@ -189,7 +94,7 @@
 
                 <div class="flex items-center gap-3">
                     <i class="fas fa-folder-open text-gray-300"></i>
-                    Pusat Informasi
+                    Galeri
                 </div>
 
                 <i class="fas text-xs" :class="openContent ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
@@ -217,7 +122,7 @@
            hover:bg-gray-800 transition">
 
             <i class="fas fa-chalkboard-teacher text-gray-300"></i>
-            Tenaga Pengajar
+            Dokument
         </a>
 
         <!-- DASHBOARD -->

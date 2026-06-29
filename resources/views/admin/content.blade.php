@@ -64,7 +64,7 @@
 
                         <li>
                             <span class="mx-1">/</span>
-                            <span>Kontent Ilmiah</span>
+                            <span>Mitra & Kerjasama</span>
                         </li>
 
                         <li>
@@ -95,6 +95,11 @@
                                             <span>Kembali ke Dashboard</span>
                                         </a>
 
+                                        <a href="{{ route('contents.print', $category->id) }}" target="_blank"
+                                            class="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 border border-cyan-600 leading-none">
+                                            Cetak PDF
+                                        </a>
+
                                         <!-- Tambah -->
                                         <button @click="openModalAddHero()"
                                             class="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 border border-blue-700 leading-none">
@@ -123,7 +128,7 @@
                                         <!-- Content -->
                                         <div class="px-4 pb-4">
                                             <form id="createContentForm" action="{{ route('admin.content.store') }}"
-                                                method="POST" enctype="multipart/form-data" class="space-y-4">
+                                                method="POST" class="space-y-4">
 
                                                 @csrf
 
@@ -131,51 +136,56 @@
                                                 <input type="hidden" name="content_category_id"
                                                     value="{{ $category->id }}">
 
-                                                <!-- TITLE -->
+                                                <!-- NAMA MITRA -->
                                                 <div>
-                                                    <x-input-label value="Judul" class="text-sm" />
+                                                    <x-input-label value="Nama Mitra" class="text-sm" />
 
-                                                    <input type="text" name="title"
+                                                    <input type="text" name="title" value="{{ old('title') }}"
                                                         class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm px-3 py-2"
-                                                        placeholder="Masukkan judul content">
+                                                        placeholder="Masukkan nama mitra">
 
-                                                    @if ($errors->store->has('title'))
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $errors->store->first('title') }}
-                                                        </p>
-                                                    @endif
+                                                    @error('title')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
 
-                                                <!-- UPLOAD IMAGE -->
+                                                <!-- MASA BERLAKU AWAL -->
                                                 <div>
-                                                    <x-input-label value="Gambar" class="text-sm" />
+                                                    <x-input-label value="Masa Berlaku Awal" class="text-sm" />
 
-                                                    <input type="file" name="image"
-                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm">
+                                                    <input type="date" name="valid_from" value="{{ old('valid_from') }}"
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm px-3 py-2">
 
-                                                    @if ($errors->store->has('image'))
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $errors->store->first('image') }}
-                                                        </p>
-                                                    @endif
+                                                    @error('valid_from')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
 
-                                                <!-- DESCRIPTION -->
+                                                <!-- MASA BERLAKU AKHIR -->
                                                 <div>
-                                                    <x-input-label value="Deskripsi" class="text-sm" />
+                                                    <x-input-label value="Masa Berlaku Akhir" class="text-sm" />
 
-                                                    <input type="hidden" name="description" id="description">
+                                                    <input type="date" name="valid_until"
+                                                        value="{{ old('valid_until') }}"
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm px-3 py-2">
 
-                                                    <div id="description-editor"
-                                                        class="mt-1 bg-white rounded-md border border-gray-300 min-h-[200px]">
-                                                        {!! old('description') !!}
-                                                    </div>
+                                                    @error('valid_until')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
 
-                                                    @if ($errors->store->has('description'))
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $errors->store->first('description') }}
-                                                        </p>
-                                                    @endif
+                                                <!-- LINK DOKUMEN -->
+                                                <div>
+                                                    <x-input-label value="Link Dokumen" class="text-sm" />
+
+                                                    <input type="url" name="document_url"
+                                                        value="{{ old('document_url') }}"
+                                                        class="mt-1 block w-full text-sm border-gray-300 rounded-md shadow-sm px-3 py-2"
+                                                        placeholder="https://">
+
+                                                    @error('document_url')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
 
                                                 <!-- ACTION -->
@@ -183,13 +193,11 @@
 
                                                     <button type="button" @click="show=false"
                                                         class="bg-gray-400 hover:bg-gray-500 text-white text-sm px-3 py-1.5 rounded-md">
-
                                                         Close
                                                     </button>
 
                                                     <button type="submit"
                                                         class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5 rounded-md">
-
                                                         Simpan
                                                     </button>
 
@@ -210,9 +218,10 @@
                                     <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                                         <tr>
                                             <th class="px-3 py-2 border w-14">No</th>
-                                            <th class="px-3 py-2 border">Gambar</th>
-                                            <th class="px-3 py-2 border">Judul</th>
-                                            <th class="px-3 py-2 border">Deskripsi</th>
+                                            <th class="px-3 py-2 border">Nama Mitra</th>
+                                            <th class="px-3 py-2 border">Masa Berlaku Awal</th>
+                                            <th class="px-3 py-2 border">Masa Berlaku Akhir</th>
+                                            <th class="px-3 py-2 border">Dokumen</th>
                                             <th class="px-3 py-2 border w-40">Aksi</th>
                                         </tr>
                                     </thead>
@@ -226,27 +235,33 @@
                                                     {{ $contents->firstItem() + $loop->index }}
                                                 </td>
 
-                                                <!-- Image -->
-                                                <td class="px-3 py-2 border">
-                                                    @if ($data->image)
-                                                        <img src="{{ asset('storage/' . $data->image) }}"
-                                                            class="h-20 w-20 object-cover rounded-md">
-                                                    @else
-                                                        <div
-                                                            class="h-20 w-20 bg-gray-100 flex items-center justify-center text-xs text-gray-400 rounded-md">
-                                                            No Image
-                                                        </div>
-                                                    @endif
-                                                </td>
-
-                                                <!-- Title -->
+                                                <!-- Nama Mitra -->
                                                 <td class="px-3 py-2 border font-medium">
                                                     {{ $data->title }}
                                                 </td>
 
-                                                <!-- Description -->
-                                                <td class="px-3 py-2 border">
-                                                    {{ Str::limit(strip_tags($data->description), 120) }}
+                                                <!-- Masa Berlaku Awal -->
+                                                <td class="px-3 py-2 border text-center">
+                                                    {{ \Carbon\Carbon::parse($data->valid_from)->format('d M Y') }}
+                                                </td>
+
+                                                <!-- Masa Berlaku Akhir -->
+                                                <td class="px-3 py-2 border text-center">
+                                                    {{ \Carbon\Carbon::parse($data->valid_until)->format('d M Y') }}
+                                                </td>
+
+                                                <!-- Dokumen -->
+                                                <td class="px-3 py-2 border text-center">
+                                                    @if ($data->document_url)
+                                                        <a href="{{ $data->document_url }}" target="_blank"
+                                                            class="text-blue-600 hover:text-blue-800 underline">
+                                                            Lihat Dokumen
+                                                        </a>
+                                                    @else
+                                                        <span class="text-gray-400">
+                                                            Tidak ada
+                                                        </span>
+                                                    @endif
                                                 </td>
 
                                                 <!-- Action -->
@@ -256,11 +271,12 @@
                                                         <!-- EDIT -->
                                                         <button type="button"
                                                             @click="openModal({
-                                                                    id: {{ $data->id }},
-                                                                    title: @js($data->title),
-                                                                    description: @js($data->description),
-                                                                    image: @js($data->image ? asset('storage/' . $data->image) : null)
-                                                                })"
+                                id: {{ $data->id }},
+                                title: @js($data->title),
+                                valid_from: @js($data->valid_from),
+                                valid_until: @js($data->valid_until),
+                                document_url: @js($data->document_url)
+                            })"
                                                             class="px-3 py-1 text-xs bg-yellow-500 hover:bg-yellow-600 text-white border border-yellow-700 rounded-l transition">
                                                             Edit
                                                         </button>
@@ -268,7 +284,7 @@
                                                         <!-- DELETE -->
                                                         <form action="{{ route('admin.content.destroy', $data->id) }}"
                                                             method="POST"
-                                                            onsubmit="return confirm('Yakin ingin menghapus content ini?')">
+                                                            onsubmit="return confirm('Yakin ingin menghapus data mitra ini?')">
 
                                                             @csrf
                                                             @method('DELETE')
@@ -286,8 +302,8 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="text-center py-5 text-gray-500">
-                                                    Belum ada data content.
+                                                <td colspan="6" class="text-center py-5 text-gray-500">
+                                                    Belum ada data mitra kerja sama.
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -324,82 +340,68 @@
                                                 </div>
                                             @endif
 
-                                            <form id="editContentForm" method="POST" enctype="multipart/form-data"
-                                                class="space-y-4">
+                                            <form id="editContentForm" method="POST" class="space-y-4">
 
                                                 @csrf
                                                 @method('PUT')
 
-                                                <!-- Preview -->
-                                                <div x-show="form.image">
-
-                                                    <x-input-label value="Preview Gambar"
-                                                        class="text-sm font-medium text-gray-700" />
-
-                                                    <div class="mt-2">
-                                                        <img :src="form.image"
-                                                            class="h-40 w-full object-cover rounded-md border">
-                                                    </div>
-
-                                                </div>
-
-                                                <!-- Upload -->
+                                                <!-- NAMA MITRA -->
                                                 <div>
 
-                                                    <x-input-label value="Ganti Gambar (Opsional)"
-                                                        class="text-sm font-medium text-gray-700" />
-
-                                                    <div class="mt-2 border border-dashed border-gray-300 rounded-md p-3">
-
-                                                        <input type="file" name="image"
-                                                            class="block w-full text-sm text-gray-600
-                                                        file:mr-3
-                                                        file:px-3
-                                                        file:py-1.5
-                                                        file:rounded
-                                                        file:border-0
-                                                        file:bg-blue-50
-                                                        file:text-blue-700
-                                                        file:text-sm">
-
-                                                    </div>
-
-                                                </div>
-
-                                                <!-- TITLE -->
-                                                <div>
-
-                                                    <x-input-label value="Judul"
+                                                    <x-input-label value="Nama Mitra"
                                                         class="text-sm font-medium text-gray-700" />
 
                                                     <input type="text" name="title" x-model="form.title"
-                                                        class="mt-1 p-4 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                                        class="mt-1 p-3 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
                                                 </div>
 
-                                                <!-- DESKRIPSI -->
+                                                <!-- MASA BERLAKU AWAL -->
                                                 <div>
 
-                                                    <x-input-label value="Deskripsi"
+                                                    <x-input-label value="Masa Berlaku Awal"
                                                         class="text-sm font-medium text-gray-700" />
 
-                                                    <input type="hidden" id="edit_description" name="description"
-                                                        x-model="form.description">
+                                                    <input type="date" name="valid_from" x-model="form.valid_from"
+                                                        class="mt-1 p-3 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
 
-                                                    <div id="edit-description-editor"
-                                                        class="mt-1 bg-white border border-gray-300 rounded-md min-h-[200px]">
-                                                    </div>
+                                                </div>
 
-                                                    @error('description', 'update')
-                                                        <p class="text-red-500 text-xs mt-1">
-                                                            {{ $message }}
-                                                        </p>
-                                                    @enderror
+                                                <!-- MASA BERLAKU AKHIR -->
+                                                <div>
+
+                                                    <x-input-label value="Masa Berlaku Akhir"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <input type="date" name="valid_until" x-model="form.valid_until"
+                                                        class="mt-1 p-3 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                </div>
+
+                                                <!-- LINK DOKUMEN -->
+                                                <div>
+
+                                                    <x-input-label value="Link Dokumen"
+                                                        class="text-sm font-medium text-gray-700" />
+
+                                                    <input type="url" name="document_url" x-model="form.document_url"
+                                                        placeholder="https://"
+                                                        class="mt-1 p-3 block w-full text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+
+                                                </div>
+
+                                                <!-- PREVIEW LINK -->
+                                                <div x-show="form.document_url">
+
+                                                    <a :href="form.document_url" target="_blank"
+                                                        class="text-sm text-blue-600 hover:text-blue-800 underline">
+                                                        Lihat Dokumen Saat Ini
+                                                    </a>
 
                                                 </div>
 
                                                 <!-- Footer -->
-                                                <div class="flex justify-end gap-2 border-t py-4">
+                                                <div class="flex justify-end gap-2 border-t pt-4">
 
                                                     <button type="button" @click="show=false"
                                                         class="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
@@ -458,8 +460,9 @@
                 form: {
                     id: null,
                     title: '',
-                    description: '',
-                    image: ''
+                    valid_from: '',
+                    valid_until: '',
+                    document_url: ''
                 },
 
                 openModal(data) {
@@ -469,22 +472,14 @@
                     this.form = {
                         id: data.id ?? null,
                         title: data.title ?? '',
-                        description: data.description ?? '',
-                        image: data.image ?? ''
+                        valid_from: data.valid_from ?? '',
+                        valid_until: data.valid_until ?? '',
+                        document_url: data.document_url ?? ''
                     };
 
                     this.$nextTick(() => {
-
                         document.getElementById('editContentForm').action =
                             '/admin/content/' + data.id;
-
-                        if (editQuill) {
-                            editQuill.root.innerHTML = data.description ?? '';
-                        }
-
-                        document.getElementById('edit_description').value =
-                            data.description ?? '';
-
                     });
                 }
             }

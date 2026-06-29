@@ -2,8 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\ContentController;
 use Illuminate\Support\Facades\Route;
 require __DIR__.'/admin.php';
+
+Route::get(
+    '/contents/category/{category}/print',
+    [ContentController::class, 'printPdf']
+)->name('contents.print');
 
 Route::controller(LandingPageController::class)->group(function () {
 
@@ -25,13 +32,12 @@ Route::controller(LandingPageController::class)->group(function () {
     | Lecturers
     |-------------------------
     */
-    Route::prefix('tenaga-pengajar')->group(function () {
+    Route::prefix('document')->group(function () {
         Route::get('/', 'lecturerIndex')
             ->name('lecturers.index');
-
-        Route::get('/{lecturer}', 'show')
-            ->name('lecturers.show');
     });
+
+    Route::get('/documents/{lecturer}', [LecturerController::class, 'show'])->name('documents.show');
 
     /*
     |-------------------------
@@ -52,7 +58,7 @@ Route::controller(LandingPageController::class)->group(function () {
     |-------------------------
     */
     Route::prefix('tentang')->group(function () {
-        Route::get('/fakultas-ekonomi', 'about')
+        Route::get('/tentang-kami', 'about')
             ->name('about.fakultas-ekonomi');
 
         Route::get('/visi-misi', 'visionMission')

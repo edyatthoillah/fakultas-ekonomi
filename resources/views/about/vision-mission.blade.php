@@ -23,9 +23,10 @@
                 </h2>
 
                 <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
-                    Arah dan tujuan Fakultas Ekonomi dalam mengembangkan pendidikan,
-                    penelitian, dan pengabdian kepada masyarakat guna menghasilkan lulusan
-                    yang unggul, profesional, dan berdaya saing.
+                    Menghubungkan institusi dengan mitra nasional dan internasional
+                    melalui kerja sama strategis yang berkelanjutan untuk mendukung
+                    pengembangan pendidikan, penelitian, pengabdian kepada masyarakat,
+                    dan internasionalisasi perguruan tinggi.
                 </p>
 
             </div>

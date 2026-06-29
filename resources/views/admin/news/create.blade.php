@@ -62,7 +62,7 @@
                 <!-- HEADER -->
                 <div class="border-t-4 border-green-500 pt-4 mb-4">
                     <h2 class="text-lg font-semibold text-gray-700">
-                        Tambah Berita Fakultas Ekonomi
+                        Tambah Berita {{ $landing->app_name }}
                     </h2>
                 </div>
 

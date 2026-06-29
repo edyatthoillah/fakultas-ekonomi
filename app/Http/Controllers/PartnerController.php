@@ -18,66 +18,78 @@ class PartnerController extends Controller
         return view('admin.partner', compact('partners'));
     }
 
-    public function store(Request $request)
-    {
-        try {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'logo' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
-            ]);
+public function store(Request $request)
+{
+    try {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
+            'logo' => 'required|image|mimes:jpg,jpeg,png,svg|max:2048',
+        ]);
 
-            $logoPath = null;
+        $logoPath = null;
 
-            if ($request->hasFile('logo')) {
-                $logoPath = $request->file('logo')->store('partners', 'public');
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('partners', 'public');
+        }
+
+        Partner::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'logo' => $logoPath,
+        ]);
+
+        return back()->with('success', 'Mitra berhasil ditambahkan');
+    } catch (ValidationException $e) {
+        return back()->withErrors($e->errors())->withInput();
+    } catch (\Exception $e) {
+        return back()->with('error', 'Gagal menambahkan mitra');
+    }
+}
+
+public function update(Request $request, $id)
+{
+    try {
+        $partner = Partner::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
+        ]);
+
+        $logoPath = $partner->logo;
+
+        if ($request->hasFile('logo')) {
+
+            if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
+                Storage::disk('public')->delete($partner->logo);
             }
 
-            Partner::create([
-                'name' => $request->name,
-                'logo' => $logoPath,
-            ]);
-
-            return back()->with('success', 'Mitra berhasil ditambahkan');
-        } catch (ValidationException $e) {
-            return back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal menambahkan mitra');
+            $logoPath = $request->file('logo')->store('partners', 'public');
         }
+
+        $partner->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'logo' => $logoPath,
+        ]);
+
+        return back()->with('success', 'Mitra berhasil diupdate');
+    } catch (ValidationException $e) {
+        return back()->withErrors($e->errors())->withInput();
+    } catch (\Exception $e) {
+        return back()->with('error', 'Gagal update mitra');
     }
-
-    public function update(Request $request, $id)
-    {
-        try {
-            $partner = Partner::findOrFail($id);
-
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
-            ]);
-
-            $logoPath = $partner->logo;
-
-            if ($request->hasFile('logo')) {
-                // hapus logo lama
-                if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
-                    Storage::disk('public')->delete($partner->logo);
-                }
-
-                $logoPath = $request->file('logo')->store('partners', 'public');
-            }
-
-            $partner->update([
-                'name' => $request->name,
-                'logo' => $logoPath,
-            ]);
-
-            return back()->with('success', 'Mitra berhasil diupdate');
-        } catch (ValidationException $e) {
-            return back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal update mitra');
-        }
-    }
+}
 
     public function destroy($id)
     {

@@ -8,9 +8,29 @@ use App\Http\Requests\StoreContentRequest;
 use App\Http\Requests\UpdateContentRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ContentController extends Controller
 {
+
+    public function printPdf(ContentCategory $category)
+    {
+        $contents = $category->contents()
+            ->orderBy('valid_from', 'desc')
+            ->get();
+
+        $pdf = Pdf::loadView('pdf.contents', [
+            'category' => $category,
+            'contents' => $contents
+        ]);
+
+        return $pdf->stream(
+            'konten-' . $category->slug . '.pdf'
+        );
+
+        // Jika ingin langsung download:
+        // return $pdf->download('konten-'.$category->slug.'.pdf');
+    }
     /**
      * Display listing (optional)
      */
@@ -34,42 +54,38 @@ class ContentController extends Controller
     /**
      * Store new content
      */
-    public function store(StoreContentRequest $request)
-    {
-        $data = $request->validated();
 
-        // upload image
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('contents', 'public');
-        }
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'content_category_id' => ['required', 'exists:content_categories,id'],
+        'title' => ['required', 'string', 'max:255'],
+        'valid_from' => ['required', 'date'],
+        'valid_until' => ['required', 'date', 'after_or_equal:valid_from'],
+        'document_url' => ['nullable', 'url'],
+    ]);
 
-        Content::create($data);
+    Content::create($data);
 
-        return redirect()->back()->with('success', 'Content berhasil ditambahkan.');
-    }
+    return redirect()->back()
+        ->with('success', 'Data mitra berhasil ditambahkan.');
+}
 
-    /**
-     * Update content
-     */
-    public function update(UpdateContentRequest $request, Content $content)
-    {
-        $data = $request->validated();
+public function update(Request $request, Content $content)
+{
+    $data = $request->validate([
+        'content_category_id' => ['required', 'exists:content_categories,id'],
+        'title' => ['required', 'string', 'max:255'],
+        'valid_from' => ['required', 'date'],
+        'valid_until' => ['required', 'date', 'after_or_equal:valid_from'],
+        'document_url' => ['nullable', 'url'],
+    ]);
 
-        // update image jika ada file baru
-        if ($request->hasFile('image')) {
+    $content->update($data);
 
-            // hapus image lama
-            if ($content->image && Storage::disk('public')->exists($content->image)) {
-                Storage::disk('public')->delete($content->image);
-            }
-
-            $data['image'] = $request->file('image')->store('contents', 'public');
-        }
-
-        $content->update($data);
-
-        return redirect()->back()->with('success', 'Content berhasil diupdate.');
-    }
+    return redirect()->back()
+        ->with('success', 'Data mitra berhasil diperbarui.');
+}
 
     /**
      * Delete content

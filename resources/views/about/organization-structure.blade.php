@@ -19,14 +19,15 @@
                 </span>
 
                 <h2 class="mt-6 text-4xl lg:text-4xl font-black tracking-tight text-[#29357A]">
-                    Fakultas Ekonomi
+                    {{ $landing->app_name }}
                 </h2>
 
-                <p class="mt-5 text-black font-bold  leading-8 max-w-2xl mx-auto">
-                    Struktur kepemimpinan dan organisasi Fakultas Ekonomi yang mendukung
-                    tata kelola akademik, administrasi, dan pengembangan institusi secara profesional.
+                <p class="mt-5 text-black font-bold leading-8 max-w-2xl mx-auto">
+                    Struktur organisasi
+                    dalam mengelola, mengembangkan, serta memperkuat kemitraan strategis dengan
+                    berbagai institusi nasional dan internasional guna mendukung pencapaian tujuan
+                    dan reputasi institusi.
                 </p>
-
             </div>
             <!-- IMAGE FULL (STRUCTURE ORGANIZATION) -->
             <div class="w-full flex justify-center">

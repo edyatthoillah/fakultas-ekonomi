@@ -4,384 +4,201 @@
 
 @section('content')
     <!-- ================= HERO ================= -->
-    <section id="beranda" class="relative pt-28 lg:pt-36 pb-20 overflow-hidden bg-[#f4f6fb]">
+    <section id="beranda" class="relative min-h-screen flex items-center overflow-hidden">
 
-        <!-- Background -->
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#1f2c6c] via-[#29357A] to-[#3d4fc4]">
-        </div>
-
-        <!-- Glow -->
-        <div class="absolute top-20 right-[-100px] w-[500px] h-[500px] bg-blue-400/20 blur-3xl rounded-full animate-pulse">
-        </div>
-
-        <div class="absolute bottom-0 left-[-120px] w-[380px] h-[380px] bg-cyan-400/10 blur-3xl rounded-full">
+        <!-- Background Image -->
+        <div class="absolute inset-0"
+            style="
+                background-image:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.55), rgba(0,0,0,0.70)),
+                url('{{ Storage::url($landing->hero_image) }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            ">
         </div>
 
         <!-- Grid Pattern -->
         <div
-            class="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px]">
+            class="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:60px_60px] z-[1]">
         </div>
 
+        <!-- Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
 
-                <!-- LEFT -->
-                <div class="max-w-2xl">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/10 backdrop-blur-md text-yellow-300 text-[11px] font-black tracking-[0.18em] rounded-md mb-7 shadow-lg">
 
-                    <!-- Badge -->
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/10 backdrop-blur-md text-yellow-300 text-[11px] font-black tracking-[0.18em] rounded-md mb-7 shadow-lg hover:scale-[1.02] transition-all duration-300">
+                    <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping"></span>
 
-                        <span class="w-2 h-2 bg-yellow-300 rounded-full animate-ping">
-                        </span>
-
-                        WEBSITE RESMI FAKULTAS
-                    </div>
-
-                    <!-- Heading -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-white mb-6">
-
-                        {{ $landing->app_name }} <br>
-
-                        <span class="bg-gradient-to-r from-blue-100 to-cyan-200 bg-clip-text text-transparent">
-                            Universitas Darma Persada
-                        </span>
-                    </h1>
-
-                    <!-- Description -->
-                    <p class="text-[15px] leading-8 text-blue-100/90 max-w-xl mb-10 font-medium">
-
-                        {{ $landing->hero_title }}
-                    </p>
-
-                    <!-- Button -->
-                    <div class="flex flex-col sm:flex-row gap-4">
-
-                        <!-- Primary -->
-                        <a href="{{ url('https://pmb.unsada.ac.id/') }}"
-                            class="group relative overflow-hidden inline-flex items-center justify-center h-12 px-8 rounded-md bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-300 text-[#29357A] text-[12px] font-black tracking-[0.15em] shadow-[0_12px_35px_rgba(255,215,0,0.38)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
-
-                            <!-- Glow -->
-                            <div
-                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.35),transparent_70%)]">
-                            </div>
-
-                            <!-- Shine -->
-                            <div
-                                class="absolute top-0 left-[-120%] w-[120%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-700">
-                            </div>
-
-                            <span class="relative z-10 flex items-center gap-2">
-                                PENDAFTARAN
-
-                                <iconify-icon icon="solar:arrow-right-up-linear"
-                                    class="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                                </iconify-icon>
-                            </span>
-                        </a>
-
-                        <!-- Secondary -->
-                        <a href="#profil-fakultas"
-                            class="group relative overflow-hidden inline-flex items-center justify-center h-12 px-8 rounded-md bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-300 border border-yellow-200/40 text-[#29357A] text-[12px] font-black tracking-[0.15em] shadow-[0_12px_35px_rgba(255,215,0,0.30)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]">
-
-                            <!-- Glow -->
-                            <div
-                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.25),transparent_70%)]">
-                            </div>
-
-                            <!-- Shine -->
-                            <div
-                                class="absolute top-0 left-[-120%] w-[120%] h-full bg-gradient-to-r from-transparent via-white/35 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-700">
-                            </div>
-
-                            <span class="relative z-10 flex items-center gap-2">
-
-                                PROFIL FAKULTAS
-
-                                <iconify-icon icon="solar:arrow-right-linear"
-                                    class="transition-transform duration-300 group-hover:translate-x-1">
-                                </iconify-icon>
-                            </span>
-                        </a>
-                    </div>
-
-                    <!-- Mini Stats -->
-                    <div class="grid grid-cols-3 gap-3 pt-7">
-
-                        <!-- Kurikulum Adaptif -->
-                        <div
-                            class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
-
-                            <div
-                                class="absolute -top-4 -right-4 w-14 h-14 bg-blue-400/25 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
-                            </div>
-
-                            <div
-                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
-                            </div>
-
-                            <div class="relative">
-                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
-                                    Fasilitas
-                                </h3>
-
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
-                                    Terbaik
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Dosen Profesional -->
-                        <div
-                            class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
-
-                            <div
-                                class="absolute -top-4 -right-4 w-14 h-14 bg-cyan-300/20 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
-                            </div>
-
-                            <div
-                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
-                            </div>
-
-                            <div class="relative">
-                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
-                                    Dosen
-                                </h3>
-
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
-                                    Profesional
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Lulusan Berdaya Saing -->
-                        <div
-                            class="group relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4154c7] via-[#33408d] to-[#29357A] border border-blue-300/10 px-3 py-2.5 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-[0_10px_28px_rgba(37,99,235,0.25)]">
-
-                            <div
-                                class="absolute -top-4 -right-4 w-14 h-14 bg-yellow-300/20 rounded-full blur-2xl group-hover:scale-125 transition duration-500">
-                            </div>
-
-                            <div
-                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full">
-                            </div>
-
-                            <div class="relative">
-                                <h3 class="text-sm lg:text-base font-black text-white leading-tight">
-                                    Lulusan
-                                </h3>
-
-                                <p class="text-[8px] tracking-[0.14em] text-blue-100 font-bold uppercase mt-1">
-                                    Terbaik
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
+                    Universitas Darma Persada
                 </div>
 
-                <!-- RIGHT -->
-                <div class="relative">
+                <!-- Heading -->
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight text-white">
 
-                    <!-- Glow -->
-                    <div class="absolute -inset-4 bg-blue-500/20 blur-2xl rounded-[30px]">
-                    </div>
+                    {{ $landing->app_name }}
 
-                    <!-- Main Image -->
-                    <div
-                        class="group relative rounded-[24px] overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] bg-white/10 backdrop-blur-md">
+                </h1>
+                <p class="mt-3 mb-6 text-[15px] max-w-xl font-black leading-tight tracking-tight text-white">
+                    {{ $landing->hero_title }}
+                </p>
 
-                        <img src="{{ asset('storage/' . $landing->hero_image) }}" alt="Fakultas Ekonomi"
-                            class="w-full h-[520px] object-cover scale-100 group-hover:scale-105 transition-transform duration-[4000ms]">
+                <!-- Button -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
 
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1e2b67]/90 via-[#29357A]/20 to-transparent">
-                        </div>
+                    <a href="#kerjasama"
+                        class="group inline-flex items-center justify-center h-12 px-8 rounded-md bg-gradient-to-r from-yellow-400 via-yellow-300 to-amber-300 text-[#29357A] text-[12px] font-black tracking-[0.15em] shadow-[0_12px_35px_rgba(255,215,0,0.38)] transition-all duration-300 hover:-translate-y-1">
 
-                        <!-- Floating Info -->
-                        <div
-                            class="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/50 flex items-center gap-4 hover:translate-y-[-2px] transition-all duration-300">
+                        KERJASAMA INTERNASIONAL
 
-                            <div
-                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#29357A] to-[#3d4fc4] flex items-center justify-center text-white shadow-lg">
-
-                                <iconify-icon icon="solar:verified-check-bold" width="22">
-                                </iconify-icon>
-                            </div>
-
-                            <div>
-
-                                <h4 class="text-[13px] font-black tracking-wide text-[#29357A]">
-                                    Dr. Sukardi., S.E., M.M
-                                </h4>
-
-                                <p class="text-[12px] text-black font-bold mt-1 leading-relaxed">
-                                    Dekan Fakultas Ekonomi Universitas Darma Persada
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Card -->
-                    <div
-                        class="hidden lg:flex absolute -left-10 top-10 bg-white/95 backdrop-blur-md shadow-2xl rounded-xl border border-white px-5 py-4 items-center gap-4 animate-bounce [animation-duration:4s]">
-
-                        <div
-                            class="w-11 h-11 rounded-lg bg-yellow-400 flex items-center justify-center text-[#29357A] shadow-md">
-
-                            <iconify-icon icon="solar:book-bookmark-bold" width="20">
-                            </iconify-icon>
-                        </div>
-
-                        <div>
-
-                            <h4 class="text-[12px] font-black text-[#29357A] tracking-wide">
-                                LULUSAN UNGGUL
-                            </h4>
-
-                            <p class="text-[10px] text-gray-500 mt-1">
-                                Siap bersaing global
-                            </p>
-                        </div>
-                    </div>
-
+                    </a>
                 </div>
+
             </div>
+
         </div>
     </section>
 
+
+
+
     <!-- Profile Video Section -->
-    <section id="profil-fakultas" class="relative py-24 bg-white overflow-hidden">
+    <section id="profil-kerja-sama" class="relative py-24 bg-white overflow-hidden">
 
         <!-- Background Blur -->
-        <div class="absolute top-0 right-0 w-[380px] h-[380px] bg-blue-100 blur-3xl rounded-full opacity-50">
-        </div>
-
-        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-yellow-100 blur-3xl rounded-full opacity-40">
-        </div>
+        <div class="absolute top-0 right-0 w-[380px] h-[380px] bg-blue-100 blur-3xl rounded-full opacity-50"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-yellow-100 blur-3xl rounded-full opacity-40"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
             <div class="grid lg:grid-cols-2 gap-14 items-center">
 
-                <!-- Left Content -->
+                <!-- LEFT CONTENT -->
                 <div class="profile-left">
 
                     <!-- Badge -->
                     <span
-                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md mb-6">
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10
+                              text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md mb-6">
 
-                        PROFILE FAKULTAS
+                        TENTANG KAMI
                     </span>
 
                     <!-- Title -->
                     <h2 class="text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
-                        Mengenal Lebih Dekat <br>
-                        Fakultas Ekonomi UNSADA
+                        {{ $landing->app_name }}<br>
                     </h2>
 
                     <!-- Description -->
-                    <p class="mt-6 text-[15px] leading-8 text-black font-bold max-w-xl">
+                    <p class="mt-6 text-[15px] leading-8 text-black font-medium max-w-xl">
                         {{ $landing->hero_title }}
                     </p>
 
                     <!-- Highlight -->
                     <div class="mt-8 space-y-4">
 
-                        <div
-                            class="profile-item flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
+                        <!-- ITEM 1 -->
+                        <div class="flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
 
                             <div
                                 class="w-11 h-11 rounded-lg bg-[#29357A] text-white flex items-center justify-center shrink-0">
-
-                                <iconify-icon icon="solar:book-bookmark-bold" width="20"></iconify-icon>
+                                <iconify-icon icon="solar:global-bold" width="20"></iconify-icon>
                             </div>
 
                             <div>
                                 <h4 class="text-[14px] font-black text-[#29357A]">
-                                    Kurikulum Modern
+                                    Kolaborasi Global
                                 </h4>
-
-                                <p class="text-[13px] text-black mt-1 leading-6 font-bold">
-                                    Pembelajaran berbasis industri dan teknologi digital.
+                                <p class="text-[13px] text-black mt-1 leading-6 font-medium">
+                                    Kemitraan dengan universitas dan institusi internasional.
                                 </p>
                             </div>
                         </div>
 
-                        <div
-                            class="profile-item flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
+                        <!-- ITEM 2 -->
+                        <div class="flex items-start gap-4 bg-[#f4f6fb] border border-gray-200 rounded-xl px-5 py-4">
+
                             <div
                                 class="w-11 h-11 rounded-lg bg-yellow-400 text-[#29357A] flex items-center justify-center shrink-0">
-
                                 <iconify-icon icon="solar:users-group-rounded-bold" width="20"></iconify-icon>
                             </div>
 
                             <div>
                                 <h4 class="text-[14px] font-black text-[#29357A]">
-                                    Lingkungan Akademik Aktif
+                                    Partnership Akademik
                                 </h4>
-
-                                <p class="text-[13px] text-black mt-1 leading-6 font-bold">
-                                    Mendukung pengembangan kreativitas dan soft skill mahasiswa.
+                                <p class="text-[13px] text-black mt-1 leading-6 font-medium">
+                                    Program pertukaran, riset bersama, dan kerja sama pendidikan.
                                 </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <!-- Right Video -->
+                <!-- RIGHT VIDEO -->
                 <div class="relative profile-video">
 
                     <!-- Glow -->
                     <div
-                        class="profile-glow absolute -inset-5 bg-gradient-to-r from-[#29357A]/20 to-yellow-300/20 blur-2xl rounded-[30px]">
+                        class="absolute -inset-5 bg-gradient-to-r from-[#29357A]/20 to-yellow-300/20 blur-2xl rounded-[30px]">
                     </div>
 
                     <!-- Video Card -->
                     <div
-                        class="relative overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_25px_80px_rgba(41,53,122,0.12)]">
+                        class="relative overflow-hidden rounded-[22px] border border-gray-200 bg-white
+                            shadow-[0_25px_80px_rgba(41,53,122,0.12)]">
 
-                        <!-- YouTube Embed -->
                         <div class="aspect-video">
 
-                            <iframe class="w-full h-full"
-                                src="https://www.youtube.com/embed/9pN21ckF8rI?autoplay=1&mute=0&loop=1&playlist=9pN21ckF8rI&controls=1&rel=0&modestbranding=1"
-                                title="Profil Fakultas Ekonomi" frameborder="0" allow="autoplay; encrypted-media"
-                                allowfullscreen>
-                            </iframe>
+                            <iframe width="580" height="340"
+                                src="https://www.youtube.com/embed/7ukl_9yqpPc?si=lbx4Z0TnYMEF9hfb"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
                         </div>
 
                         <!-- Bottom Info -->
                         <div
-                            class="flex items-center justify-between px-6 py-5 bg-gradient-to-r from-[#29357A] to-[#33408d]">
+                            class="flex items-center justify-between px-6 py-5
+                                bg-gradient-to-r from-[#29357A] to-[#33408d]">
 
                             <div>
                                 <h4 class="text-white text-[14px] font-black tracking-wide">
-                                    FAKULTAS EKONOMI
+                                    INTERNATIONAL OFFICE
                                 </h4>
-
                                 <p class="text-blue-100 text-[12px] mt-1">
                                     Universitas Darma Persada
                                 </p>
                             </div>
 
                             <div
-                                class="w-12 h-12 rounded-full bg-white/10 border border-white/10 backdrop-blur-md flex items-center justify-center text-yellow-300">
+                                class="w-12 h-12 rounded-full bg-white/10 border border-white/10
+                                    backdrop-blur-md flex items-center justify-center text-yellow-300">
 
-                                <iconify-icon icon="solar:play-bold" width="22"></iconify-icon>
+                                <iconify-icon icon="solar:globe-bold" width="22"></iconify-icon>
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
         </div>
+
     </section>
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       PROFILE SECTION ANIMATION
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   PROFILE SECTION ANIMATION
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ========================== */
 
         .profile-left {
             opacity: 0;
@@ -535,31 +352,34 @@
             <div class="text-center max-w-3xl mx-auto mb-16">
 
                 <span
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md shadow-sm">
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-sm shadow-sm">
 
-                    PELUANG KARIR
+                    BIRO KERJA SAMA
                 </span>
 
                 <h2 class="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
-                    Prospek Karir Lulusan
+                    {{ $landing->app_name }}
                 </h2>
 
                 <p class="mt-5 text-[15px] leading-8 text-black font-bold">
-                    Lulusan Fakultas Ekonomi Universitas Darma Persada memiliki peluang karir luas
-                    di berbagai sektor industri, bisnis, keuangan, dan pemerintahan.
+                    Biro Kerja Sama Universitas Darma Persada mengelola kemitraan nasional dan internasional
+                    dalam bidang pendidikan, penelitian, pertukaran, dan pengembangan jejaring global.
                 </p>
             </div>
 
             <!-- Cards -->
             <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-                <!-- Pelaku Bisnis/Wirausaha -->
+                <!-- 1. MoU & Kemitraan -->
                 <div
-                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="group bg-white rounded-sm overflow-hidden border border-gray-200
+                    hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)]
+                    hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)]
+                    transition-all duration-500 hover:-translate-y-2">
 
                     <div class="relative overflow-hidden h-56">
-                        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
-                            alt="Pelaku Bisnis"
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop"
+                            alt="MoU Collaboration"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
@@ -567,31 +387,34 @@
 
                         <div class="absolute bottom-4 left-4">
                             <span
-                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                WIRAUSAHA
+                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-sm">
+                                MoU
                             </span>
                         </div>
                     </div>
 
                     <div class="p-6">
-                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Pelaku Bisnis/Wirausaha
+                        <h3 class="text-[18px] font-black text-[#29357A] mb-3">
+                            Kerja Sama & MoU
                         </h3>
 
                         <p class="text-[14px] leading-7 text-black font-bold">
-                            Orang yang memiliki visi dan kompetensi dalam membangun dan
-                            mengelola bisnis yang baik.
+                            Pengelolaan kerja sama dengan institusi nasional dan internasional
+                            melalui penandatanganan MoU, MoA, dan IA.
                         </p>
                     </div>
                 </div>
 
-                <!-- Manajer Lini -->
+                <!-- 2. Mitra Internasional -->
                 <div
-                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="group bg-white rounded-sm overflow-hidden border border-gray-200
+                    hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)]
+                    hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)]
+                    transition-all duration-500 hover:-translate-y-2">
 
                     <div class="relative overflow-hidden h-56">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
-                            alt="Manajer Lini"
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+                            alt="International Partners"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
@@ -599,31 +422,34 @@
 
                         <div class="absolute bottom-4 left-4">
                             <span
-                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                MANAJERIAL
+                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-sm">
+                                GLOBAL
                             </span>
                         </div>
                     </div>
 
                     <div class="p-6">
-                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Manajer Lini
+                        <h3 class="text-[18px] font-black text-[#29357A] mb-3">
+                            Mitra Internasional
                         </h3>
 
                         <p class="text-[14px] leading-7 text-black font-bold">
-                            Orang yang ahli dalam mengelola tugas-tugas manajerial dalam
-                            perusahaan.
+                            Membangun jaringan dengan universitas dan lembaga luar negeri
+                            untuk kolaborasi akademik dan riset global.
                         </p>
                     </div>
                 </div>
 
-                <!-- Pendidik/Pengajar -->
+                <!-- 3. Mobilitas Akademik -->
                 <div
-                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="group bg-white rounded-sm overflow-hidden border border-gray-200
+                    hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)]
+                    hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)]
+                    transition-all duration-500 hover:-translate-y-2">
 
                     <div class="relative overflow-hidden h-56">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                            alt="Pendidik"
+                        <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&auto=format&fit=crop"
+                            alt="Student Exchange"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
@@ -631,32 +457,34 @@
 
                         <div class="absolute bottom-4 left-4">
                             <span
-                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                PENDIDIKAN
+                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-sm">
+                                EXCHANGE
                             </span>
                         </div>
                     </div>
 
                     <div class="p-6">
-                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Pendidik/Pengajar
+                        <h3 class="text-[18px] font-black text-[#29357A] mb-3">
+                            Mobilitas Internasional
                         </h3>
 
                         <p class="text-[14px] leading-7 text-black font-bold">
-                            Orang yang memiliki kompetensi untuk merancang dan melaksanakan
-                            proses pembelajaran yang efektif serta memiliki pemahaman mendalam
-                            tentang bidang ajarnya.
+                            Program pertukaran mahasiswa dan dosen melalui skema student exchange,
+                            visiting lecturer, dan joint program.
                         </p>
                     </div>
                 </div>
 
-                <!-- Konsultan -->
+                <!-- 4. Pengembangan Jejaring -->
                 <div
-                    class="career-card group bg-white rounded-[20px] overflow-hidden border border-gray-200 hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)] transition-all duration-500 hover:-translate-y-2">
+                    class="group bg-white rounded-sm overflow-hidden border border-gray-200
+                    hover:border-[#29357A]/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)]
+                    hover:shadow-[0_20px_60px_rgba(41,53,122,0.12)]
+                    transition-all duration-500 hover:-translate-y-2">
 
                     <div class="relative overflow-hidden h-56">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop"
-                            alt="Konsultan"
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop"
+                            alt="Networking"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-[#29357A]/80 via-[#29357A]/10 to-transparent">
@@ -664,20 +492,20 @@
 
                         <div class="absolute bottom-4 left-4">
                             <span
-                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-md">
-                                KONSULTAN
+                                class="px-3 py-1 bg-yellow-400 text-[#29357A] text-[10px] font-black tracking-[0.14em] rounded-sm">
+                                NETWORK
                             </span>
                         </div>
                     </div>
 
                     <div class="p-6">
-                        <h3 class="text-[20px] font-black text-[#29357A] mb-3">
-                            Konsultan
+                        <h3 class="text-[18px] font-black text-[#29357A] mb-3">
+                            Jejaring Global
                         </h3>
 
                         <p class="text-[14px] leading-7 text-black font-bold">
-                            Orang yang ahli dalam menganalisis masalah, menyusun strategi,
-                            serta memberikan solusi dan rekomendasi kepada klien.
+                            Penguatan jaringan internasional untuk mendukung reputasi universitas,
+                            riset kolaboratif, dan program global.
                         </p>
                     </div>
                 </div>
@@ -688,8 +516,8 @@
 
     <style>
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Smooth Reveal Animation
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Smooth Reveal Animation
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
 
         .reveal-up {
             opacity: 0;
@@ -706,8 +534,8 @@
         }
 
         /* ==========================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Career Cards
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ========================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Career Cards
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
 
         .career-card {
             opacity: 0;
@@ -930,8 +758,40 @@
         }
     </style>
 
+    <section class="py-20 bg-white">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Heading -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-sm shadow-sm">
+                    SEBARAN MITRA
+                </span>
+
+                <h2 class="mt-5 text-4xl lg:text-5xl font-black text-[#29357A]">
+                    Peta Mitra Kerja Sama Internasional
+                </h2>
+
+                <p class="mt-5 text-[15px] leading-8 text-black font-bold">
+                    Visualisasi sebaran mitra kerja sama Universitas Darma Persada di berbagai negara
+                    untuk mendukung kolaborasi global.
+                </p>
+
+            </div>
+
+            <!-- MAP -->
+            <div id="viewDiv"
+                class="w-full h-[520px] rounded-sm overflow-hidden border border-gray-200 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
+            </div>
+
+        </div>
+
+    </section>
+
     <!-- Latest News -->
-    <section id="berita" class="py-24 bg-[#F8F9FC] overflow-hidden">
+    <section id="berita" class="py-6 bg-[#F8F9FC] overflow-hidden">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -1019,11 +879,6 @@
                                     <!-- CONTENT -->
                                     <div class="p-6 flex flex-col flex-1">
 
-                                        {{-- <span
-                                            class="inline-flex items-center gap-2 text-xs font-semibold text-gray-500 mb-3">
-                                            <i class="fa-regular fa-calendar"></i>
-                                            {{ $item->created_at->format('d M Y') }}
-                                        </span> --}}
 
                                         <h3 class="text-xl font-bold text-[#29357A] mb-3 line-clamp-2 leading-snug">
                                             {{ $item->title }}
@@ -1079,323 +934,8 @@
 
     </section>
 
-    <!-- FAQ Section -->
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-gray-50 overflow-hidden">
-
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <!-- Heading -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-
-                <span
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md shadow-sm">
-
-                    FAQ
-                </span>
-
-                <h2 class="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
-                    Pertanyaan yang Sering Diajukan
-                </h2>
-
-                <p class="mt-5 text-[15px] leading-8 text-black font-bold">
-                    Temukan jawaban atas berbagai pertanyaan seputar Fakultas Ekonomi
-                    Universitas Darma Persada mulai dari program studi, pendaftaran,
-                    fasilitas, hingga peluang pengembangan mahasiswa.
-                </p>
-
-            </div>
-
-            <div class="space-y-5">
-                <details
-                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
-
-                    <!-- Accent Line -->
-                    <div
-                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
-                    </div>
-
-                    <summary
-                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
-
-                        <div class="flex-1">
-
-                            <h3
-                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
-
-                                Apa saja program studi yang tersedia di Fakultas Ekonomi Universitas Darma Persada?
-
-                            </h3>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
-
-                            <i
-                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
-                            </i>
-
-                        </div>
-
-                    </summary>
-
-                    <div class="px-8 lg:px-10 animate-faq">
-
-                        <div class="border-t border-slate-100 py-6">
-
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
-                                Fakultas Ekonomi Universitas Darma Persada menyediakan beberapa program studi yang berfokus
-                                pada pengembangan ilmu ekonomi dan bisnis, seperti Manajemen, Akuntansi, dan program lainnya
-                                yang mendukung kebutuhan dunia kerja modern.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </details>
-
-                <details
-                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
-
-                    <!-- Accent Line -->
-                    <div
-                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
-                    </div>
-
-                    <summary
-                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
-
-                        <div class="flex-1">
-
-                            <h3
-                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
-
-                                Bagaimana proses pendaftaran mahasiswa baru?
-
-                            </h3>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
-
-                            <i
-                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
-                            </i>
-
-                        </div>
-
-                    </summary>
-
-                    <div class="px-8 lg:px-10 animate-faq">
-
-                        <div class="border-t border-slate-100 py-6">
-
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
-                                Calon mahasiswa dapat melakukan pendaftaran secara online melalui website resmi Universitas
-                                Darma Persada dengan mengisi formulir pendaftaran, mengunggah dokumen persyaratan, dan
-                                mengikuti tahapan seleksi yang telah ditentukan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </details>
-
-                <details
-                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
-
-                    <!-- Accent Line -->
-                    <div
-                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
-                    </div>
-
-                    <summary
-                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
-
-                        <div class="flex-1">
-
-                            <h3
-                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
-
-                                Apakah Fakultas Ekonomi menyediakan program magang?
-
-                            </h3>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
-
-                            <i
-                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
-                            </i>
-
-                        </div>
-
-                    </summary>
-
-                    <div class="px-8 lg:px-10 animate-faq">
-
-                        <div class="border-t border-slate-100 py-6">
-
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
-                                Ya, Fakultas Ekonomi Universitas Darma Persada menyediakan program magang dan kerja praktik
-                                yang bekerja sama dengan berbagai perusahaan, instansi, dan dunia industri untuk
-                                meningkatkan pengalaman mahasiswa sebelum lulus.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </details>
-
-                <details
-                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
-
-                    <!-- Accent Line -->
-                    <div
-                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
-                    </div>
-
-                    <summary
-                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
-
-                        <div class="flex-1">
-
-                            <h3
-                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
-
-                                Apakah tersedia beasiswa untuk mahasiswa?
-
-                            </h3>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
-
-                            <i
-                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
-                            </i>
-
-                        </div>
-
-                    </summary>
-
-                    <div class="px-8 lg:px-10 animate-faq">
-
-                        <div class="border-t border-slate-100 py-6">
-
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
-                                Fakultas Ekonomi Universitas Darma Persada menyediakan berbagai informasi terkait program
-                                beasiswa, baik dari pemerintah, yayasan, maupun mitra perusahaan untuk mahasiswa berprestasi
-                                maupun yang membutuhkan dukungan biaya pendidikan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </details>
-
-                <details
-                    class="group relative bg-white rounded-lg border border-slate-200/80 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[#29357A]/15 hover:shadow-[0_25px_60px_rgba(41,53,122,0.08)] open:border-[#29357A]/20 open:shadow-[0_25px_60px_rgba(41,53,122,0.10)]">
-
-                    <!-- Accent Line -->
-                    <div
-                        class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#29357A] to-[#4354b5] scale-y-0 origin-top transition-transform duration-500 group-open:scale-y-100">
-                    </div>
-
-                    <summary
-                        class="flex items-center justify-between gap-6 cursor-pointer px-8 lg:px-10 py-7 lg:py-8 list-none">
-
-                        <div class="flex-1">
-
-                            <h3
-                                class="text-[18px] lg:text-[21px] font-extrabold tracking-tight text-[#29357A] leading-relaxed transition-all duration-300 group-hover:text-[#1f2c66] group-open:text-[#1f2c66]">
-
-                                Bagaimana fasilitas pendukung pembelajaran di Fakultas Ekonomi?
-
-                            </h3>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 my-4 rounded-full bg-[#29357A]/5 border border-[#29357A]/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#29357A]/10 group-hover:scale-105 group-open:bg-[#29357A] group-open:border-[#29357A]">
-
-                            <i
-                                class="fa-solid fa-plus text-[#29357A] text-sm transition-all duration-300 group-open:rotate-45 group-open:text-white">
-                            </i>
-
-                        </div>
-
-                    </summary>
-
-                    <div class="px-8 lg:px-10 animate-faq">
-
-                        <div class="border-t border-slate-100 py-6">
-
-                            <p class="text-black text-[15px] lg:text-[16px] leading-8 lg:leading-9 font-bold">
-                                Fakultas Ekonomi didukung dengan ruang kelas modern,
-                                laboratorium komputer, perpustakaan, koneksi internet,
-                                serta berbagai kegiatan organisasi mahasiswa untuk
-                                menunjang proses belajar dan pengembangan soft skill
-                                mahasiswa.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </details>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <style>
-        details summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details summary {
-            list-style: none;
-        }
-
-        @keyframes faqFade {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        details[open] .animate-faq {
-            animation: faqFade .35s ease;
-        }
-
-        details[open] {
-            transform: translateY(-2px);
-        }
-
-        details[open] summary {
-            padding-bottom: 1.5rem;
-        }
-    </style>
-
     <!-- CTA Section -->
-    <section id="kontak" class="py-24 overflow-hidden">
+    <section id="kontak" class="pt-6 mb-16 overflow-hidden">
 
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -1405,48 +945,66 @@
                 <span
                     class="inline-flex items-center gap-2 px-4 py-2 bg-[#29357A]/5 border border-[#29357A]/10 text-[#29357A] text-[11px] font-black tracking-[0.18em] rounded-md">
 
-                    WUJUDKAN KARIR IMPIAN
+                    Kontak Kami
 
                 </span>
 
                 <!-- Heading -->
                 <h2 class="mt-6 text-4xl lg:text-5xl font-black tracking-tight text-[#29357A] leading-tight">
 
-                    Wujudkan Masa Depan Bersama
-                    <br>
-
-                    <span class="text-[#29357A]/80">
-                        Fakultas Ekonomi UNSADA
-                    </span>
+                    {{ $landing->app_name }}
 
                 </h2>
 
-                <!-- Description -->
-                <p class="mt-6 max-w-2xl mx-auto text-[15px] lg:text-[16px] font-bold leading-8 text-black">
+                <!-- CTA ACTION BUTTONS (PKS UI STYLE) -->
+                <div class="mt-10 flex justify-center gap-5">
 
-                    Bergabunglah bersama lingkungan akademik yang inovatif,
-                    profesional, dan berorientasi pada dunia industri untuk
-                    mencetak generasi unggul yang siap bersaing di tingkat
-                    nasional maupun global.
+                    <!-- PHONE -->
+                    <a href="tel:+628000000000"
+                        class="group relative w-14 h-14 flex items-center justify-center
+              rounded-full bg-[#29357A] text-white
+              shadow-md hover:shadow-xl hover:-translate-y-1
+              hover:bg-[#1f2c66] transition-all duration-300">
 
-                </p>
+                        <iconify-icon icon="solar:phone-linear" width="20"
+                            class="transition-transform duration-300 group-hover:scale-110">
+                        </iconify-icon>
 
-                <!-- CTA -->
-                <div class="mt-10 flex justify-center">
+                        <span
+                            class="absolute inset-0 rounded-full border border-[#29357A]/40
+                     group-hover:scale-125 transition"></span>
+                    </a>
 
-                    <a href="https://pmb.unsada.ac.id/" target="_blank"
-                        class="group inline-flex items-center gap-3 rounded-2xl border border-[#29357A] bg-[#29357A] px-8 py-4 text-white font-bold uppercase tracking-[0.08em] transition-all duration-300 hover:bg-[#1f2c66] hover:border-[#1f2c66] hover:-translate-y-1 hover:shadow-xl">
+                    <!-- EMAIL -->
+                    <a href="mailto:info@unsada.ac.id"
+                        class="group relative w-14 h-14 flex items-center justify-center
+              rounded-full bg-[#29357A] text-white
+              shadow-md hover:shadow-xl hover:-translate-y-1
+              hover:bg-[#1f2c66] transition-all duration-300">
 
-                        <span>Daftar Sekarang</span>
+                        <iconify-icon icon="solar:letter-linear" width="20"
+                            class="transition-transform duration-300 group-hover:scale-110">
+                        </iconify-icon>
 
-                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white/10">
+                        <span
+                            class="absolute inset-0 rounded-full border border-[#29357A]/40
+                     group-hover:scale-125 transition"></span>
+                    </a>
 
-                            <i
-                                class="fa-solid fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1">
-                            </i>
+                    <!-- MAPS -->
+                    <a href="https://maps.google.com" target="_blank"
+                        class="group relative w-14 h-14 flex items-center justify-center
+              rounded-full bg-[#29357A] text-white
+              shadow-md hover:shadow-xl hover:-translate-y-1
+              hover:bg-[#1f2c66] transition-all duration-300">
 
-                        </div>
+                        <iconify-icon icon="solar:map-point-linear" width="20"
+                            class="transition-transform duration-300 group-hover:scale-110">
+                        </iconify-icon>
 
+                        <span
+                            class="absolute inset-0 rounded-full border border-[#29357A]/40
+                     group-hover:scale-125 transition"></span>
                     </a>
 
                 </div>
@@ -1460,6 +1018,188 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.27/"></script>
+
+    <script>
+        const mitra = @json($partners);
+
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer"
+        ], function(Map, MapView, Graphic, GraphicsLayer) {
+            const map = new Map({
+                basemap: "streets-navigation-vector"
+            });
+
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+
+                center: [120, 10],
+                zoom: 3,
+
+                constraints: {
+                    snapToZoom: false
+                },
+
+                navigation: {
+                    momentumEnabled: true,
+                    mouseWheelZoomEnabled: true,
+                    browserTouchPanEnabled: true,
+                },
+
+                ui: {
+                    components: ["zoom"]
+                },
+
+                popup: {
+                    dockEnabled: true,
+                    dockOptions: {
+                        buttonEnabled: false, // sembunyikan tombol undock
+                        breakpoint: false, // selalu dock meskipun desktop
+                        position: "bottom-right" // bottom-left | top-right | top-left
+                    }
+                }
+            });
+
+            view.when(() => {
+
+                view.goTo({
+                    center: [120, 10],
+                    zoom: 3
+                }, {
+                    duration: 2500,
+                    easing: "ease-in-out"
+                });
+
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
+            mitra.forEach((m) => {
+
+                if (!m.latitude || !m.longitude) return;
+
+                const point = {
+                    type: "point",
+                    longitude: parseFloat(m.longitude),
+                    latitude: parseFloat(m.latitude)
+                };
+
+                const logoUrl = m.logo ?
+                    "{{ asset('storage') }}/" + m.logo :
+                    null;
+
+                // Marker Premium
+                const symbol = {
+                    type: "simple-marker",
+
+                    style: "circle",
+
+                    color: [41, 53, 122, 0.95],
+
+                    size: "20px",
+
+                    outline: {
+                        color: "#ffffff",
+                        width: 3
+                    }
+                };
+
+                const graphic = new Graphic({
+
+                    geometry: point,
+
+                    symbol: symbol,
+
+                    popupTemplate: {
+                        title: "",
+
+                        content: `
+                        <div style="
+                            width:300px;
+                            font-family:Inter,sans-serif;
+                        ">
+
+                            ${
+                        logoUrl
+                        ? `
+                                                                                                                                                                                                                                                                                                                                                <div style="
+                                                                                                                                                                                                                                                                                                                                                    display:flex;
+                                                                                                                                                                                                                                                                                                                                                    justify-content:center;
+                                                                                                                                                                                                                                                                                                                                                    margin-bottom:18px;
+                                                                                                                                                                                                                                                                                                                                                ">
+                                                                                                                                                                                                                                                                                                                                                    <img src="${logoUrl}"
+                                                                                                                                                                                                                                                                                                                                                         style="
+                                                                                                                                                                                                                                                                                                                                                            width:90px;
+                                                                                                                                                                                                                                                                                                                                                            height:90px;
+                                                                                                                                                                                                                                                                                                                                                            object-fit:contain;
+                                                                                                                                                                                                                                                                                                                                                            border-radius:16px;
+                                                                                                                                                                                                                                                                                                                                                            background:#fff;
+                                                                                                                                                                                                                                                                                                                                                            padding:8px;
+                                                                                                                                                                                                                                                                                                                                                            box-shadow:0 8px 30px rgba(0,0,0,.08);
+                                                                                                                                                                                                                                                                                                                                                         ">
+                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                `
+                                : ''
+                            }
+
+                            <h3 style="
+                                font-size:18px;
+                                font-weight:800;
+                                color:#29357A;
+                                margin-bottom:10px;
+                            ">
+                                ${m.name}
+                            </h3>
+
+                            <div style="
+                                display:inline-block;
+                                background:#29357A10;
+                                color:#29357A;
+                                padding:6px 12px;
+                                border-radius:999px;
+                                font-size:11px;
+                                font-weight:700;
+                                margin-bottom:14px;
+                            ">
+                                MITRA INTERNASIONAL
+                            </div>
+
+                            <p style="
+                                color:#555;
+                                font-size:13px;
+                                line-height:1.8;
+                                text-align:justify;
+                            ">
+                                ${m.description ?? '-'}
+                            </p>
+
+                        </div>
+            `
+                    }
+                });
+
+                graphicsLayer.add(graphic);
+            });
+
+            if (graphicsLayer.graphics.length > 0) {
+
+                view.when(() => {
+                    view.goTo({
+                        center: [130, 10],
+                        zoom: 2.5
+                    });
+                });
+
+            }
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
